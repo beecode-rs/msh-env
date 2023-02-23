@@ -1,4 +1,4 @@
-import { ToString } from './to-string'
+import { ToString } from 'src/convert/to-string'
 
 describe('ToString', () => {
   const toString = new ToString()

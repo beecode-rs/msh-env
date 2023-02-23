@@ -1,6 +1,6 @@
-import { LocationStrategy } from '../location/location-strategy'
-import { NamingStrategy } from '../naming/naming-strategy'
-import { logger } from '../util/logger'
+import { LocationStrategy } from 'src/location/location-strategy'
+import { NamingStrategy } from 'src/naming/naming-strategy'
+import { logger } from 'src/util/logger'
 
 export class Env {
   protected readonly _names: string[]

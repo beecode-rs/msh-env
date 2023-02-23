@@ -1,5 +1,5 @@
-import { ToNumber } from './to-number'
 import assert from 'assert'
+import { ToNumber } from 'src/convert/to-number'
 
 describe('ToNumber', () => {
   const toNumber = new ToNumber()

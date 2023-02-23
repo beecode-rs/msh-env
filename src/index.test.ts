@@ -1,8 +1,8 @@
-import { EnvFactory } from './env/env-factory'
-import { MshNodeEnv } from './index'
-import { EnvironmentLocation } from './location/environment-location'
-import { SimpleName } from './naming/simple-name'
-import { logger } from './util/logger'
+import { EnvFactory } from 'src/env/env-factory'
+import { MshNodeEnv } from 'src/index'
+import { EnvironmentLocation } from 'src/location/environment-location'
+import { SimpleName } from 'src/naming/simple-name'
+import { logger } from 'src/util/logger'
 
 jest.mock('./location/environment-location')
 jest.mock('./naming/simple-name')

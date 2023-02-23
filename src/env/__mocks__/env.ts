@@ -1,5 +1,5 @@
-import { LocationStrategy } from '../../location/location-strategy'
-import { NamingStrategy } from '../../naming/naming-strategy'
+import { LocationStrategy } from 'src/location/location-strategy'
+import { NamingStrategy } from 'src/naming/naming-strategy'
 
 export class Env {
   protected readonly _names: string[]

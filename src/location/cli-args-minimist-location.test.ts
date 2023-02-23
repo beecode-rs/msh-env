@@ -1,5 +1,5 @@
-import { CliArgsMinimistLocation } from './cli-args-minimist-location'
 import { Options } from 'minimist-options'
+import { CliArgsMinimistLocation } from 'src/location/cli-args-minimist-location'
 
 describe('CliArgsMinimistLocation', () => {
   it.each<[{ options?: Options; args?: string[] }, { _args: any }, { [k: string]: string }]>([

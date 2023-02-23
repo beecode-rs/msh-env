@@ -1,4 +1,4 @@
-import { ToJson } from './to-json'
+import { ToJson } from 'src/convert/to-json'
 
 describe('ToJson', () => {
   const toJson = new ToJson()

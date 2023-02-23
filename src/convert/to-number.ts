@@ -1,4 +1,4 @@
-import { ConvertStrategy } from './convert-strategy'
+import { ConvertStrategy } from 'src/convert/convert-strategy'
 
 export class ToNumber implements ConvertStrategy<number> {
   public convert(str?: string): number | undefined {

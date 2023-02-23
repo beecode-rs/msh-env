@@ -12,6 +12,9 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "outDir": "./lib",
+    "paths": {
+      "src/*": ["./src/*"]
+    },
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,

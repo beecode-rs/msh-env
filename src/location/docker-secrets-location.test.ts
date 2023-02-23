@@ -1,5 +1,5 @@
-import { DockerSecretsLocation } from './docker-secrets-location'
 import fs from 'fs'
+import { DockerSecretsLocation } from 'src/location/docker-secrets-location'
 import util from 'util'
 
 jest.mock('fs')

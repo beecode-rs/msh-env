@@ -1,6 +1,6 @@
-import { logger } from '../util/logger'
-import { SuffixName } from './suffix-name'
 import assert from 'assert'
+import { SuffixName } from 'src/naming/suffix-name'
+import { logger } from 'src/util/logger'
 
 jest.mock('../util/logger')
 

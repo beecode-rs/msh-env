@@ -1,4 +1,4 @@
-import { ToBoolean } from './to-boolean'
+import { ToBoolean } from 'src/convert/to-boolean'
 
 describe('ToBoolean', () => {
   const toBoolean = new ToBoolean()

@@ -1,6 +1,6 @@
-import { LocationStrategy } from './location-strategy'
 import minimist from 'minimist'
 import buildOptions, { Options } from 'minimist-options'
+import { LocationStrategy } from 'src/location/location-strategy'
 
 export class CliArgsMinimistLocation<T extends minimist.ParsedArgs> implements LocationStrategy {
   protected readonly _miniOpts: minimist.Opts

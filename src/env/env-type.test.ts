@@ -1,10 +1,10 @@
-import { MockConvertStrategy } from '../convert/__mocks__/mock-convert-strategy'
-import { MockLocationStrategy } from '../location/__mocks__/mock-location-strategy'
-import { MockNamingStrategy } from '../naming/__mocks__/mock-naming-strategy'
-import { logger } from '../util/logger'
-import { Env } from './env'
-import { EnvType } from './env-type'
 import assert from 'assert'
+import { MockConvertStrategy } from 'src/convert/__mocks__/mock-convert-strategy'
+import { Env } from 'src/env/env'
+import { EnvType } from 'src/env/env-type'
+import { MockLocationStrategy } from 'src/location/__mocks__/mock-location-strategy'
+import { MockNamingStrategy } from 'src/naming/__mocks__/mock-naming-strategy'
+import { logger } from 'src/util/logger'
 
 jest.mock('../util/logger')
 jest.mock('./env')

@@ -1,4 +1,4 @@
-import { Base64ToString } from './base64-to-string'
+import { Base64ToString } from 'src/convert/base64-to-string'
 
 describe('Base64ToString', () => {
   const base64ToString = new Base64ToString()

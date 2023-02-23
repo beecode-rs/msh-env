@@ -1,6 +1,6 @@
-import { logger } from '../util/logger'
-import { PrefixName } from './prefix-name'
 import assert from 'assert'
+import { PrefixName } from 'src/naming/prefix-name'
+import { logger } from 'src/util/logger'
 
 jest.mock('../util/logger')
 

@@ -1,4 +1,4 @@
-import { EnvironmentLocation } from './environment-location'
+import { EnvironmentLocation } from 'src/location/environment-location'
 
 describe('EnvironmentLocation', () => {
   describe('valueByName', () => {

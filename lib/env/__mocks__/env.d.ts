@@ -10,9 +10,9 @@ export declare class Env {
         locationStrategies: LocationStrategy[];
         namingStrategies: NamingStrategy[];
     });
-    mockName: jest.Mock<string[], []>;
+    mockName: jest.Mock<string[], [], any>;
     get Names(): string[];
-    protected _envNames: jest.Mock<string[], []>;
-    envValue: jest.Mock<string | undefined, []>;
+    protected _envNames: jest.Mock<string[], [], any>;
+    envValue: jest.Mock<string | undefined, [], any>;
 }
 //# sourceMappingURL=env.d.ts.map

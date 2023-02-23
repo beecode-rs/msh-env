@@ -1,4 +1,4 @@
-import { stringUtil } from './string-util'
+import { stringUtil } from 'src/util/string-util'
 
 describe('util - stringUtil', () => {
   afterEach(() => {

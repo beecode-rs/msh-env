@@ -1,8 +1,8 @@
-.idea
-.nyc_output
-.semaphore
-coverage
-lib
-node_modules
-resource
-test
+/.idea
+/.nyc_output
+/.semaphore
+/coverage
+/lib
+/node_modules
+/resource
+/test

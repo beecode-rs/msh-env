@@ -1,11 +1,11 @@
-import { Base64ToString } from '../convert/base64-to-string'
-import { ToBoolean } from '../convert/to-boolean'
-import { ToJson } from '../convert/to-json'
-import { ToNumber } from '../convert/to-number'
-import { ToString } from '../convert/to-string'
-import { Env } from './env'
-import { EnvFactory } from './env-factory'
-import { EnvType } from './env-type'
+import { Base64ToString } from 'src/convert/base64-to-string'
+import { ToBoolean } from 'src/convert/to-boolean'
+import { ToJson } from 'src/convert/to-json'
+import { ToNumber } from 'src/convert/to-number'
+import { ToString } from 'src/convert/to-string'
+import { Env } from 'src/env/env'
+import { EnvFactory } from 'src/env/env-factory'
+import { EnvType } from 'src/env/env-type'
 
 describe.each([[['TEST']], [['TEST', 'TEST1']], [['TEST', 'TEST1', 'TEST2']]])('EnvFactory envNames: %p', (envNames) => {
   const envFactory = new EnvFactory({ names: envNames, locationStrategies: [], namingStrategies: [] })

@@ -1,5 +1,5 @@
-import { SimpleName } from './simple-name'
 import assert from 'assert'
+import { SimpleName } from 'src/naming/simple-name'
 
 describe('SimpleName', () => {
   describe('names', () => {

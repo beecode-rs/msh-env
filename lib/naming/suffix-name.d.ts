@@ -1,4 +1,4 @@
-import { NamingStrategy } from './naming-strategy';
+import { NamingStrategy } from '../naming/naming-strategy';
 export declare class SuffixName implements NamingStrategy {
     protected readonly _suffix: string;
     constructor(suffix: string);

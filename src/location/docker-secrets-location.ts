@@ -1,5 +1,5 @@
-import { LocationStrategy } from './location-strategy'
 import fs from 'fs'
+import { LocationStrategy } from 'src/location/location-strategy'
 import util from 'util'
 
 export class DockerSecretsLocation implements LocationStrategy {

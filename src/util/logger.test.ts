@@ -1,6 +1,6 @@
-import { NodeEnvLogger, logger } from './logger'
 import { ConsoleLogger } from '@beecode/msh-node-log/lib/console-logger'
 import { NoLogger } from '@beecode/msh-node-log/lib/no-logger'
+import { NodeEnvLogger, logger } from 'src/util/logger'
 
 describe('logger', () => {
   describe('NodeAppLogger', () => {

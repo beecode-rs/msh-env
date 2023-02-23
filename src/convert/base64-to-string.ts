@@ -1,5 +1,5 @@
-import { ConvertStrategy } from './convert-strategy'
 import { decode } from 'base-64'
+import { ConvertStrategy } from 'src/convert/convert-strategy'
 
 export class Base64ToString implements ConvertStrategy<string> {
   public convert(str?: string): string | undefined {
