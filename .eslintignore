@@ -1,8 +1,14 @@
+/.base-frame-tmp
 /.idea
-/.nyc_output
 /.semaphore
 /coverage
 /lib
 /node_modules
 /resource
-/test
+/packages
+.*.js
+.*.json
+package-lock.json
+tsconfig*.json
+typedoc.json
+/jest*.config.js

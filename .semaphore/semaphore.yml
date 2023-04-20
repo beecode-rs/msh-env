@@ -3,48 +3,49 @@ name: Test
 agent:
   machine:
     type: e1-standard-2
+    os_image: ubuntu2004
 
-  containers:
-    - name: main
-      image: 'registry.semaphoreci.com/node:14'
 blocks:
-  - name: Install-Lint-Test
+  - name: Create Docker image
     task:
       secrets:
-        - name: bc-git-secret
-        - name: bc-npm-secret
-        - name: bc-msh-node-env-secret
-      env_vars:
-        - name: NODE_ENV
-          value: test
+        - name: mb-docker-hub
       jobs:
-        - name: Test
+        - name: Build and store image in local registry
           commands:
             - checkout
-            - npm ci
-            - cache store
-            - npm run eslint
-            - npm run prettier
-            - npm run coverage
-            - 'npm run coverage:publish'
-            - npm run test:int
+            - echo $DOCKER_PASSWORD | docker login --username "$DOCKER_USERNAME" --password-stdin
+            - docker build -f .docker/Dockerfile -t bc-msh-env .
+            - docker save -o bc-msh-env.tar bc-msh-env
+            - cache store bc-msh-env-docker-image-$SEMAPHORE_GIT_SHA bc-msh-env.tar
+
+  - name: Run Tests
+    task:
+      secrets:
+        - name: bc-msh-env-secret
+      jobs:
+        - name: Test and coverage
+          commands:
+            - checkout
+            - cache restore bc-msh-env-docker-image-$SEMAPHORE_GIT_SHA
+            - docker load -i bc-msh-env.tar
+            - docker run --rm -e CODECOV_TOKEN bc-msh-env sh -c 'npm run test:e2e && npm run test:unit:coverage && npm run test:unit:coverage:publish'
+
   - name: Bump Version
     task:
       secrets:
         - name: bc-git-secret
         - name: bc-npm-secret
-        - name: bc-msh-node-env-secret
       jobs:
         - name: Build
           commands:
-            - checkout
-            - cache restore
-            - npm run build
-            - npm config set sign-git-tag false
-            - npm config set git-tag-version false
-            - npm run semantic-release
-            - touch version.txt && cat version.txt
-            - cache store bc-msh-node-env-version-$SEMAPHORE_GIT_SHA version.txt
+            - cache restore bc-msh-env-docker-image-$SEMAPHORE_GIT_SHA
+            - docker load -i bc-msh-env.tar
+            - touch version.txt
+            - sudo chown -R packer:packer version.txt
+            - docker run --rm -v ./version.txt:/usr/app/version.txt -e GH_TOKEN -e NPM_TOKEN -e GH_USER -e CI bc-msh-env npm run semantic-release
+            - cat version.txt
+            - cache store bc-msh-env-version-$SEMAPHORE_GIT_SHA version.txt
     skip:
       when: branch != 'main'
 
