@@ -1,5 +1,7 @@
 # [0.1.0](https://github.com/beecode-rs/msh-env/compare/v0.0.0...v0.1.0) (2023-04-21)
 
+> # Renamed `msh-node-env` > `msh-env`
+> Reset version to 0.1.0
 
 ### Features
 

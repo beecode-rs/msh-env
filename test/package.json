@@ -12,8 +12,6 @@
 		"@beecode/msh-env": ".."
 	},
 	"scripts": {
-		"link:dev": "[ -d node_modules/@beecode/msh-env ] || (mkdir -p node_modules/@beecode/msh-env && ln -s $(pwd)/../lib node_modules/@beecode/msh-env/lib && ln -s $(pwd)/../package.json node_modules/@beecode/msh-env/package.json)",
-		"postinstall": "npm run link:dev",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"version": "1.0.0"
