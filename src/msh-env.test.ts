@@ -32,8 +32,8 @@ describe('MshEnv', () => {
 		expect(logger().debug).toHaveBeenCalledWith(`Initiate env: [${name}]`)
 		expect(EnvFactory).toHaveBeenCalledTimes(1)
 		expect(EnvFactory).nthCalledWith(1, {
-			names: [name],
 			locationStrategies: [expect.any(LocationStrategyEnvironment)],
+			names: [name],
 			namingStrategies: [expect.any(NamingStrategySimpleName)],
 		})
 		expect(LocationStrategyEnvironment).toHaveBeenCalledTimes(1)
@@ -58,8 +58,8 @@ describe('MshEnv', () => {
 
 		expect(EnvFactory).toHaveBeenCalledTimes(1)
 		expect(EnvFactory).toHaveBeenCalledWith({
-			names: [name],
 			locationStrategies: [userLocationStrategyEnvironment],
+			names: [name],
 			namingStrategies: [userNamingStrategySimpleName],
 		})
 	})

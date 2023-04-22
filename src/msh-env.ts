@@ -15,6 +15,6 @@ export const MshEnv = (params?: {
 	return (...names: string[]): EnvFactory => {
 		logger().debug(`Initiate env: [${names.join(', ')}]`)
 
-		return new EnvFactory({ locationStrategies, namingStrategies, names: [...names] })
+		return new EnvFactory({ locationStrategies, names: [...names], namingStrategies })
 	}
 }

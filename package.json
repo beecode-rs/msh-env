@@ -100,7 +100,7 @@
 		"docker:exec": "docker run --rm bc-msh-env",
 		"docker:exec:sh": "docker run --rm -it bc-msh-env sh",
 		"docker:rmi": "docker rmi bc-msh-env",
-		"eslint": "eslint --quiet",
+		"eslint": "eslint . --quiet",
 		"eslint:fix": "npm run eslint --fix",
 		"initial-setup": "npm run initial-setup:husky && npm run initial-setup:git-config",
 		"initial-setup:git-config": "git config include.path ../.git-config",

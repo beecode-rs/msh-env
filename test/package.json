@@ -6,7 +6,6 @@
 	},
 	"description": "",
 	"license": "ISC",
-	"main": "jest.config.js",
 	"name": "test",
 	"optionalDependencies": {
 		"@beecode/msh-env": ".."
