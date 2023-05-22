@@ -1,17 +1,17 @@
 {
-	"author": "",
-	"dependencies": {
-		"@beecode/msh-logger": "0.2.0-alpha",
-		"dotenv": "16.0.3"
-	},
-	"description": "",
-	"license": "ISC",
-	"name": "test",
-	"optionalDependencies": {
-		"@beecode/msh-env": ".."
-	},
-	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1"
-	},
-	"version": "1.0.0"
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "@beecode/msh-logger": "0.2.0-alpha",
+    "dotenv": "16.0.3"
+  },
+  "optionalDependencies": {
+    "@beecode/msh-env": ".."
+  }
 }
