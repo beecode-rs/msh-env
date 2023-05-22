@@ -1,9 +1,9 @@
 {
+  "gitZipUrl": "https://github.com/beecode-rs/msh-base-temp/archive/refs/heads/msh-lib.zip",
   "template": {
-    "projectName": "msh-env",
     "gitTeam": "beecode-rs",
     "npmPackagePrefix": "@beecode/msh-env",
-		"semaphoreCiCompanyId": "beecode"
-  },
-  "gitZipUrl": "https://github.com/beecode-rs/msh-base-temp/archive/refs/heads/msh-lib.zip"
+    "projectName": "msh-env",
+    "semaphoreCiCompanyId": "beecode"
+  }
 }
