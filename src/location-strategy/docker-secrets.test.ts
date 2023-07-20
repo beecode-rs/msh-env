@@ -1,9 +1,13 @@
-import fs from 'fs'
-import { LocationStrategyDockerSecrets } from 'src/location-strategy/docker-secrets'
-import util from 'util'
+// eslint-disable-next-line import/order
+import { jest } from '@jest/globals'
 
 jest.mock('fs')
 jest.mock('util')
+
+import fs from 'fs'
+import util from 'util'
+
+import { LocationStrategyDockerSecrets } from '#/location-strategy/docker-secrets.js'
 
 describe('LocationStrategyDockerSecrets', () => {
 	describe('valueByName', () => {

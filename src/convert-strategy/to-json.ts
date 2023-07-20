@@ -1,4 +1,4 @@
-import { ConvertStrategy } from 'src/convert-strategy'
+import { ConvertStrategy } from '#/convert-strategy/index.js'
 
 export class ConvertStrategyToJson<T> implements ConvertStrategy<T> {
 	convert(str?: string): T | undefined {

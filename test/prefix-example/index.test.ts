@@ -1,8 +1,8 @@
 import { MshEnv } from '@beecode/msh-env'
-import { NamingStrategyPrefixName } from '@beecode/msh-env/lib/naming-strategy/prefix-name'
-import { setEnvLogger } from '@beecode/msh-env/lib/util/logger'
+import { NamingStrategyPrefixName } from '@beecode/msh-env/lib/naming-strategy/prefix-name.js'
+import { setEnvLogger } from '@beecode/msh-env/lib/util/logger.js'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console.js'
 import * as dotenv from 'dotenv'
 
 dotenv.config({ path: `${__dirname}/.env` })

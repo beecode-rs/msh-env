@@ -1,5 +1,6 @@
 import assert from 'assert'
-import { ConvertStrategyToNumber } from 'src/convert-strategy/to-number'
+
+import { ConvertStrategyToNumber } from '#/convert-strategy/to-number.js'
 
 describe('ConvertStrategyToNumber', () => {
 	const toNumber = new ConvertStrategyToNumber()

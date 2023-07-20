@@ -1,4 +1,6 @@
-import { StringUtil } from 'src/util/string-util'
+import { jest } from '@jest/globals'
+
+import { StringUtil } from '#/util/string-util.js'
 
 describe('util - stringUtil', () => {
 	afterEach(() => jest.resetAllMocks())
@@ -22,7 +24,7 @@ describe('util - stringUtil', () => {
 	})
 	describe('toSnakeUpperCase', () => {
 		const stringUtil = new StringUtil()
-		let spy_stringUtil_toSnakeCase: jest.SpyInstance
+		let spy_stringUtil_toSnakeCase: jest.SpiedFunction<(str: string) => string>
 		beforeEach(() => {
 			spy_stringUtil_toSnakeCase = jest.spyOn(stringUtil, 'toSnakeCase')
 		})

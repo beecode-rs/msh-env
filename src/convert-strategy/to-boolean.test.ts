@@ -1,4 +1,4 @@
-import { ConvertStrategyToBoolean } from 'src/convert-strategy/to-boolean'
+import { ConvertStrategyToBoolean } from '#/convert-strategy/to-boolean.js'
 
 describe('ConvertStrategyToBoolean', () => {
 	const toBoolean = new ConvertStrategyToBoolean()
