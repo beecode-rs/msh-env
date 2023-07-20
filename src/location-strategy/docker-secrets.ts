@@ -1,6 +1,7 @@
 import fs from 'fs'
-import { LocationStrategy } from 'src/location-strategy'
 import util from 'util'
+
+import { LocationStrategy } from '#/location-strategy/index'
 
 export class LocationStrategyDockerSecrets implements LocationStrategy {
 	valueByName(name: string): string | undefined {

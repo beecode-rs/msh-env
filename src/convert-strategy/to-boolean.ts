@@ -1,4 +1,4 @@
-import { ConvertStrategy } from 'src/convert-strategy'
+import { ConvertStrategy } from '#/convert-strategy/index'
 
 export class ConvertStrategyToBoolean implements ConvertStrategy<boolean> {
 	convert(str?: string): boolean | undefined {
