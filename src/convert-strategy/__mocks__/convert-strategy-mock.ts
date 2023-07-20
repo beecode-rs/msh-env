@@ -1,5 +1,7 @@
-import { ConvertStrategy } from 'src/convert-strategy'
+import { jest } from '@jest/globals'
+
+import { ConvertStrategy } from '#/convert-strategy/index'
 
 export class ConvertStrategyMock<T = any> implements ConvertStrategy<T> {
-	convert = jest.fn<T | undefined, [string]>()
+	convert = jest.fn<(params: string) => T | undefined>()
 }
