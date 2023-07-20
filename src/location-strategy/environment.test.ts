@@ -1,4 +1,4 @@
-import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
+import { LocationStrategyEnvironment } from '#/location-strategy/environment'
 
 describe('LocationStrategyEnvironment', () => {
 	describe('valueByName', () => {
