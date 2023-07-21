@@ -1,7 +1,9 @@
+import { jest } from '@jest/globals'
 import assert from 'assert'
-import { Env } from 'src/env'
-import { LocationStrategyMock } from 'src/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from 'src/naming-strategy/__mocks__/naming-strategy-mock'
+
+import { Env } from '#/env/index.js'
+import { LocationStrategyMock } from '#/location-strategy/__mocks__/location-strategy-mock.js'
+import { NamingStrategyMock } from '#/naming-strategy/__mocks__/naming-strategy-mock.js'
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -85,7 +87,7 @@ describe.each([
 	})
 
 	describe('envValue', () => {
-		let spy_envNames: jest.SpyInstance
+		let spy_envNames: jest.SpiedFunction<any>
 		beforeEach(() => {
 			spy_envNames = jest.spyOn(dummyEnv, '_envNames' as any)
 		})
@@ -112,7 +114,7 @@ describe.each([
 		describe('check reducers', () => {
 			let dummyEnv2: Env
 
-			let spy_envNames2: jest.SpyInstance
+			let spy_envNames2: jest.SpiedFunction<any>
 			beforeEach(() => {
 				dummyEnv2 = new Env({
 					locationStrategies: [mockLocationStrategy, mockLocationStrategy],

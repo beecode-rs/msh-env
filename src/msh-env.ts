@@ -1,9 +1,9 @@
-import { EnvFactory } from 'src/env/factory'
-import { LocationStrategy } from 'src/location-strategy'
-import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
-import { NamingStrategy } from 'src/naming-strategy'
-import { NamingStrategySimpleName } from 'src/naming-strategy/simple-name'
-import { logger } from 'src/util/logger'
+import { EnvFactory } from '#/env/factory.js'
+import { LocationStrategyEnvironment } from '#/location-strategy/environment.js'
+import { LocationStrategy } from '#/location-strategy/index.js'
+import { NamingStrategy } from '#/naming-strategy/index.js'
+import { NamingStrategySimpleName } from '#/naming-strategy/simple-name.js'
+import { logger } from '#/util/logger.js'
 
 export const MshEnv = (params?: {
 	locationStrategies?: LocationStrategy[]
