@@ -1,4 +1,4 @@
-import { ConvertStrategyToJson } from '#/convert-strategy/to-json.js'
+import { ConvertStrategyToJson } from 'src/convert-strategy/to-json'
 
 describe('ConvertStrategyToJson', () => {
 	const toJson = new ConvertStrategyToJson()

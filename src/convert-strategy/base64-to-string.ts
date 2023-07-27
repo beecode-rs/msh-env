@@ -1,6 +1,5 @@
 import { Base64 } from 'js-base64'
-
-import { ConvertStrategy } from '#/convert-strategy/index.js'
+import { ConvertStrategy } from 'src/convert-strategy'
 
 export class ConvertStrategyBase64ToString implements ConvertStrategy<string> {
 	convert(str?: string): string | undefined {

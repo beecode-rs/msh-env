@@ -1,4 +1,4 @@
-import { LocationStrategy } from '#/location-strategy/index.js'
+import { LocationStrategy } from 'src/location-strategy'
 
 export class LocationStrategyEnvironment implements LocationStrategy {
 	valueByName(name: string): string | undefined {

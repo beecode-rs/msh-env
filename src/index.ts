@@ -1,1 +1,1 @@
-export { MshEnv } from '#/msh-env.js'
+export { MshEnv, mshEnv } from 'src/msh-env'

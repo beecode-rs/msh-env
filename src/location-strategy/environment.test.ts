@@ -1,4 +1,4 @@
-import { LocationStrategyEnvironment } from '#/location-strategy/environment.js'
+import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
 
 describe('LocationStrategyEnvironment', () => {
 	describe('valueByName', () => {

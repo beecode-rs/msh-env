@@ -1,4 +1,4 @@
-import { ConvertStrategyBase64ToString } from '#/convert-strategy/base64-to-string.js'
+import { ConvertStrategyBase64ToString } from 'src/convert-strategy/base64-to-string'
 
 describe('ConvertStrategyBase64ToString', () => {
 	const base64ToString = new ConvertStrategyBase64ToString()

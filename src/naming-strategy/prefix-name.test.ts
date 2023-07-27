@@ -5,14 +5,14 @@
 // 	info: jest.fn<(a: StringOrObjectType[]) => void>(),
 // 	warn: jest.fn<(a: StringOrObjectType[]) => void>(),
 // }
-jest.unstable_mockModule('#/util/logger', async () => {
-	return import('#/util/__mocks__/logger')
+jest.unstable_mockModule('src/util/logger', async () => {
+	return import('src/util/__mocks__/logger')
 })
 
 import { LoggerStrategy } from '@beecode/msh-logger'
 import { jest } from '@jest/globals'
 import assert from 'assert'
-import { NamingStrategy } from 'src/naming-strategy/index.js'
+import { NamingStrategy } from 'src/naming-strategy'
 
 describe('NamingStrategyPrefixName', () => {
 	let logger: () => LoggerStrategy
@@ -22,9 +22,9 @@ describe('NamingStrategyPrefixName', () => {
 	afterAll(() => jest.restoreAllMocks())
 
 	beforeEach(async () => {
-		const { logger: loggerImported } = await import('#/util/logger')
+		const { logger: loggerImported } = await import('src/util/logger')
 		logger = loggerImported
-		const { NamingStrategyPrefixName } = await import('#/naming-strategy/prefix-name')
+		const { NamingStrategyPrefixName } = await import('src/naming-strategy/prefix-name')
 		namingStrategyPrefixNameFactory = (name: string) => new NamingStrategyPrefixName(name)
 	})
 

@@ -1,6 +1,5 @@
 import { Options } from 'minimist-options'
-
-import { LocationStrategyCliArgsMinimist } from '#/location-strategy/cli-args-minimist.js'
+import { LocationStrategyCliArgsMinimist } from 'src/location-strategy/cli-args-minimist'
 
 /* eslint-disable @typescript-eslint/naming-convention */
 describe('LocationStrategyCliArgsMinimist', () => {

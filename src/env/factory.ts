@@ -1,12 +1,12 @@
-import { ConvertStrategyBase64ToString } from '#/convert-strategy/base64-to-string.js'
-import { ConvertStrategyToBoolean } from '#/convert-strategy/to-boolean.js'
-import { ConvertStrategyToJson } from '#/convert-strategy/to-json.js'
-import { ConvertStrategyToNumber } from '#/convert-strategy/to-number.js'
-import { ConvertStrategyToString } from '#/convert-strategy/to-string.js'
-import { Env } from '#/env/index.js'
-import { EnvType } from '#/env/type.js'
-import { LocationStrategy } from '#/location-strategy/index.js'
-import { NamingStrategy } from '#/naming-strategy/index.js'
+import { ConvertStrategyBase64ToString } from 'src/convert-strategy/base64-to-string'
+import { ConvertStrategyToBoolean } from 'src/convert-strategy/to-boolean'
+import { ConvertStrategyToJson } from 'src/convert-strategy/to-json'
+import { ConvertStrategyToNumber } from 'src/convert-strategy/to-number'
+import { ConvertStrategyToString } from 'src/convert-strategy/to-string'
+import { Env } from 'src/env'
+import { EnvType } from 'src/env/type'
+import { LocationStrategy } from 'src/location-strategy'
+import { NamingStrategy } from 'src/naming-strategy'
 
 export class EnvFactory {
 	protected readonly _env: Env

@@ -5,9 +5,8 @@ jest.mock('fs')
 jest.mock('util')
 
 import fs from 'fs'
+import { LocationStrategyDockerSecrets } from 'src/location-strategy/docker-secrets'
 import util from 'util'
-
-import { LocationStrategyDockerSecrets } from '#/location-strategy/docker-secrets.js'
 
 describe('LocationStrategyDockerSecrets', () => {
 	describe('valueByName', () => {

@@ -1,15 +1,14 @@
 import { jest } from '@jest/globals'
+import { EnvFactory } from 'src/env/factory'
+import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
+import { MshEnv } from 'src/msh-env'
+import { NamingStrategySimpleName } from 'src/naming-strategy/simple-name'
+import { logger } from 'src/util/logger'
 
-import { EnvFactory } from '#/env/factory.js'
-import { LocationStrategyEnvironment } from '#/location-strategy/environment.js'
-import { MshEnv } from '#/msh-env.js'
-import { NamingStrategySimpleName } from '#/naming-strategy/simple-name.js'
-import { logger } from '#/util/logger.js'
-
-jest.mock('#/location-strategy/environment')
-jest.mock('#/naming-strategy/simple-name')
-jest.mock('#/env/factory')
-jest.mock('#/util/logger')
+jest.mock('src/location-strategy/environment')
+jest.mock('src/naming-strategy/simple-name')
+jest.mock('src/env/factory')
+jest.mock('src/util/logger')
 
 describe('MshEnv', () => {
 	afterEach(() => jest.resetAllMocks())

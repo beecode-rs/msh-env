@@ -1,6 +1,5 @@
 import assert from 'assert'
-
-import { NamingStrategySimpleName } from '#/naming-strategy/simple-name.js'
+import { NamingStrategySimpleName } from 'src/naming-strategy/simple-name'
 
 describe('NamingStrategySimpleName', () => {
 	describe('names', () => {
