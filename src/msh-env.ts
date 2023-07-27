@@ -5,10 +5,9 @@ import { NamingStrategy } from 'src/naming-strategy'
 import { NamingStrategySimpleName } from 'src/naming-strategy/simple-name'
 import { logger } from 'src/util/logger'
 
-export const MshEnv = (params?: {
-	locationStrategies?: LocationStrategy[]
-	namingStrategies?: NamingStrategy[]
-}): ((...name: string[]) => EnvFactory) => {
+export type MshEnv = (...name: string[]) => EnvFactory
+
+export const mshEnv = (params?: { locationStrategies?: LocationStrategy[]; namingStrategies?: NamingStrategy[] }): MshEnv => {
 	const { locationStrategies = [new LocationStrategyEnvironment()], namingStrategies = [new NamingStrategySimpleName()] } =
 		params ?? {}
 

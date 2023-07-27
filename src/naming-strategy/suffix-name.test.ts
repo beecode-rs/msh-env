@@ -1,8 +1,10 @@
+// eslint-disable-next-line import/order
+import { jest } from '@jest/globals'
+
+jest.mock('src/util/logger')
 import assert from 'assert'
 import { NamingStrategySuffixName } from 'src/naming-strategy/suffix-name'
 import { logger } from 'src/util/logger'
-
-jest.mock('src/util/logger')
 
 describe('NamingStrategySuffixName', () => {
 	describe('names', () => {

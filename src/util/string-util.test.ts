@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { StringUtil } from 'src/util/string-util'
 
 describe('util - stringUtil', () => {
@@ -22,7 +23,7 @@ describe('util - stringUtil', () => {
 	})
 	describe('toSnakeUpperCase', () => {
 		const stringUtil = new StringUtil()
-		let spy_stringUtil_toSnakeCase: jest.SpyInstance
+		let spy_stringUtil_toSnakeCase: jest.SpiedFunction<(str: string) => string>
 		beforeEach(() => {
 			spy_stringUtil_toSnakeCase = jest.spyOn(stringUtil, 'toSnakeCase')
 		})

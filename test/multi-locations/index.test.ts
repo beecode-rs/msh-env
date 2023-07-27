@@ -1,9 +1,9 @@
 import { MshEnv } from '@beecode/msh-env'
-import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/lib/location-strategy/cli-args-minimist'
-import { LocationStrategyEnvironment } from '@beecode/msh-env/lib/location-strategy/environment'
-import { setEnvLogger } from '@beecode/msh-env/lib/util/logger'
+import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/lib/location-strategy/cli-args-minimist.js'
+import { LocationStrategyEnvironment } from '@beecode/msh-env/lib/location-strategy/environment.js'
+import { setEnvLogger } from '@beecode/msh-env/lib/util/logger.js'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console.js'
 import * as dotenv from 'dotenv'
 import { Options } from 'minimist-options'
 

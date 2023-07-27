@@ -1,4 +1,4 @@
-import DeepEqual from 'deep-equal'
+import DeepEqual from 'fast-deep-equal/es6'
 import { ConvertStrategy } from 'src/convert-strategy'
 import { Env } from 'src/env'
 import { logger } from 'src/util/logger'
