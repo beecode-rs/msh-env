@@ -1,7 +1,7 @@
-import { MshEnv } from '@beecode/msh-env'
-import { setEnvLogger } from '@beecode/msh-env/lib/util/logger'
+import { mshEnv } from '@beecode/msh-env'
+import { setEnvLogger } from '@beecode/msh-env/dist/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/dist/logger-strategy/console'
 import assert = require('assert')
 import * as dotenv from 'dotenv'
 
@@ -12,7 +12,7 @@ describe('Simple Example', () => {
 		setEnvLogger(new LoggerStrategyConsole({ logLevel: LogLevel.DEBUG }))
 	})
 
-	const env = MshEnv()
+	const env = mshEnv()
 	it('should read required fields from env', () => {
 		const config = Object.freeze({
 			testEnvBase64: env('TEST_ENV_BASE64').base64.required,

@@ -35,7 +35,7 @@ This project is intended to be used in typescript project to validate and add ty
 
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { cacheUtil } from '@beecode/msh-util/lib/cache-util'
+import { cacheUtil } from '@beecode/msh-util/dist/lib/cache-util'
 
 const env = MshNodeEnv()
 
@@ -87,7 +87,7 @@ Usage:
 
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { DockerSecretsLocation } from '@beecode/msh-env/lib/location/docker-secrets-location'
+import { DockerSecretsLocation } from '@beecode/msh-env/dist/location/docker-secrets-location'
 
 const env = MshNodeEnv({ locationStrategy: [new location.DockerSecretsLocation()] })
 ```
@@ -100,8 +100,8 @@ Usage:
 env is going to try and find value in first location strategy, in our example CliArgsMinimistLocation, ad if we find DB_NAME we are going to use it instead from EnvironmentLocation
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { CliArgsMinimistLocation } from '@beecode/msh-env/lib/location/cli-args-minimist-location'
-import { EnvironmentLocation } from '@beecode/msh-env/lib/location/environment-location'
+import { CliArgsMinimistLocation } from '@beecode/msh-env/dist/location/cli-args-minimist-location'
+import { EnvironmentLocation } from '@beecode/msh-env/dist/location/environment-location'
 import { Options } from 'minimist-options'
 
 const options: Options = { DB_NAME: { alias: ['d', 'db-name', 'dbName'], type: 'string' } }
@@ -132,7 +132,7 @@ isolation, and we can set name of the container as prefix.
 
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { PrefixName } from '@beecode/msh-env/lib/naming/prefix-name'
+import { PrefixName } from '@beecode/msh-env/dist/naming/prefix-name'
 
 const env = MshNodeEnv({ namingStrategy: [new PrefixName('SOME_APP_')] })
 ```
@@ -159,7 +159,7 @@ Usage:
 
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { PrefixName } from '@beecode/msh-env/lib/naming/prefix-name'
+import { PrefixName } from '@beecode/msh-env/dist/naming/prefix-name'
 
 const env = MshNodeEnv({ namingStrategy: [new PrefixName('FOO_'), new PrefixName('BAR_')] })
 const test = env('TEST').string.required // env look up in this order 1) BAR_FOO_TEST, 2) FOO_TEST, 3) TEST
@@ -173,7 +173,7 @@ Usage:
 
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
-import { SuffixName } from '@beecode/msh-env/lib/naming/suffix-name'
+import { SuffixName } from '@beecode/msh-env/dist/naming/suffix-name'
 
 const env = MshNodeEnv({ namingStrategy: [new SuffixName('_FOO'), new SuffixName('_BAR')] })
 const test = env('TEST').string.required // env look up in this order 1) TEST_FOO_BAR, 2) TEST_FOO, 3) TEST
@@ -189,7 +189,7 @@ Usage:
 ```typescript
 import { MshNodeEnv } from '@beecode/msh-env'
 import { LogLevelType } from '@beecode/msh-logger'
-import { ConsoleLogger } from '@beecode/msh-logger/lib/console-logger'
+import { ConsoleLogger } from '@beecode/msh-logger/dist/console-logger'
 
 NodeEnvLogger(new ConsoleLogger(LogLevel.DEBUG))
 

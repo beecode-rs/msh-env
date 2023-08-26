@@ -1,3 +1,4 @@
+import { jest } from '@jest/globals'
 import { EnvFactory } from 'src/env/factory'
 import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
 import { MshEnv } from 'src/msh-env'
