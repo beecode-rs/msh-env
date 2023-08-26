@@ -1,5 +1,5 @@
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
-import { LoggerStrategyVoid } from '@beecode/msh-logger/logger-strategy/void'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/dist/logger-strategy/console'
+import { LoggerStrategyVoid } from '@beecode/msh-logger/dist/logger-strategy/void'
 import { logger, setEnvLogger } from 'src/util/logger'
 
 describe('logger', () => {
