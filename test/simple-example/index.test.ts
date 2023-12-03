@@ -1,9 +1,14 @@
 import { mshEnv } from '@beecode/msh-env'
-import { setEnvLogger } from '@beecode/msh-env/dist/util/logger'
+import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/dist/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
 import assert = require('assert')
 import * as dotenv from 'dotenv'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 dotenv.config({ path: `${__dirname}/.env` })
 

@@ -8,10 +8,10 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@beecode/msh-logger": "0.2.0-alpha",
+		"@beecode/msh-logger": "file:./../../logger",
 		"dotenv": "16.0.3"
 	},
 	"optionalDependencies": {
-		"@beecode/msh-env": ".."
+		"@beecode/msh-env": "file:./.."
 	}
 }

@@ -1,6 +1,8 @@
-import { LoggerStrategyConsole } from '@beecode/msh-logger/dist/logger-strategy/console'
-import { LoggerStrategyVoid } from '@beecode/msh-logger/dist/logger-strategy/void'
-import { logger, setEnvLogger } from 'src/util/logger'
+// TODO only working if we import @beecode/msh-logger/logger-strategy/console/index
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
+import { LoggerStrategyVoid } from '@beecode/msh-logger/logger-strategy/void'
+
+import { logger, setEnvLogger } from '#/util/logger'
 
 describe('logger', () => {
 	describe('NodeAppLogger', () => {

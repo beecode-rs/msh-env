@@ -1,16 +1,17 @@
 // eslint-disable-next-line import/order
 import { jest } from '@jest/globals'
 
-jest.mock('src/util/logger')
-jest.mock('src/env')
+jest.mock('#/util/logger')
+jest.mock('#/env')
 
 import assert from 'assert'
-import { ConvertStrategyMock } from 'src/convert-strategy/__mocks__/convert-strategy-mock'
-import { Env } from 'src/env'
-import { EnvType } from 'src/env/type'
-import { LocationStrategyMock } from 'src/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from 'src/naming-strategy/__mocks__/naming-strategy-mock'
-import { logger } from 'src/util/logger'
+
+import { ConvertStrategyMock } from '#/convert-strategy/__mocks__/convert-strategy-mock'
+import { Env } from '#/env'
+import { EnvType } from '#/env/type'
+import { LocationStrategyMock } from '#/location-strategy/__mocks__/location-strategy-mock'
+import { NamingStrategyMock } from '#/naming-strategy/__mocks__/naming-strategy-mock'
+import { logger } from '#/util/logger'
 
 describe.each([
 	[['DUMMY_TEST_ENV']],

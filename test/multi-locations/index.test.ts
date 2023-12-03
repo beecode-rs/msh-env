@@ -1,12 +1,16 @@
 import { mshEnv } from '@beecode/msh-env'
-import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/dist/location-strategy/cli-args-minimist'
-import { LocationStrategyEnvironment } from '@beecode/msh-env/dist/location-strategy/environment'
-import { setEnvLogger } from '@beecode/msh-env/dist/util/logger'
+import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/location-strategy/cli-args-minimist'
+import { LocationStrategyEnvironment } from '@beecode/msh-env/location-strategy/environment'
+import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/dist/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
 import * as dotenv from 'dotenv'
 import { Options } from 'minimist-options'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 dotenv.config({ path: `${__dirname}/.env` })
 
 describe('Multiple Locations Example', () => {

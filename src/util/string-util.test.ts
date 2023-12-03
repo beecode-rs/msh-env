@@ -1,5 +1,6 @@
 import { jest } from '@jest/globals'
-import { StringUtil } from 'src/util/string-util'
+
+import { StringUtil } from '#/util/string-util'
 
 describe('util - stringUtil', () => {
 	afterEach(() => jest.resetAllMocks())
