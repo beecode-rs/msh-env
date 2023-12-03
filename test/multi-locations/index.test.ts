@@ -1,12 +1,16 @@
-import { MshEnv } from '@beecode/msh-env'
-import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/lib/location-strategy/cli-args-minimist'
-import { LocationStrategyEnvironment } from '@beecode/msh-env/lib/location-strategy/environment'
-import { setEnvLogger } from '@beecode/msh-env/lib/util/logger'
+import { mshEnv } from '@beecode/msh-env'
+import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/location-strategy/cli-args-minimist'
+import { LocationStrategyEnvironment } from '@beecode/msh-env/location-strategy/environment'
+import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
 import * as dotenv from 'dotenv'
 import { Options } from 'minimist-options'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
 
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 dotenv.config({ path: `${__dirname}/.env` })
 
 describe('Multiple Locations Example', () => {
@@ -23,7 +27,7 @@ describe('Multiple Locations Example', () => {
 		['dbNameFromEnv', ['node', 'some-app.js']],
 	])('%#. should expect dbName to be %s, for args %j', (dbName, args) => {
 		const options: Options = { DB_NAME: { alias: ['d', 'db-name', 'dbName'], type: 'string' } }
-		const env = MshEnv({
+		const env = mshEnv({
 			locationStrategies: [
 				new LocationStrategyCliArgsMinimist({ args: args.slice(2), options }),
 				new LocationStrategyEnvironment(),

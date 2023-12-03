@@ -1,4 +1,4 @@
-import { ConvertStrategy } from 'src/convert-strategy'
+import { ConvertStrategy } from '#/convert-strategy'
 
 export class ConvertStrategyToString implements ConvertStrategy<string> {
 	convert(str?: string): string | undefined {

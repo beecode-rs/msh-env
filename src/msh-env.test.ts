@@ -1,20 +1,22 @@
-import { EnvFactory } from 'src/env/factory'
-import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
-import { MshEnv } from 'src/msh-env'
-import { NamingStrategySimpleName } from 'src/naming-strategy/simple-name'
-import { logger } from 'src/util/logger'
+import { jest } from '@jest/globals'
 
-jest.mock('src/location-strategy/environment')
-jest.mock('src/naming-strategy/simple-name')
-jest.mock('src/env/factory')
-jest.mock('src/util/logger')
+import { EnvFactory } from '#/env/factory'
+import { LocationStrategyEnvironment } from '#/location-strategy/environment'
+import { mshEnv } from '#/msh-env'
+import { NamingStrategySimpleName } from '#/naming-strategy/simple-name'
+import { logger } from '#/util/logger'
 
-describe('MshEnv', () => {
+jest.mock('#/location-strategy/environment')
+jest.mock('#/naming-strategy/simple-name')
+jest.mock('#/env/factory')
+jest.mock('#/util/logger')
+
+describe('mshEnv', () => {
 	afterEach(() => jest.resetAllMocks())
 	afterAll(() => jest.restoreAllMocks())
 
 	it('should all default strategies', () => {
-		const result = MshEnv()
+		const result = mshEnv()
 		expect(LocationStrategyEnvironment).toHaveBeenCalledTimes(1)
 		expect(NamingStrategySimpleName).toHaveBeenCalledTimes(1)
 		expect(EnvFactory).not.toHaveBeenCalled()
@@ -22,7 +24,7 @@ describe('MshEnv', () => {
 	})
 
 	it('should pass all default strategy to Env on env used', () => {
-		const env = MshEnv()
+		const env = mshEnv()
 		const name = 'TEST'
 
 		const envResult = env(name)
@@ -46,7 +48,7 @@ describe('MshEnv', () => {
 
 		jest.resetAllMocks()
 
-		const env = MshEnv({
+		const env = mshEnv({
 			locationStrategies: [userLocationStrategyEnvironment],
 			namingStrategies: [userNamingStrategySimpleName],
 		})
