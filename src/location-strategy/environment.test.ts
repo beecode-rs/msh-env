@@ -1,4 +1,6 @@
-import { LocationStrategyEnvironment } from 'src/location-strategy/environment'
+import { describe, expect, it } from '@jest/globals'
+
+import { LocationStrategyEnvironment } from '#/location-strategy/environment'
 
 describe('LocationStrategyEnvironment', () => {
 	describe('valueByName', () => {
