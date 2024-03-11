@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals'
+
 import { ConvertStrategyBase64ToString } from '#/convert-strategy/base64-to-string'
 import { ConvertStrategyToBoolean } from '#/convert-strategy/to-boolean'
 import { ConvertStrategyToJson } from '#/convert-strategy/to-json'

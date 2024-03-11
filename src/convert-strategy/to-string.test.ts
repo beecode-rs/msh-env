@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals'
+
 import { ConvertStrategyToString } from '#/convert-strategy/to-string'
 
 describe('ConvertStrategyToString', () => {

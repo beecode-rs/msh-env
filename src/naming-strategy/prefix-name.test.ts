@@ -1,26 +1,23 @@
-// const mockLogger = {
-// 	clone: jest.fn<(a: LoggerStrategyParams) => LoggerStrategy>(),
-// 	debug: jest.fn<(a: unknown[]) => void>(),
-// 	error: jest.fn<(a: unknown[]) => void>(),
-// 	info: jest.fn<(a: unknown[]) => void>(),
-// 	warn: jest.fn<(a: unknown[]) => void>(),
-// }
-jest.unstable_mockModule('#/util/logger', async () => {
-	return import('#/util/__mocks__/logger')
-})
-
 import { LoggerStrategy } from '@beecode/msh-logger'
-import { jest } from '@jest/globals'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
 import { NamingStrategy } from '#/naming-strategy'
+
+jest.unstable_mockModule('#/util/logger', async () => {
+	return import('#/util/__mocks__/logger')
+})
 
 describe('NamingStrategyPrefixName', () => {
 	let logger: () => LoggerStrategy
 	let namingStrategyPrefixNameFactory: (name: string) => NamingStrategy
 
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	beforeEach(async () => {
 		const { logger: loggerImported } = await import('#/util/logger')

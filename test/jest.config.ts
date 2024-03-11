@@ -1,4 +1,6 @@
-export default {
+import type { JestConfigWithTsJest } from 'ts-jest'
+
+const jestConfig: JestConfigWithTsJest = {
 	maxConcurrency: 1,
 
 	moduleFileExtensions: ['js', 'ts'],
@@ -13,3 +15,5 @@ export default {
 	extensionsToTreatAsEsm: ['.ts'],
 	testPathIgnorePatterns: ['/node_modules/'],
 }
+
+export default jestConfig

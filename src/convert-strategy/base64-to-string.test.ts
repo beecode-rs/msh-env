@@ -1,3 +1,5 @@
+import { describe, expect, it } from '@jest/globals'
+
 import { ConvertStrategyBase64ToString } from '#/convert-strategy/base64-to-string'
 
 describe('ConvertStrategyBase64ToString', () => {
@@ -22,7 +24,7 @@ describe('ConvertStrategyBase64ToString', () => {
 	it.each(['-', '!', 'dGVzdA!!'])('%#. should throw error if "%s" passed', (notAllowedString) => {
 		try {
 			base64ToString.convert(notAllowedString)
-			expect.fail('test failed')
+			throw new Error('test failed')
 		} catch (err) {
 			expect((err as Error).message).toEqual(
 				`"${notAllowedString}" is not a base64. Error: Invalid character: the string to be decoded is not correctly encoded.`

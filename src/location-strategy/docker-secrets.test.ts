@@ -1,18 +1,20 @@
-// eslint-disable-next-line import/order
-import { jest } from '@jest/globals'
-
-jest.mock('fs')
-jest.mock('util')
-
+import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import fs from 'fs'
 import util from 'util'
 
 import { LocationStrategyDockerSecrets } from '#/location-strategy/docker-secrets'
 
+jest.mock('fs')
+jest.mock('util')
+
 describe('LocationStrategyDockerSecrets', () => {
 	describe('valueByName', () => {
-		afterEach(() => jest.resetAllMocks())
-		afterAll(() => jest.restoreAllMocks())
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+		afterAll(() => {
+			jest.restoreAllMocks()
+		})
 
 		it('should call fs and util', () => {
 			const fsResult = 'fs-result'

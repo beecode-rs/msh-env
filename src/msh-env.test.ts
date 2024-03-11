@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals'
+import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 
 import { EnvFactory } from '#/env/factory'
 import { LocationStrategyEnvironment } from '#/location-strategy/environment'
@@ -12,8 +12,12 @@ jest.mock('#/env/factory')
 jest.mock('#/util/logger')
 
 describe('mshEnv', () => {
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	it('should all default strategies', () => {
 		const result = mshEnv()

@@ -1,3 +1,4 @@
+import { describe, it } from '@jest/globals'
 import assert from 'assert'
 
 import { NamingStrategySimpleName } from '#/naming-strategy/simple-name'

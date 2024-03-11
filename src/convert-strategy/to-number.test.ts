@@ -1,3 +1,4 @@
+import { describe, expect, it } from '@jest/globals'
 import assert from 'assert'
 
 import { ConvertStrategyToNumber } from '#/convert-strategy/to-number'

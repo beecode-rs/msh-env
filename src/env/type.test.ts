@@ -1,9 +1,4 @@
-// eslint-disable-next-line import/order
-import { jest } from '@jest/globals'
-
-jest.mock('#/util/logger')
-jest.mock('#/env')
-
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
 import { ConvertStrategyMock } from '#/convert-strategy/__mocks__/convert-strategy-mock'
@@ -12,6 +7,9 @@ import { EnvType } from '#/env/type'
 import { LocationStrategyMock } from '#/location-strategy/__mocks__/location-strategy-mock'
 import { NamingStrategyMock } from '#/naming-strategy/__mocks__/naming-strategy-mock'
 import { logger } from '#/util/logger'
+
+jest.mock('#/util/logger')
+jest.mock('#/env')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -37,8 +35,12 @@ describe.each([
 		dummyEnvType = new EnvType({ convertStrategy: mockConvertStrategy, env: mockEnv })
 	})
 
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	describe('constructor', () => {
 		it('should pass properties', () => {
@@ -164,7 +166,7 @@ describe.each([
 			mock_optional.mockReturnValue(undefined)
 			try {
 				dummyEnvType.required
-				expect.fail('test failed')
+				throw new Error('test failed')
 			} catch (err: any) {
 				expect(mock_optional).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledTimes(1)
@@ -257,7 +259,7 @@ describe.each([
 			spy_allowedValuesDoNotContain.mockReturnValue(true)
 			try {
 				dummyEnvType['_validateAllowedValues'](value)
-				expect.fail('test failed')
+				throw new Error('test failed')
 			} catch (err: any) {
 				expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
 				expect(spy_loggerDebug).toHaveBeenCalledWith('validating allowed values for:', { value })
