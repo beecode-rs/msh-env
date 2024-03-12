@@ -1,8 +1,14 @@
-import { StringUtil } from 'src/util/string-util'
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
+
+import { StringUtil } from '#/util/string-util'
 
 describe('util - stringUtil', () => {
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	describe('toSnakeCase', () => {
 		it.each([
@@ -22,7 +28,7 @@ describe('util - stringUtil', () => {
 	})
 	describe('toSnakeUpperCase', () => {
 		const stringUtil = new StringUtil()
-		let spy_stringUtil_toSnakeCase: jest.SpyInstance
+		let spy_stringUtil_toSnakeCase: jest.SpiedFunction<(str: string) => string>
 		beforeEach(() => {
 			spy_stringUtil_toSnakeCase = jest.spyOn(stringUtil, 'toSnakeCase')
 		})
