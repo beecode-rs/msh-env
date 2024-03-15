@@ -1,1 +1,1 @@
-export { MshEnv, mshEnv } from '#/msh-env'
+export { MshEnv, mshEnv } from '#src/msh-env'

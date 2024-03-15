@@ -1,8 +1,8 @@
 import DeepEqual from 'fast-deep-equal/es6/index.js'
 
-import { ConvertStrategy } from '#/convert-strategy'
-import { Env } from '#/env'
-import { logger } from '#/util/logger'
+import { ConvertStrategy } from '#src/convert-strategy'
+import { Env } from '#src/env'
+import { logger } from '#src/util/logger'
 
 export class EnvType<T> {
 	protected _defaultValue: T | undefined = undefined

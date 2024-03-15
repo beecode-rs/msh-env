@@ -3,8 +3,8 @@ import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 
 import assert from 'assert'
 
-import { NamingStrategySuffixName } from '#/naming-strategy/suffix-name'
-import { logger } from '#/util/logger'
+import { NamingStrategySuffixName } from '#src/naming-strategy/suffix-name'
+import { logger } from '#src/util/logger'
 
 jest.mock('#/util/logger')
 

@@ -1,6 +1,6 @@
 import { describe, expect, it } from '@jest/globals'
 
-import { ConvertStrategyToJson } from '#/convert-strategy/to-json'
+import { ConvertStrategyToJson } from '#src/convert-strategy/to-json'
 
 describe('ConvertStrategyToJson', () => {
 	const toJson = new ConvertStrategyToJson()

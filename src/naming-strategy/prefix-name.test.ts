@@ -2,7 +2,7 @@ import { LoggerStrategy } from '@beecode/msh-logger'
 import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
-import { NamingStrategy } from '#/naming-strategy'
+import { NamingStrategy } from '#src/naming-strategy'
 
 jest.unstable_mockModule('#/util/logger', async () => {
 	return import('#/util/__mocks__/logger')

@@ -1,6 +1,6 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 
-import { StringUtil } from '#/util/string-util'
+import { StringUtil } from '#src/util/string-util'
 
 describe('util - stringUtil', () => {
 	afterEach(() => {

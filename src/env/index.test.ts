@@ -1,9 +1,9 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
-import { Env } from '#/env'
-import { LocationStrategyMock } from '#/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#/naming-strategy/__mocks__/naming-strategy-mock'
+import { Env } from '#src/env'
+import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-strategy-mock'
+import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
 
 describe.each([
 	[['DUMMY_TEST_ENV']],

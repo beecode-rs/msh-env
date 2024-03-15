@@ -1,4 +1,4 @@
-import { LoggerStrategy, LoggerStrategyParams } from '@beecode/msh-logger/logger-strategy/index'
+import { LoggerStrategy, LoggerStrategyParams } from '@beecode/msh-logger/logger-strategy'
 import { jest } from '@jest/globals'
 
 /* eslint-disable @typescript-eslint/no-invalid-void-type */

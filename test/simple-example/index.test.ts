@@ -1,7 +1,7 @@
 import { mshEnv } from '@beecode/msh-env'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
 import { beforeEach, describe, expect, it } from '@jest/globals'
 import assert = require('assert')
 import * as dotenv from 'dotenv'

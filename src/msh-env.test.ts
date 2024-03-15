@@ -1,10 +1,10 @@
 import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 
-import { EnvFactory } from '#/env/factory'
-import { LocationStrategyEnvironment } from '#/location-strategy/environment'
-import { mshEnv } from '#/msh-env'
-import { NamingStrategySimpleName } from '#/naming-strategy/simple-name'
-import { logger } from '#/util/logger'
+import { EnvFactory } from '#src/env/factory'
+import { LocationStrategyEnvironment } from '#src/location-strategy/environment'
+import { mshEnv } from '#src/msh-env'
+import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
+import { logger } from '#src/util/logger'
 
 jest.mock('#/location-strategy/environment')
 jest.mock('#/naming-strategy/simple-name')

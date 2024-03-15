@@ -3,7 +3,7 @@ import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/location-strat
 import { LocationStrategyEnvironment } from '@beecode/msh-env/location-strategy/environment'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console/index'
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
 import { beforeEach, describe, expect, it } from '@jest/globals'
 import * as dotenv from 'dotenv'
 import { Options } from 'minimist-options'

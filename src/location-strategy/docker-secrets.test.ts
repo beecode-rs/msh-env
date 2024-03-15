@@ -2,7 +2,7 @@ import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import fs from 'fs'
 import util from 'util'
 
-import { LocationStrategyDockerSecrets } from '#/location-strategy/docker-secrets'
+import { LocationStrategyDockerSecrets } from '#src/location-strategy/docker-secrets'
 
 jest.mock('fs')
 jest.mock('util')

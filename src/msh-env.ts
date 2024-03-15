@@ -1,9 +1,9 @@
-import { EnvFactory } from '#/env/factory'
-import { LocationStrategy } from '#/location-strategy'
-import { LocationStrategyEnvironment } from '#/location-strategy/environment'
-import { NamingStrategy } from '#/naming-strategy'
-import { NamingStrategySimpleName } from '#/naming-strategy/simple-name'
-import { logger } from '#/util/logger'
+import { EnvFactory } from '#src/env/factory'
+import { LocationStrategy } from '#src/location-strategy'
+import { LocationStrategyEnvironment } from '#src/location-strategy/environment'
+import { NamingStrategy } from '#src/naming-strategy'
+import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
+import { logger } from '#src/util/logger'
 
 export type MshEnv = (...name: string[]) => EnvFactory
 

@@ -1,12 +1,12 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
-import { ConvertStrategyMock } from '#/convert-strategy/__mocks__/convert-strategy-mock'
-import { Env } from '#/env'
-import { EnvType } from '#/env/type'
-import { LocationStrategyMock } from '#/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#/naming-strategy/__mocks__/naming-strategy-mock'
-import { logger } from '#/util/logger'
+import { ConvertStrategyMock } from '#src/convert-strategy/__mocks__/convert-strategy-mock'
+import { Env } from '#src/env'
+import { EnvType } from '#src/env/type'
+import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-strategy-mock'
+import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
+import { logger } from '#src/util/logger'
 
 jest.mock('#/util/logger')
 jest.mock('#/env')
