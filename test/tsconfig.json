@@ -12,7 +12,9 @@
 		"forceConsistentCasingInFileNames": true,
 		"inlineSourceMap": true,
 		"inlineSources": true,
-		"lib": ["ESNext"],
+		"lib": [
+			"ESNext"
+		],
 		"module": "NodeNext",
 		"moduleResolution": "NodeNext",
 		"noImplicitAny": true,
@@ -30,5 +32,7 @@
 		"strictNullChecks": true,
 		"target": "ESNext"
 	},
-	"include": ["./src"]
+	"include": [
+		"./src"
+	]
 }
