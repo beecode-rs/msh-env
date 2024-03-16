@@ -1,4 +1,6 @@
-import { ConvertStrategyToBoolean } from 'src/convert-strategy/to-boolean'
+import { describe, expect, it } from '@jest/globals'
+
+import { ConvertStrategyToBoolean } from '#src/convert-strategy/to-boolean'
 
 describe('ConvertStrategyToBoolean', () => {
 	const toBoolean = new ConvertStrategyToBoolean()

@@ -1,6 +1,7 @@
 import minimist from 'minimist'
 import buildOptions, { Options } from 'minimist-options'
-import { LocationStrategy } from 'src/location-strategy'
+
+import { LocationStrategy } from '#src/location-strategy'
 
 export class LocationStrategyCliArgsMinimist<T extends minimist.ParsedArgs> implements LocationStrategy {
 	protected readonly _miniOpts: minimist.Opts
@@ -8,6 +9,7 @@ export class LocationStrategyCliArgsMinimist<T extends minimist.ParsedArgs> impl
 
 	constructor(params?: { options?: Options; args?: string[] }) {
 		const { options = {}, args = process.argv.slice(2) } = params ?? {}
+		// @ts-expect-error issue with loading minimist-options as es module
 		this._miniOpts = buildOptions(options)
 		this._args = minimist<T>(args, this._miniOpts)
 	}
