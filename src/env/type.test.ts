@@ -1,19 +1,22 @@
+import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
-import { ConvertStrategyMock } from 'src/convert-strategy/__mocks__/convert-strategy-mock'
-import { Env } from 'src/env'
-import { EnvType } from 'src/env/type'
-import { LocationStrategyMock } from 'src/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from 'src/naming-strategy/__mocks__/naming-strategy-mock'
-import { logger } from 'src/util/logger'
 
-jest.mock('src/util/logger')
-jest.mock('src/env')
+import { ConvertStrategyMock } from '#src/convert-strategy/__mocks__/convert-strategy-mock'
+import { Env } from '#src/env'
+import { EnvType } from '#src/env/type'
+import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-strategy-mock'
+import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
+import { logger } from '#src/util/logger'
+
+jest.mock('#src/util/logger')
+jest.mock('#src/env')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
 	[['DUMMY_TEST_ENV', 'DUMMY_TEST_ENV2']],
 	[['DUMMY_TEST_ENV', 'DUMMY_TEST_ENV2', 'DUMMY_TEST_ENV3']],
 ])('%#. EnvType envNames: %p', (envNames) => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	let dummyEnvType: EnvType<any>
 	let mockConvertStrategy: ConvertStrategyMock
 	let mockLocationStrategy: LocationStrategyMock
@@ -32,8 +35,12 @@ describe.each([
 		dummyEnvType = new EnvType({ convertStrategy: mockConvertStrategy, env: mockEnv })
 	})
 
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	describe('constructor', () => {
 		it('should pass properties', () => {
@@ -45,9 +52,10 @@ describe.each([
 	})
 
 	describe('default', () => {
-		let spy_loggerDebug: jest.SpyInstance
+		let spy_loggerDebug: jest.SpiedFunction<any>
 		beforeEach(() => {
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn)
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn as any)
 		})
 
 		it('should set defaultValue', () => {
@@ -62,11 +70,13 @@ describe.each([
 	})
 
 	describe('optional', () => {
-		let spy_validateAllowedValues: jest.SpyInstance
-		let spy_loggerDebug: jest.SpyInstance
+		let spy_validateAllowedValues: jest.SpiedFunction<any>
+		let spy_loggerDebug: jest.SpiedFunction<any>
 		beforeEach(() => {
-			spy_validateAllowedValues = jest.spyOn(dummyEnvType, '_validateAllowedValues' as any).mockImplementation(jest.fn)
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn)
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			spy_validateAllowedValues = jest.spyOn(dummyEnvType, '_validateAllowedValues' as any).mockImplementation(jest.fn as any)
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn as any)
 		})
 
 		it('should call env.envValue', () => {
@@ -134,18 +144,19 @@ describe.each([
 	})
 
 	describe('required', () => {
-		let mock_optional: jest.Mock
-		let spy_loggerDebug: jest.SpyInstance
-		let mock_createError: jest.Mock
+		let mock_optional: jest.Mock<any>
+		let spy_loggerDebug: jest.SpiedFunction<any>
+		let mock_createError: jest.Mock<any>
 
 		beforeEach(() => {
-			mock_optional = jest.fn<any, []>()
+			mock_optional = jest.fn<any>()
 			Object.defineProperty(dummyEnvType, 'optional', {
 				get: () => mock_optional(),
 			})
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 
-			mock_createError = jest.fn<Error, [string]>().mockImplementation((msg: string) => {
+			mock_createError = jest.fn<(a: string) => Error>().mockImplementation((msg: string) => {
 				return new Error(`Env[TEST] ${msg}`)
 			})
 			dummyEnvType['_createError'] = mock_createError
@@ -155,7 +166,7 @@ describe.each([
 			mock_optional.mockReturnValue(undefined)
 			try {
 				dummyEnvType.required
-				expect.fail('test failed')
+				throw new Error('test failed')
 			} catch (err: any) {
 				expect(mock_optional).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledTimes(1)
@@ -180,9 +191,10 @@ describe.each([
 	})
 
 	describe('allowed', () => {
-		let spy_loggerDebug: jest.SpyInstance
+		let spy_loggerDebug: jest.SpiedFunction<any>
 
 		beforeEach(() => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 		})
 
@@ -198,17 +210,20 @@ describe.each([
 	})
 
 	describe('_validateAllowedValues', () => {
-		let spy_loggerDebug: jest.SpyInstance
-		let spy_allowedValuesDoNotContain: jest.SpyInstance
-		let spy_allowedValuesToString: jest.SpyInstance
-		let mock_createError: jest.Mock
+		let spy_loggerDebug: jest.SpiedFunction<any>
+		let spy_allowedValuesDoNotContain: jest.SpiedFunction<any>
+		let spy_allowedValuesToString: jest.SpiedFunction<any>
+		let mock_createError: jest.Mock<any>
 
 		beforeEach(() => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_allowedValuesToString = jest.spyOn(dummyEnvType, '_allowedValuesToString' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_allowedValuesDoNotContain = jest.spyOn(dummyEnvType, '_allowedValuesDoNotContain' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 
-			mock_createError = jest.fn<Error, [string]>().mockImplementation((msg: string) => {
+			mock_createError = jest.fn<(a: string) => Error>().mockImplementation((msg: string) => {
 				return new Error(`Env[TEST] ${msg}`)
 			})
 			dummyEnvType['_createError'] = mock_createError
@@ -244,7 +259,7 @@ describe.each([
 			spy_allowedValuesDoNotContain.mockReturnValue(true)
 			try {
 				dummyEnvType['_validateAllowedValues'](value)
-				expect.fail('test failed')
+				throw new Error('test failed')
 			} catch (err: any) {
 				expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
 				expect(spy_loggerDebug).toHaveBeenCalledWith('validating allowed values for:', { value })
@@ -295,9 +310,10 @@ describe.each([
 	})
 
 	describe('_loggerDebug', () => {
-		let mock_envName: jest.Mock
+		let mock_envName: jest.Mock<any>
 		beforeEach(() => {
-			mock_envName = jest.fn<any, []>().mockReturnValue('Env[TEST]')
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			mock_envName = jest.fn<() => any>().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
 				get: () => mock_envName(),
 			})
@@ -320,9 +336,10 @@ describe.each([
 	})
 
 	describe('_createError', () => {
-		let mock_envName: jest.Mock
+		let mock_envName: jest.Mock<any>
 		beforeEach(() => {
-			mock_envName = jest.fn<any, []>().mockReturnValue('Env[TEST]')
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
+			mock_envName = jest.fn<() => any>().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
 				get: () => mock_envName(),
 			})
