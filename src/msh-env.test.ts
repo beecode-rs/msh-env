@@ -6,10 +6,10 @@ import { mshEnv } from '#src/msh-env'
 import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
 import { logger } from '#src/util/logger'
 
-jest.mock('#/location-strategy/environment')
-jest.mock('#/naming-strategy/simple-name')
-jest.mock('#/env/factory')
-jest.mock('#/util/logger')
+jest.mock('#src/location-strategy/environment')
+jest.mock('#src/naming-strategy/simple-name')
+jest.mock('#src/env/factory')
+jest.mock('#src/util/logger')
 
 describe('mshEnv', () => {
 	afterEach(() => {

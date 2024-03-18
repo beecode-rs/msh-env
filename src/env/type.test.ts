@@ -8,8 +8,8 @@ import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-
 import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
 import { logger } from '#src/util/logger'
 
-jest.mock('#/util/logger')
-jest.mock('#/env')
+jest.mock('#src/util/logger')
+jest.mock('#src/env')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],

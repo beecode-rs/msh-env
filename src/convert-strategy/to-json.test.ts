@@ -24,7 +24,9 @@ describe('ConvertStrategyToJson', () => {
 			toJson.convert('not a string')
 			throw new Error('test failed')
 		} catch (e) {
-			expect((e as Error).message).toEqual('"not a string" is not a json. Error: Unexpected token o in JSON at position 1')
+			expect((e as Error).message).toEqual(
+				`"not a string" is not a json. Error: Unexpected token 'o', "not a string" is not valid JSON`
+			)
 		}
 	})
 })
