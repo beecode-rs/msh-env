@@ -1,42 +1,19 @@
-// import { LoggerStrategy } from '@beecode/msh-logger'
 import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
-// import { NamingStrategy } from '#src/naming-strategy'
-// import { NamingStrategyPrefixName } from '#src/naming-strategy/prefix-name'
-// import { logger } from '#src/util/logger'
-
-// jest.unstable_mockModule('#/util/logger', async () => {
-// 	return import('#/util/__mocks__/logger')
-// })
-jest.mock('#src/util/logger')
-const { logger } = esmImportMocked(import.meta.url, '#src/util/logger')
-const { NamingStrategyPrefixName } = esmImportMocked(import.meta.url, '#src/naming-strategy/prefix-name')
+jest.unstable_mockModule('#src/util/logger', async () => {
+	return import('#src/util/__mocks__/logger')
+})
+const { logger } = await import('#src/util/logger')
+const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
 
 describe('NamingStrategyPrefixName', () => {
-	// const { logger } = await import('#src/util/logger')
-	// const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
-
-	// let loggerMock: () => LoggerStrategy
-	// let namingStrategyPrefixNameFactoryMock: (name: string) => NamingStrategy
-
 	afterEach(() => {
 		jest.resetAllMocks()
 	})
 	afterAll(() => {
 		jest.restoreAllMocks()
 	})
-
-	// TODO: ESM: Check it this could solve the problem with runnint esmodule in jest
-	// It would be good if I could run jest as esmodule, and have jset-mock running
-	// issue is with hoisting, but maybe I could get all mocked imports with await :thinking:
-
-	// beforeEach(async () => {
-	// const { logger: loggerImported } = await import('#src/util/logger')
-	// logger = loggerImported
-	// const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
-	// namingStrategyPrefixNameFactory = (name: string) => new NamingStrategyPrefixName(name)
-	// })
 
 	describe('names', () => {
 		it('should prefix name with "test" with default join char "_"', () => {

@@ -8,8 +8,14 @@ import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-
 import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
 import { logger } from '#src/util/logger'
 
-jest.mock('#src/util/logger')
-jest.mock('#src/env')
+jest.unstable_mockModule('#src/util/logger', async () => {
+	return import('#src/util/__mocks__/logger')
+})
+jest.unstable_mockModule('#src/env', async () => {
+	return import('#src/env/__mocks__/index')
+})
+const { EnvType: EnvTypeMock } = await import('#src/env/type')
+const { Env: EnvMock } = await import('#src/env')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -27,12 +33,12 @@ describe.each([
 		mockConvertStrategy = new ConvertStrategyMock()
 		mockLocationStrategy = new LocationStrategyMock()
 		mockNamingStrategy = new NamingStrategyMock()
-		mockEnv = new Env({
+		mockEnv = new EnvMock({
 			locationStrategies: [mockLocationStrategy],
 			names: envNames,
 			namingStrategies: [mockNamingStrategy],
 		})
-		dummyEnvType = new EnvType({ convertStrategy: mockConvertStrategy, env: mockEnv })
+		dummyEnvType = new EnvTypeMock({ convertStrategy: mockConvertStrategy, env: mockEnv })
 	})
 
 	afterEach(() => {

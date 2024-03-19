@@ -1,3 +1,5 @@
+import { jest } from '@jest/globals'
+
 import { LocationStrategy } from '#src/location-strategy'
 import { NamingStrategy } from '#src/naming-strategy'
 
@@ -13,7 +15,7 @@ export class Env {
 		this.names = [...names]
 	}
 
-	protected _envNames = jest.fn<string[], []>()
+	protected _envNames = jest.fn()
 
-	envValue = jest.fn<string | undefined, []>()
+	envValue = jest.fn()
 }
