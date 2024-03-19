@@ -1,13 +1,30 @@
-import assert from 'assert'
-import { NamingStrategySuffixName } from 'src/naming-strategy/suffix-name'
-import { logger } from 'src/util/logger'
+// eslint-disable-next-line import/order
+import { afterAll, afterEach, beforeAll, describe, expect, it, jest } from '@jest/globals'
 
-jest.mock('src/util/logger')
+import assert from 'assert'
+
+// import { NamingStrategySuffixName } from '#src/naming-strategy/suffix-name'
+// import { logger } from '#src/util/logger'
+
+jest.mock('#src/util/logger')
+
+// const { logger } = esmImportMocked(import.meta.url, '#src/util/logger')
+// const { NamingStrategySuffixName } = esmImportMocked(import.meta.url, '#src/naming-strategy/suffix-name')
 
 describe('NamingStrategySuffixName', () => {
+	let logger: any
+	let NamingStrategySuffixName: any
+	beforeAll(async () => {
+		logger = await import('#src/util/logger')
+		NamingStrategySuffixName = await import('#src/naming-strategy/suffix-name')
+	})
 	describe('names', () => {
-		afterEach(() => jest.resetAllMocks())
-		afterAll(() => jest.restoreAllMocks())
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+		afterAll(() => {
+			jest.restoreAllMocks()
+		})
 
 		it('should suffix name with "test" with default join char "_"', () => {
 			const suffixName = new NamingStrategySuffixName('_test')
