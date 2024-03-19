@@ -10,10 +10,12 @@ import assert from 'assert'
 // 	return import('#/util/__mocks__/logger')
 // })
 jest.mock('#src/util/logger')
+const { logger } = esmImportMocked(import.meta.url, '#src/util/logger')
+const { NamingStrategyPrefixName } = esmImportMocked(import.meta.url, '#src/naming-strategy/prefix-name')
 
-describe('NamingStrategyPrefixName', async () => {
-	const { logger } = await import('#src/util/logger')
-	const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
+describe('NamingStrategyPrefixName', () => {
+	// const { logger } = await import('#src/util/logger')
+	// const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
 
 	// let loggerMock: () => LoggerStrategy
 	// let namingStrategyPrefixNameFactoryMock: (name: string) => NamingStrategy
