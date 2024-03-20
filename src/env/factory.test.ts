@@ -1,11 +1,13 @@
-import { ConvertStrategyBase64ToString } from 'src/convert-strategy/base64-to-string'
-import { ConvertStrategyToBoolean } from 'src/convert-strategy/to-boolean'
-import { ConvertStrategyToJson } from 'src/convert-strategy/to-json'
-import { ConvertStrategyToNumber } from 'src/convert-strategy/to-number'
-import { ConvertStrategyToString } from 'src/convert-strategy/to-string'
-import { Env } from 'src/env'
-import { EnvFactory } from 'src/env/factory'
-import { EnvType } from 'src/env/type'
+import { describe, expect, it } from '@jest/globals'
+
+import { ConvertStrategyBase64ToString } from '#src/convert-strategy/base64-to-string'
+import { ConvertStrategyToBoolean } from '#src/convert-strategy/to-boolean'
+import { ConvertStrategyToJson } from '#src/convert-strategy/to-json'
+import { ConvertStrategyToNumber } from '#src/convert-strategy/to-number'
+import { ConvertStrategyToString } from '#src/convert-strategy/to-string'
+import { Env } from '#src/env'
+import { EnvFactory } from '#src/env/factory'
+import { EnvType } from '#src/env/type'
 
 describe.each([[['TEST']], [['TEST', 'TEST1']], [['TEST', 'TEST1', 'TEST2']]])('%#. EnvFactory envNames: %p', (envNames) => {
 	const envFactory = new EnvFactory({ locationStrategies: [], names: envNames, namingStrategies: [] })
