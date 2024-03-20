@@ -1,12 +1,19 @@
+import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
-import { NamingStrategyPrefixName } from 'src/naming-strategy/prefix-name'
-import { logger } from 'src/util/logger'
 
-jest.mock('src/util/logger')
+jest.unstable_mockModule('#src/util/logger', async () => {
+	return import('#src/util/__mocks__/logger')
+})
+const { logger } = await import('#src/util/logger')
+const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
 
 describe('NamingStrategyPrefixName', () => {
-	afterEach(() => jest.resetAllMocks())
-	afterAll(() => jest.restoreAllMocks())
+	afterEach(() => {
+		jest.resetAllMocks()
+	})
+	afterAll(() => {
+		jest.restoreAllMocks()
+	})
 
 	describe('names', () => {
 		it('should prefix name with "test" with default join char "_"', () => {
@@ -29,9 +36,10 @@ describe('NamingStrategyPrefixName', () => {
 			assert.deepEqual(prefixName.names(['name-one', 'name-two']), ['test-name-one', 'test-name-two'])
 		})
 
-		it('should log messages for debugging', () => {
+		it('should log messages for debugging', async () => {
 			const prefixName = new NamingStrategyPrefixName('test_')
 			prefixName.names(['some-name'])
+
 			expect(logger().debug).toHaveBeenCalledTimes(1)
 			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
 		})
