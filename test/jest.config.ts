@@ -1,19 +1,14 @@
 import type { JestConfigWithTsJest } from 'ts-jest'
 
 const jestConfig: JestConfigWithTsJest = {
-	maxConcurrency: 1,
-
-	setupFilesAfterEnv: ['jest-extended/all'],
-	transform: {
-		'^.+\\.js$': 'babel-jest',
-	},
-	preset: 'ts-jest/presets/default-esm',
-	// roots: ['<rootDir>'],
 	clearMocks: true,
-	// preset: 'ts-jest',
+	maxConcurrency: 1,
+	preset: 'ts-jest/presets/default-esm',
+	setupFilesAfterEnv: ['jest-extended/all', '<rootDir>/index-jest-setup.ts'],
 	testEnvironment: 'node',
 	testMatch: ['<rootDir>/**/*.(spec|test).[jt]s?(x)'],
 	testPathIgnorePatterns: ['/node_modules/'],
+	transform: {},
 }
 
 export default jestConfig

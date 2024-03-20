@@ -5,7 +5,7 @@ jest.unstable_mockModule('#src/util/logger', async () => {
 	return import('#src/util/__mocks__/logger')
 })
 
-const { logger } = await import('#src/util/logger')
+const { logger: loggerMock } = await import('#src/util/logger')
 const { NamingStrategySuffixName } = await import('#src/naming-strategy/suffix-name')
 
 describe('NamingStrategySuffixName', () => {
@@ -46,8 +46,8 @@ describe('NamingStrategySuffixName', () => {
 		it('should log messages for debugging', () => {
 			const suffixName = new NamingStrategySuffixName('_test')
 			suffixName.names(['some-name'])
-			expect(logger().debug).toHaveBeenCalledTimes(1)
-			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], suffixed names : [some-name_test]')
+			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+			expect(loggerMock().debug).toHaveBeenCalledWith('Original names: [some-name], suffixed names : [some-name_test]')
 		})
 	})
 })

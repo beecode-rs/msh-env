@@ -4,7 +4,7 @@ import assert from 'assert'
 jest.unstable_mockModule('#src/util/logger', async () => {
 	return import('#src/util/__mocks__/logger')
 })
-const { logger } = await import('#src/util/logger')
+const { logger: loggerMock } = await import('#src/util/logger')
 const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
 
 describe('NamingStrategyPrefixName', () => {
@@ -40,8 +40,8 @@ describe('NamingStrategyPrefixName', () => {
 			const prefixName = new NamingStrategyPrefixName('test_')
 			prefixName.names(['some-name'])
 
-			expect(logger().debug).toHaveBeenCalledTimes(1)
-			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
+			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+			expect(loggerMock().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
 		})
 	})
 })

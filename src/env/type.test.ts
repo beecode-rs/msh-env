@@ -5,8 +5,7 @@ import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock'
 import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
 import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
 import { Env } from '#src/env'
-import { EnvType } from '#src/env/type'
-import { logger } from '#src/util/logger'
+import { EnvType as EnvTypeOriginal } from '#src/env/type'
 
 jest.unstable_mockModule('#src/util/logger', async () => {
 	return import('#src/util/__mocks__/logger')
@@ -14,8 +13,9 @@ jest.unstable_mockModule('#src/util/logger', async () => {
 jest.unstable_mockModule('#src/env', async () => {
 	return import('#src/__mocks__/env')
 })
-const { EnvType: EnvTypeMock } = await import('#src/env/type')
+const { EnvType } = await import('#src/env/type')
 const { Env: EnvMock } = await import('#src/env')
+const { logger: loggerMock } = await import('#src/util/logger')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -23,7 +23,7 @@ describe.each([
 	[['DUMMY_TEST_ENV', 'DUMMY_TEST_ENV2', 'DUMMY_TEST_ENV3']],
 ])('%#. EnvType envNames: %p', (envNames) => {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let dummyEnvType: EnvType<any>
+	let dummyEnvType: EnvTypeOriginal<any>
 	let mockConvertStrategy: ConvertStrategyMock
 	let mockLocationStrategy: LocationStrategyMock
 	let mockNamingStrategy: NamingStrategyMock
@@ -38,7 +38,7 @@ describe.each([
 			names: envNames,
 			namingStrategies: [mockNamingStrategy],
 		})
-		dummyEnvType = new EnvTypeMock({ convertStrategy: mockConvertStrategy, env: mockEnv })
+		dummyEnvType = new EnvType({ convertStrategy: mockConvertStrategy, env: mockEnv })
 	})
 
 	afterEach(() => {
@@ -285,7 +285,7 @@ describe.each([
 			[{ a: 2 }, [{ a: 1 }, { a: 2 }, { a: 3 }]],
 			[undefined, [1, 4, undefined]],
 			[null, [1, 4, null]],
-		])('%#. should return false if value "%s" is in allowed values: %s', (value, allowedValues) => {
+		])('%#. should return false if value "%s" is in allowed values: %j', (value, allowedValues) => {
 			dummyEnvType['_allowedValues'] = allowedValues
 			const result = dummyEnvType['_allowedValuesDoNotContain'](value)
 			expect(result).toBeFalsy()
@@ -296,7 +296,7 @@ describe.each([
 			[{ b: 2 }, [{ a: 1 }, { a: 2 }, { a: 3 }]],
 			[null, [1, 4, undefined]],
 			[undefined, [1, 4, null]],
-		])('%#. should return true if value "%s" is in allowed values: %s', (value, allowedValues) => {
+		])('%#. should return true if value "%s" is in allowed values: %j', (value, allowedValues) => {
 			dummyEnvType['_allowedValues'] = allowedValues
 			const result = dummyEnvType['_allowedValuesDoNotContain'](value)
 			expect(result).toBeTruthy()
@@ -327,16 +327,16 @@ describe.each([
 
 		it('should call logger.debug without meta data', () => {
 			dummyEnvType['_loggerDebug']('test')
-			expect(logger().debug).toHaveBeenCalledTimes(1)
-			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test')
+			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+			expect(loggerMock().debug).toHaveBeenCalledWith('Env[TEST] test')
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
 
 		it('should call logger.debug with meta data', () => {
 			const metaData = { test: true }
 			dummyEnvType['_loggerDebug']('test', { metaData })
-			expect(logger().debug).toHaveBeenCalledTimes(1)
-			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test', { metaData })
+			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+			expect(loggerMock().debug).toHaveBeenCalledWith('Env[TEST] test', { metaData })
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
 	})
