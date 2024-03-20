@@ -1,18 +1,18 @@
 import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
 
-import { ConvertStrategyMock } from '#src/convert-strategy/__mocks__/convert-strategy-mock'
+import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock'
+import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
+import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
 import { Env } from '#src/env'
 import { EnvType } from '#src/env/type'
-import { LocationStrategyMock } from '#src/location-strategy/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#src/naming-strategy/__mocks__/naming-strategy-mock'
 import { logger } from '#src/util/logger'
 
 jest.unstable_mockModule('#src/util/logger', async () => {
 	return import('#src/util/__mocks__/logger')
 })
 jest.unstable_mockModule('#src/env', async () => {
-	return import('#src/env/__mocks__/index')
+	return import('#src/__mocks__/env')
 })
 const { EnvType: EnvTypeMock } = await import('#src/env/type')
 const { Env: EnvMock } = await import('#src/env')
