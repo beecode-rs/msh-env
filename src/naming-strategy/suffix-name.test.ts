@@ -1,13 +1,27 @@
+import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
-import { NamingStrategySuffixName } from 'src/naming-strategy/suffix-name'
-import { logger } from 'src/util/logger'
 
-jest.mock('src/util/logger')
+jest.unstable_mockModule('#src/util/logger', async () => {
+	return import('#src/util/__mocks__/logger')
+})
+
+const { logger: loggerMock } = await import('#src/util/logger')
+const { NamingStrategySuffixName } = await import('#src/naming-strategy/suffix-name')
 
 describe('NamingStrategySuffixName', () => {
+	// let logger: any
+	// let NamingStrategySuffixName: any
+	// beforeAll(async () => {
+	// 	logger = await import('#src/util/logger')
+	// 	NamingStrategySuffixName = await import('#src/naming-strategy/suffix-name')
+	// })
 	describe('names', () => {
-		afterEach(() => jest.resetAllMocks())
-		afterAll(() => jest.restoreAllMocks())
+		afterEach(() => {
+			jest.resetAllMocks()
+		})
+		afterAll(() => {
+			jest.restoreAllMocks()
+		})
 
 		it('should suffix name with "test" with default join char "_"', () => {
 			const suffixName = new NamingStrategySuffixName('_test')
@@ -32,8 +46,8 @@ describe('NamingStrategySuffixName', () => {
 		it('should log messages for debugging', () => {
 			const suffixName = new NamingStrategySuffixName('_test')
 			suffixName.names(['some-name'])
-			expect(logger().debug).toHaveBeenCalledTimes(1)
-			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], suffixed names : [some-name_test]')
+			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+			expect(loggerMock().debug).toHaveBeenCalledWith('Original names: [some-name], suffixed names : [some-name_test]')
 		})
 	})
 })
