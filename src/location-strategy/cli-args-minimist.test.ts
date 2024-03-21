@@ -1,8 +1,11 @@
+import { describe, expect, it } from '@jest/globals'
 import { Options } from 'minimist-options'
-import { LocationStrategyCliArgsMinimist } from 'src/location-strategy/cli-args-minimist'
+
+import { LocationStrategyCliArgsMinimist } from '#src/location-strategy/cli-args-minimist'
 
 /* eslint-disable @typescript-eslint/naming-convention */
 describe('LocationStrategyCliArgsMinimist', () => {
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	it.each<[{ options?: Options; args?: string[] }, { _args: any }, Record<string, string | undefined>]>([
 		[{ args: ['test'] }, { _args: { _: ['test'] } }, {}],
 		[{ args: ['test', 'test2'] }, { _args: { _: ['test', 'test2'] } }, {}],
@@ -36,6 +39,7 @@ describe('LocationStrategyCliArgsMinimist', () => {
 	])('%#. should pass expect result from: %j as %j and test %j', (srcParams, result, names) => {
 		const cliArgLoc = new LocationStrategyCliArgsMinimist(srcParams)
 		Object.entries(result).forEach(([key, value]) => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			expect((cliArgLoc as any)[key]).toEqual(value)
 		})
 		Object.entries(names).forEach(([key, value]) => {
