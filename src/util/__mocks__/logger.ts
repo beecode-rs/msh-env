@@ -1,8 +1,7 @@
 import { LoggerStrategy, LoggerStrategyParams } from '@beecode/msh-logger/logger-strategy'
 import { jest } from '@jest/globals'
 
-/* eslint-disable @typescript-eslint/no-invalid-void-type */
-export const _cache = {
+const _cache = {
 	logger: {
 		clone: jest.fn<(a: LoggerStrategyParams) => LoggerStrategy>(),
 		debug: jest.fn<(a: unknown[]) => void>(),
@@ -11,7 +10,6 @@ export const _cache = {
 		warn: jest.fn<(a: unknown[]) => void>(),
 	},
 }
-/* eslint-enable @typescript-eslint/no-invalid-void-type */
 
 export const logger = (): LoggerStrategy => {
 	return _cache.logger
