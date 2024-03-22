@@ -1,5 +1,7 @@
+import { describe, expect, it } from '@jest/globals'
 import assert from 'assert'
-import { ConvertStrategyToNumber } from 'src/convert-strategy/to-number'
+
+import { ConvertStrategyToNumber } from '#src/convert-strategy/to-number'
 
 describe('ConvertStrategyToNumber', () => {
 	const toNumber = new ConvertStrategyToNumber()
