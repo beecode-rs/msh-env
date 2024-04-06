@@ -1,7 +1,8 @@
-import DeepEqual from 'deep-equal'
-import { ConvertStrategy } from 'src/convert-strategy'
-import { Env } from 'src/env'
-import { logger } from 'src/util/logger'
+import DeepEqual from 'fast-deep-equal/es6/index.js'
+
+import { ConvertStrategy } from '#src/convert-strategy'
+import { Env } from '#src/env'
+import { logger } from '#src/util/logger'
 
 export class EnvType<T> {
 	protected _defaultValue: T | undefined = undefined
@@ -69,15 +70,11 @@ export class EnvType<T> {
 	}
 
 	protected _allowedValuesDoNotContain(value?: T): boolean {
-		const result = this._allowedValues.find((v) => DeepEqual(value, v))
-		if (result === undefined && value === undefined) {
-			return false
-		}
-		if (result === null && value === null) {
-			return false
-		}
+		const foundIndex = this._allowedValues.findIndex((v) => {
+			return DeepEqual(value, v)
+		})
 
-		return !result
+		return foundIndex === -1
 	}
 
 	protected _allowedValuesToString(): string {
