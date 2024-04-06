@@ -1,5 +1,5 @@
-import { NamingStrategy } from 'src/naming-strategy'
-import { logger } from 'src/util/logger'
+import { NamingStrategy } from '#src/naming-strategy'
+import { logger } from '#src/util/logger'
 
 export class NamingStrategyPrefixName implements NamingStrategy {
 	protected readonly _prefix: string

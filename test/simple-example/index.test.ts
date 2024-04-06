@@ -1,9 +1,16 @@
-import { MshEnv } from '@beecode/msh-env'
-import { setEnvLogger } from '@beecode/msh-env/lib/util/logger'
+import { mshEnv } from '@beecode/msh-env'
+import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/lib/logger-strategy/console'
-import assert = require('assert')
+import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
+import { beforeEach, describe, expect, it } from '@jest/globals'
+import * as assert from 'assert'
 import * as dotenv from 'dotenv'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+// import { assert } from '@jest/globals'
+
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 dotenv.config({ path: `${__dirname}/.env` })
 
@@ -12,7 +19,7 @@ describe('Simple Example', () => {
 		setEnvLogger(new LoggerStrategyConsole({ logLevel: LogLevel.DEBUG }))
 	})
 
-	const env = MshEnv()
+	const env = mshEnv()
 	it('should read required fields from env', () => {
 		const config = Object.freeze({
 			testEnvBase64: env('TEST_ENV_BASE64').base64.required,
@@ -146,7 +153,9 @@ describe('Simple Example', () => {
 					testEnvJson: env('TEST_ENV_STRING').json().optional,
 				})
 			} catch (e: any) {
-				expect(e.message).toEqual('"test-env-string" is not a json. Error: Unexpected token e in JSON at position 1')
+				expect(e.message).toEqual(
+					`"test-env-string" is not a json. Error: Unexpected token 'e', "test-env-string" is not valid JSON`
+				)
 			}
 		})
 		it('should throw error if unable to convert base64', () => {
