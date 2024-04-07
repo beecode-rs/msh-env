@@ -1,3 +1,13 @@
+# [1.0.0](https://github.com/beecode-rs/msh-env/compare/v0.1.2...v1.0.0) (2024-04-07)
+
+
+* refactor!: es modules and commonjs build (#2) ([8cbceb4](https://github.com/beecode-rs/msh-env/commit/8cbceb4f613a40bf67385b3e49ce8372671cf4f4)), closes [#2](https://github.com/beecode-rs/msh-env/issues/2)
+
+
+### BREAKING CHANGES
+
+* changed file structure
+
 ## [0.1.2](https://github.com/beecode-rs/msh-env/compare/v0.1.1...v0.1.2) (2023-05-22)
 
 
