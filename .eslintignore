@@ -2,6 +2,7 @@
 /.idea
 /.semaphore
 /coverage
+/dist
 /lib
 /node_modules
 /resource
@@ -11,4 +12,4 @@
 package-lock.json
 tsconfig*.json
 typedoc.json
-/jest*.config.js
+jest.config*.ts
