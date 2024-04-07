@@ -9,7 +9,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"@beecode/msh-logger": "1.0.1",
-		"@beecode/msh-env": "file:./.."
+		"@beecode/msh-env": "file:./..",
+		"@beecode/msh-logger": "1.0.1"
 	}
 }
