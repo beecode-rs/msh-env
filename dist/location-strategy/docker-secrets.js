@@ -1,0 +1,13 @@
+import { readFileSync } from 'fs';
+import { format } from '../util';
+export class LocationStrategyDockerSecrets {
+    valueByName(name) {
+        try {
+            return readFileSync(format('/run/secrets/%s', name), 'utf8').trim();
+        }
+        catch (e) {
+            return undefined;
+        }
+    }
+}
+//# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiZG9ja2VyLXNlY3JldHMuanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi8uLi9zcmMvbG9jYXRpb24tc3RyYXRlZ3kvZG9ja2VyLXNlY3JldHMudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFFLFlBQVksRUFBRSxNQUFNLElBQUksQ0FBQTtBQUNqQyxPQUFPLEVBQUUsTUFBTSxFQUFFLE1BQU0sTUFBTSxDQUFBO0FBSTdCLE1BQU0sT0FBTyw2QkFBNkI7SUFDekMsV0FBVyxDQUFDLElBQVk7UUFDdkIsSUFBSSxDQUFDO1lBQ0osT0FBTyxZQUFZLENBQUMsTUFBTSxDQUFDLGlCQUFpQixFQUFFLElBQUksQ0FBQyxFQUFFLE1BQU0sQ0FBQyxDQUFDLElBQUksRUFBRSxDQUFBO1FBQ3BFLENBQUM7UUFBQyxPQUFPLENBQUMsRUFBRSxDQUFDO1lBQ1osT0FBTyxTQUFTLENBQUE7UUFDakIsQ0FBQztJQUNGLENBQUM7Q0FDRCIsInNvdXJjZXNDb250ZW50IjpbImltcG9ydCB7IHJlYWRGaWxlU3luYyB9IGZyb20gJ2ZzJ1xuaW1wb3J0IHsgZm9ybWF0IH0gZnJvbSAndXRpbCdcblxuaW1wb3J0IHsgTG9jYXRpb25TdHJhdGVneSB9IGZyb20gJyNzcmMvbG9jYXRpb24tc3RyYXRlZ3knXG5cbmV4cG9ydCBjbGFzcyBMb2NhdGlvblN0cmF0ZWd5RG9ja2VyU2VjcmV0cyBpbXBsZW1lbnRzIExvY2F0aW9uU3RyYXRlZ3kge1xuXHR2YWx1ZUJ5TmFtZShuYW1lOiBzdHJpbmcpOiBzdHJpbmcgfCB1bmRlZmluZWQge1xuXHRcdHRyeSB7XG5cdFx0XHRyZXR1cm4gcmVhZEZpbGVTeW5jKGZvcm1hdCgnL3J1bi9zZWNyZXRzLyVzJywgbmFtZSksICd1dGY4JykudHJpbSgpXG5cdFx0fSBjYXRjaCAoZSkge1xuXHRcdFx0cmV0dXJuIHVuZGVmaW5lZFxuXHRcdH1cblx0fVxufVxuIl19
