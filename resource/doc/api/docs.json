@@ -1,0 +1,5667 @@
+{
+	"id": 0,
+	"name": "@beecode/msh-env",
+	"variant": "project",
+	"kind": 1,
+	"flags": {},
+	"children": [
+		{
+			"id": 1,
+			"name": "convert-strategy",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 2,
+					"name": "ConvertStrategy",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"children": [
+						{
+							"id": 3,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy.ts",
+									"line": 2,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy.ts#L2"
+								}
+							],
+							"signatures": [
+								{
+									"id": 4,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy.ts",
+											"line": 2,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy.ts#L2"
+										}
+									],
+									"parameters": [
+										{
+											"id": 5,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "reference",
+												"target": 6,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "ConvertStrategy.T",
+												"refersToTypeParameter": true
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Methods",
+							"children": [
+								3
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy.ts",
+							"line": 1,
+							"character": 17,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy.ts#L1"
+						}
+					],
+					"typeParameters": [
+						{
+							"id": 6,
+							"name": "T",
+							"variant": "typeParam",
+							"kind": 131072,
+							"flags": {}
+						}
+					],
+					"implementedBy": [
+						{
+							"type": "reference",
+							"target": 47,
+							"name": "ConvertStrategyBase64ToString"
+						},
+						{
+							"type": "reference",
+							"target": 54,
+							"name": "ConvertStrategyToBoolean"
+						},
+						{
+							"type": "reference",
+							"target": 61,
+							"name": "ConvertStrategyToJson"
+						},
+						{
+							"type": "reference",
+							"target": 70,
+							"name": "ConvertStrategyToNumber"
+						},
+						{
+							"type": "reference",
+							"target": 77,
+							"name": "ConvertStrategyToString"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"children": [
+						2
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 46,
+			"name": "convert-strategy/base64-to-string",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 47,
+					"name": "ConvertStrategyBase64ToString",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 48,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 49,
+									"name": "new ConvertStrategyBase64ToString",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 47,
+										"name": "ConvertStrategyBase64ToString",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 50,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy/base64-to-string.ts",
+									"line": 6,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/base64-to-string.ts#L6"
+								}
+							],
+							"signatures": [
+								{
+									"id": 51,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy/base64-to-string.ts",
+											"line": 6,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/base64-to-string.ts#L6"
+										}
+									],
+									"parameters": [
+										{
+											"id": 52,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 4,
+										"name": "ConvertStrategy.convert"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 3,
+								"name": "ConvertStrategy.convert"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								48
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								50
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy/base64-to-string.ts",
+							"line": 5,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/base64-to-string.ts#L5"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 2,
+							"typeArguments": [
+								{
+									"type": "intrinsic",
+									"name": "string"
+								}
+							],
+							"name": "ConvertStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						47
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy/base64-to-string.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/base64-to-string.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 53,
+			"name": "convert-strategy/to-boolean",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 54,
+					"name": "ConvertStrategyToBoolean",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 55,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 56,
+									"name": "new ConvertStrategyToBoolean",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 54,
+										"name": "ConvertStrategyToBoolean",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 57,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy/to-boolean.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-boolean.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 58,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy/to-boolean.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-boolean.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 59,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "boolean"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 4,
+										"name": "ConvertStrategy.convert"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 3,
+								"name": "ConvertStrategy.convert"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								55
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								57
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy/to-boolean.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-boolean.ts#L3"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 2,
+							"typeArguments": [
+								{
+									"type": "intrinsic",
+									"name": "boolean"
+								}
+							],
+							"name": "ConvertStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						54
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy/to-boolean.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-boolean.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 60,
+			"name": "convert-strategy/to-json",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 61,
+					"name": "ConvertStrategyToJson",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 62,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 63,
+									"name": "new ConvertStrategyToJson",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"typeParameter": [
+										{
+											"id": 64,
+											"name": "T",
+											"variant": "typeParam",
+											"kind": 131072,
+											"flags": {}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 61,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 64,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "ConvertStrategyToJson.T",
+												"refersToTypeParameter": true
+											}
+										],
+										"name": "ConvertStrategyToJson",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 65,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy/to-json.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-json.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 66,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy/to-json.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-json.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 67,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "reference",
+												"target": 64,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "ConvertStrategyToJson.T",
+												"refersToTypeParameter": true
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 4,
+										"name": "ConvertStrategy.convert"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 3,
+								"name": "ConvertStrategy.convert"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								62
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								65
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy/to-json.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-json.ts#L3"
+						}
+					],
+					"typeParameters": [
+						{
+							"id": 68,
+							"name": "T",
+							"variant": "typeParam",
+							"kind": 131072,
+							"flags": {}
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 2,
+							"typeArguments": [
+								{
+									"type": "reference",
+									"target": 64,
+									"name": "T",
+									"package": "@beecode/msh-env",
+									"qualifiedName": "ConvertStrategyToJson.T",
+									"refersToTypeParameter": true
+								}
+							],
+							"name": "ConvertStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						61
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy/to-json.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-json.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 69,
+			"name": "convert-strategy/to-number",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 70,
+					"name": "ConvertStrategyToNumber",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 71,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 72,
+									"name": "new ConvertStrategyToNumber",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 70,
+										"name": "ConvertStrategyToNumber",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 73,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy/to-number.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-number.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 74,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy/to-number.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-number.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 75,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "number"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 4,
+										"name": "ConvertStrategy.convert"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 3,
+								"name": "ConvertStrategy.convert"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								71
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								73
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy/to-number.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-number.ts#L3"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 2,
+							"typeArguments": [
+								{
+									"type": "intrinsic",
+									"name": "number"
+								}
+							],
+							"name": "ConvertStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						70
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy/to-number.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-number.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 76,
+			"name": "convert-strategy/to-string",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 77,
+					"name": "ConvertStrategyToString",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 78,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 79,
+									"name": "new ConvertStrategyToString",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 77,
+										"name": "ConvertStrategyToString",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 80,
+							"name": "convert",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "convert-strategy/to-string.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-string.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 81,
+									"name": "convert",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "convert-strategy/to-string.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-string.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 82,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 4,
+										"name": "ConvertStrategy.convert"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 3,
+								"name": "ConvertStrategy.convert"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								78
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								80
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "convert-strategy/to-string.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-string.ts#L3"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 2,
+							"typeArguments": [
+								{
+									"type": "intrinsic",
+									"name": "string"
+								}
+							],
+							"name": "ConvertStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						77
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "convert-strategy/to-string.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/convert-strategy/to-string.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 7,
+			"name": "env",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 8,
+					"name": "Env",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 9,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 10,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+								}
+							],
+							"signatures": [
+								{
+									"id": 10,
+									"name": "new Env",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env.ts",
+											"line": 10,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+										}
+									],
+									"parameters": [
+										{
+											"id": 11,
+											"name": "params",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 12,
+													"name": "__type",
+													"variant": "declaration",
+													"kind": 65536,
+													"flags": {},
+													"children": [
+														{
+															"id": 14,
+															"name": "locationStrategies",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env.ts",
+																	"line": 10,
+																	"character": 40,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "reference",
+																	"target": 26,
+																	"name": "LocationStrategy",
+																	"package": "@beecode/msh-env"
+																}
+															}
+														},
+														{
+															"id": 13,
+															"name": "names",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env.ts",
+																	"line": 10,
+																	"character": 23,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "string"
+																}
+															}
+														},
+														{
+															"id": 15,
+															"name": "namingStrategies",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env.ts",
+																	"line": 10,
+																	"character": 80,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "reference",
+																	"target": 42,
+																	"name": "NamingStrategy",
+																	"package": "@beecode/msh-env"
+																}
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Properties",
+															"children": [
+																14,
+																13,
+																15
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "env.ts",
+															"line": 10,
+															"character": 21,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L10"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 8,
+										"name": "Env",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 17,
+							"name": "_locationStrategies",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 7,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L7"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"target": 26,
+									"name": "LocationStrategy",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 18,
+							"name": "_namingStrategies",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 8,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L8"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"target": 42,
+									"name": "NamingStrategy",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 16,
+							"name": "names",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 6,
+									"character": 10,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L6"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						},
+						{
+							"id": 19,
+							"name": "_envNames",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 17,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L17"
+								}
+							],
+							"signatures": [
+								{
+									"id": 20,
+									"name": "_envNames",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env.ts",
+											"line": 17,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L17"
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								}
+							]
+						},
+						{
+							"id": 21,
+							"name": "envValue",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env.ts",
+									"line": 34,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L34"
+								}
+							],
+							"signatures": [
+								{
+									"id": 22,
+									"name": "envValue",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env.ts",
+											"line": 34,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L34"
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								9
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								17,
+								18,
+								16
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								19,
+								21
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "env.ts",
+							"line": 5,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L5"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						8
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "env.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 83,
+			"name": "env/factory",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 84,
+					"name": "EnvFactory",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 85,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 14,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+								}
+							],
+							"signatures": [
+								{
+									"id": 86,
+									"name": "new EnvFactory",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/factory.ts",
+											"line": 14,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+										}
+									],
+									"parameters": [
+										{
+											"id": 87,
+											"name": "params",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 88,
+													"name": "__type",
+													"variant": "declaration",
+													"kind": 65536,
+													"flags": {},
+													"children": [
+														{
+															"id": 90,
+															"name": "locationStrategies",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env/factory.ts",
+																	"line": 14,
+																	"character": 40,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "reference",
+																	"target": 26,
+																	"name": "LocationStrategy",
+																	"package": "@beecode/msh-env"
+																}
+															}
+														},
+														{
+															"id": 89,
+															"name": "names",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env/factory.ts",
+																	"line": 14,
+																	"character": 23,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "string"
+																}
+															}
+														},
+														{
+															"id": 91,
+															"name": "namingStrategies",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env/factory.ts",
+																	"line": 14,
+																	"character": 80,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "reference",
+																	"target": 42,
+																	"name": "NamingStrategy",
+																	"package": "@beecode/msh-env"
+																}
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Properties",
+															"children": [
+																90,
+																89,
+																91
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "env/factory.ts",
+															"line": 14,
+															"character": 21,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L14"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 84,
+										"name": "EnvFactory",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 92,
+							"name": "_env",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 12,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L12"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 8,
+								"name": "Env",
+								"package": "@beecode/msh-env"
+							}
+						},
+						{
+							"id": 102,
+							"name": "base64",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 35,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L35"
+								}
+							],
+							"getSignature": {
+								"id": 103,
+								"name": "base64",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/factory.ts",
+										"line": 35,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L35"
+									}
+								],
+								"type": {
+									"type": "reference",
+									"target": 105,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "string"
+										}
+									],
+									"name": "EnvType",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 95,
+							"name": "boolean",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 23,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L23"
+								}
+							],
+							"getSignature": {
+								"id": 96,
+								"name": "boolean",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/factory.ts",
+										"line": 23,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L23"
+									}
+								],
+								"type": {
+									"type": "reference",
+									"target": 105,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "boolean"
+										}
+									],
+									"name": "EnvType",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 97,
+							"name": "number",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 27,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L27"
+								}
+							],
+							"getSignature": {
+								"id": 98,
+								"name": "number",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/factory.ts",
+										"line": 27,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L27"
+									}
+								],
+								"type": {
+									"type": "reference",
+									"target": 105,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "number"
+										}
+									],
+									"name": "EnvType",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 93,
+							"name": "string",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 19,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L19"
+								}
+							],
+							"getSignature": {
+								"id": 94,
+								"name": "string",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/factory.ts",
+										"line": 19,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L19"
+									}
+								],
+								"type": {
+									"type": "reference",
+									"target": 105,
+									"typeArguments": [
+										{
+											"type": "intrinsic",
+											"name": "string"
+										}
+									],
+									"name": "EnvType",
+									"package": "@beecode/msh-env"
+								}
+							}
+						},
+						{
+							"id": 99,
+							"name": "json",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/factory.ts",
+									"line": 31,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L31"
+								}
+							],
+							"signatures": [
+								{
+									"id": 100,
+									"name": "json",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/factory.ts",
+											"line": 31,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L31"
+										}
+									],
+									"typeParameter": [
+										{
+											"id": 101,
+											"name": "T",
+											"variant": "typeParam",
+											"kind": 131072,
+											"flags": {}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 105,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 101,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"refersToTypeParameter": true
+											}
+										],
+										"name": "EnvType",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								85
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								92
+							]
+						},
+						{
+							"title": "Accessors",
+							"children": [
+								102,
+								95,
+								97,
+								93
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								99
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "env/factory.ts",
+							"line": 11,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L11"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						84
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "env/factory.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/factory.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 104,
+			"name": "env/type",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 105,
+					"name": "EnvType",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 106,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 13,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L13"
+								}
+							],
+							"signatures": [
+								{
+									"id": 107,
+									"name": "new EnvType",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 13,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L13"
+										}
+									],
+									"typeParameter": [
+										{
+											"id": 108,
+											"name": "T",
+											"variant": "typeParam",
+											"kind": 131072,
+											"flags": {}
+										}
+									],
+									"parameters": [
+										{
+											"id": 109,
+											"name": "params",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 110,
+													"name": "__type",
+													"variant": "declaration",
+													"kind": 65536,
+													"flags": {},
+													"children": [
+														{
+															"id": 111,
+															"name": "convertStrategy",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env/type.ts",
+																	"line": 13,
+																	"character": 23,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L13"
+																}
+															],
+															"type": {
+																"type": "reference",
+																"target": 2,
+																"typeArguments": [
+																	{
+																		"type": "reference",
+																		"target": 108,
+																		"name": "T",
+																		"package": "@beecode/msh-env",
+																		"qualifiedName": "EnvType.T",
+																		"refersToTypeParameter": true
+																	}
+																],
+																"name": "ConvertStrategy",
+																"package": "@beecode/msh-env"
+															}
+														},
+														{
+															"id": 112,
+															"name": "env",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {},
+															"sources": [
+																{
+																	"fileName": "env/type.ts",
+																	"line": 13,
+																	"character": 60,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L13"
+																}
+															],
+															"type": {
+																"type": "reference",
+																"target": 8,
+																"name": "Env",
+																"package": "@beecode/msh-env"
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Properties",
+															"children": [
+																111,
+																112
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "env/type.ts",
+															"line": 13,
+															"character": 21,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L13"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 105,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 108,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "EnvType.T",
+												"refersToTypeParameter": true
+											}
+										],
+										"name": "EnvType",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 116,
+							"name": "_allowedValues",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 11,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L11"
+								}
+							],
+							"type": {
+								"type": "array",
+								"elementType": {
+									"type": "reference",
+									"target": 108,
+									"name": "T",
+									"package": "@beecode/msh-env",
+									"qualifiedName": "EnvType.T",
+									"refersToTypeParameter": true
+								}
+							},
+							"defaultValue": "[]"
+						},
+						{
+							"id": 114,
+							"name": "_convertStrategy",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 9,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L9"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 2,
+								"typeArguments": [
+									{
+										"type": "reference",
+										"target": 108,
+										"name": "T",
+										"package": "@beecode/msh-env",
+										"qualifiedName": "EnvType.T",
+										"refersToTypeParameter": true
+									}
+								],
+								"name": "ConvertStrategy",
+								"package": "@beecode/msh-env"
+							}
+						},
+						{
+							"id": 113,
+							"name": "_defaultValue",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 8,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L8"
+								}
+							],
+							"type": {
+								"type": "union",
+								"types": [
+									{
+										"type": "intrinsic",
+										"name": "undefined"
+									},
+									{
+										"type": "reference",
+										"target": 108,
+										"name": "T",
+										"package": "@beecode/msh-env",
+										"qualifiedName": "EnvType.T",
+										"refersToTypeParameter": true
+									}
+								]
+							},
+							"defaultValue": "undefined"
+						},
+						{
+							"id": 115,
+							"name": "_env",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 10,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L10"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 8,
+								"name": "Env",
+								"package": "@beecode/msh-env"
+							}
+						},
+						{
+							"id": 142,
+							"name": "_envName",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 92,
+									"character": 15,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L92"
+								}
+							],
+							"getSignature": {
+								"id": 143,
+								"name": "_envName",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/type.ts",
+										"line": 92,
+										"character": 15,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L92"
+									}
+								],
+								"type": {
+									"type": "intrinsic",
+									"name": "string"
+								}
+							}
+						},
+						{
+							"id": 120,
+							"name": "optional",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 26,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L26"
+								}
+							],
+							"getSignature": {
+								"id": 121,
+								"name": "optional",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/type.ts",
+										"line": 26,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L26"
+									}
+								],
+								"type": {
+									"type": "union",
+									"types": [
+										{
+											"type": "intrinsic",
+											"name": "undefined"
+										},
+										{
+											"type": "reference",
+											"target": 108,
+											"name": "T",
+											"package": "@beecode/msh-env",
+											"qualifiedName": "EnvType.T",
+											"refersToTypeParameter": true
+										}
+									]
+								}
+							}
+						},
+						{
+							"id": 122,
+							"name": "required",
+							"variant": "declaration",
+							"kind": 262144,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 43,
+									"character": 5,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L43"
+								}
+							],
+							"getSignature": {
+								"id": 123,
+								"name": "required",
+								"variant": "signature",
+								"kind": 524288,
+								"flags": {},
+								"sources": [
+									{
+										"fileName": "env/type.ts",
+										"line": 43,
+										"character": 5,
+										"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L43"
+									}
+								],
+								"type": {
+									"type": "reference",
+									"target": 108,
+									"name": "T",
+									"package": "@beecode/msh-env",
+									"qualifiedName": "EnvType.T",
+									"refersToTypeParameter": true
+								}
+							}
+						},
+						{
+							"id": 130,
+							"name": "_allowedValuesDoNotContain",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 72,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L72"
+								}
+							],
+							"signatures": [
+								{
+									"id": 131,
+									"name": "_allowedValuesDoNotContain",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 72,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L72"
+										}
+									],
+									"parameters": [
+										{
+											"id": 132,
+											"name": "value",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"target": 108,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "EnvType.T",
+												"refersToTypeParameter": true
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "boolean"
+									}
+								}
+							]
+						},
+						{
+							"id": 133,
+							"name": "_allowedValuesToString",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 80,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L80"
+								}
+							],
+							"signatures": [
+								{
+									"id": 134,
+									"name": "_allowedValuesToString",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 80,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L80"
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						},
+						{
+							"id": 139,
+							"name": "_createError",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 88,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L88"
+								}
+							],
+							"signatures": [
+								{
+									"id": 140,
+									"name": "_createError",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 88,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L88"
+										}
+									],
+									"parameters": [
+										{
+											"id": 141,
+											"name": "msg",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "../../node_modules/typescript/lib/lib.es5.d.ts",
+											"qualifiedName": "Error"
+										},
+										"name": "Error",
+										"package": "typescript"
+									}
+								}
+							]
+						},
+						{
+							"id": 135,
+							"name": "_loggerDebug",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 84,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L84"
+								}
+							],
+							"signatures": [
+								{
+									"id": 136,
+									"name": "_loggerDebug",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 84,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L84"
+										}
+									],
+									"parameters": [
+										{
+											"id": 137,
+											"name": "msg",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										},
+										{
+											"id": 138,
+											"name": "args",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"target": {
+														"sourceFileName": "../../node_modules/typescript/lib/lib.es5.d.ts",
+														"qualifiedName": "Record"
+													},
+													"typeArguments": [
+														{
+															"type": "intrinsic",
+															"name": "string"
+														},
+														{
+															"type": "intrinsic",
+															"name": "any"
+														}
+													],
+													"name": "Record",
+													"package": "typescript"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						},
+						{
+							"id": 127,
+							"name": "_validateAllowedValues",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {
+								"isProtected": true
+							},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 61,
+									"character": 11,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L61"
+								}
+							],
+							"signatures": [
+								{
+									"id": 128,
+									"name": "_validateAllowedValues",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 61,
+											"character": 11,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L61"
+										}
+									],
+									"parameters": [
+										{
+											"id": 129,
+											"name": "value",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "reference",
+												"target": 108,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "EnvType.T",
+												"refersToTypeParameter": true
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "void"
+									}
+								}
+							]
+						},
+						{
+							"id": 124,
+							"name": "allowed",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 54,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L54"
+								}
+							],
+							"signatures": [
+								{
+									"id": 125,
+									"name": "allowed",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 54,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L54"
+										}
+									],
+									"parameters": [
+										{
+											"id": 126,
+											"name": "args",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "reference",
+													"target": 108,
+													"name": "T",
+													"package": "@beecode/msh-env",
+													"qualifiedName": "EnvType.T",
+													"refersToTypeParameter": true
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "this"
+									}
+								}
+							]
+						},
+						{
+							"id": 117,
+							"name": "default",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "env/type.ts",
+									"line": 19,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L19"
+								}
+							],
+							"signatures": [
+								{
+									"id": 118,
+									"name": "default",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "env/type.ts",
+											"line": 19,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L19"
+										}
+									],
+									"parameters": [
+										{
+											"id": 119,
+											"name": "defaultValue",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"target": 108,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "EnvType.T",
+												"refersToTypeParameter": true
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "this"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								106
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								116,
+								114,
+								113,
+								115
+							]
+						},
+						{
+							"title": "Accessors",
+							"children": [
+								142,
+								120,
+								122
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								130,
+								133,
+								139,
+								135,
+								127,
+								124,
+								117
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "env/type.ts",
+							"line": 7,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L7"
+						}
+					],
+					"typeParameters": [
+						{
+							"id": 144,
+							"name": "T",
+							"variant": "typeParam",
+							"kind": 131072,
+							"flags": {}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						105
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "env/type.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/env/type.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 24,
+			"name": "index",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 216,
+					"name": "MshEnv",
+					"variant": "reference",
+					"kind": 4194304,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 1,
+							"character": 9,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/index.ts#L1"
+						}
+					],
+					"target": 31
+				},
+				{
+					"id": 217,
+					"name": "mshEnv",
+					"variant": "reference",
+					"kind": 4194304,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "index.ts",
+							"line": 1,
+							"character": 17,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/index.ts#L1"
+						}
+					],
+					"target": 35
+				}
+			],
+			"groups": [
+				{
+					"title": "References",
+					"children": [
+						216,
+						217
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "index.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/index.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 23,
+			"name": "index-jest-setup",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "index-jest-setup.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/index-jest-setup.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 25,
+			"name": "location-strategy",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 26,
+					"name": "LocationStrategy",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"children": [
+						{
+							"id": 27,
+							"name": "valueByName",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "location-strategy.ts",
+									"line": 2,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy.ts#L2"
+								}
+							],
+							"signatures": [
+								{
+									"id": 28,
+									"name": "valueByName",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "location-strategy.ts",
+											"line": 2,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy.ts#L2"
+										}
+									],
+									"parameters": [
+										{
+											"id": 29,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Methods",
+							"children": [
+								27
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "location-strategy.ts",
+							"line": 1,
+							"character": 17,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy.ts#L1"
+						}
+					],
+					"implementedBy": [
+						{
+							"type": "reference",
+							"target": 146,
+							"name": "LocationStrategyCliArgsMinimist"
+						},
+						{
+							"type": "reference",
+							"target": 161,
+							"name": "LocationStrategyDockerSecrets"
+						},
+						{
+							"type": "reference",
+							"target": 168,
+							"name": "LocationStrategyEnvironment"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"children": [
+						26
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "location-strategy.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 145,
+			"name": "location-strategy/cli-args-minimist",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 146,
+					"name": "LocationStrategyCliArgsMinimist",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 147,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "location-strategy/cli-args-minimist.ts",
+									"line": 10,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L10"
+								}
+							],
+							"signatures": [
+								{
+									"id": 148,
+									"name": "new LocationStrategyCliArgsMinimist",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "location-strategy/cli-args-minimist.ts",
+											"line": 10,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L10"
+										}
+									],
+									"typeParameter": [
+										{
+											"id": 149,
+											"name": "T",
+											"variant": "typeParam",
+											"kind": 131072,
+											"flags": {},
+											"type": {
+												"type": "reference",
+												"target": {
+													"sourceFileName": "../../node_modules/@types/minimist/index.d.ts",
+													"qualifiedName": "minimist.ParsedArgs"
+												},
+												"name": "ParsedArgs",
+												"package": "@types/minimist",
+												"qualifiedName": "minimist.ParsedArgs"
+											}
+										}
+									],
+									"parameters": [
+										{
+											"id": 150,
+											"name": "params",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isOptional": true
+											},
+											"type": {
+												"type": "reflection",
+												"declaration": {
+													"id": 151,
+													"name": "__type",
+													"variant": "declaration",
+													"kind": 65536,
+													"flags": {},
+													"children": [
+														{
+															"id": 153,
+															"name": "args",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "location-strategy/cli-args-minimist.ts",
+																	"line": 10,
+																	"character": 43,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L10"
+																}
+															],
+															"type": {
+																"type": "array",
+																"elementType": {
+																	"type": "intrinsic",
+																	"name": "string"
+																}
+															}
+														},
+														{
+															"id": 152,
+															"name": "options",
+															"variant": "declaration",
+															"kind": 1024,
+															"flags": {
+																"isOptional": true
+															},
+															"sources": [
+																{
+																	"fileName": "location-strategy/cli-args-minimist.ts",
+																	"line": 10,
+																	"character": 24,
+																	"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L10"
+																}
+															],
+															"type": {
+																"type": "reference",
+																"target": {
+																	"sourceFileName": "../../node_modules/minimist-options/index.d.ts",
+																	"qualifiedName": "Options"
+																},
+																"name": "Options",
+																"package": "minimist-options"
+															}
+														}
+													],
+													"groups": [
+														{
+															"title": "Properties",
+															"children": [
+																153,
+																152
+															]
+														}
+													],
+													"sources": [
+														{
+															"fileName": "location-strategy/cli-args-minimist.ts",
+															"line": 10,
+															"character": 22,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L10"
+														}
+													]
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 146,
+										"typeArguments": [
+											{
+												"type": "reference",
+												"target": 149,
+												"name": "T",
+												"package": "@beecode/msh-env",
+												"qualifiedName": "LocationStrategyCliArgsMinimist.T",
+												"refersToTypeParameter": true
+											}
+										],
+										"name": "LocationStrategyCliArgsMinimist",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 155,
+							"name": "_args",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "location-strategy/cli-args-minimist.ts",
+									"line": 8,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L8"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 149,
+								"name": "T",
+								"package": "@beecode/msh-env",
+								"qualifiedName": "LocationStrategyCliArgsMinimist.T",
+								"refersToTypeParameter": true
+							}
+						},
+						{
+							"id": 154,
+							"name": "_miniOpts",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "location-strategy/cli-args-minimist.ts",
+									"line": 7,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L7"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "../../node_modules/@types/minimist/index.d.ts",
+									"qualifiedName": "minimist.Opts"
+								},
+								"name": "Opts",
+								"package": "@types/minimist",
+								"qualifiedName": "minimist.Opts"
+							}
+						},
+						{
+							"id": 156,
+							"name": "valueByName",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "location-strategy/cli-args-minimist.ts",
+									"line": 17,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L17"
+								}
+							],
+							"signatures": [
+								{
+									"id": 157,
+									"name": "valueByName",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "location-strategy/cli-args-minimist.ts",
+											"line": 17,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L17"
+										}
+									],
+									"parameters": [
+										{
+											"id": 158,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 28,
+										"name": "LocationStrategy.valueByName"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 27,
+								"name": "LocationStrategy.valueByName"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								147
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								155,
+								154
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								156
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "location-strategy/cli-args-minimist.ts",
+							"line": 6,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L6"
+						}
+					],
+					"typeParameters": [
+						{
+							"id": 159,
+							"name": "T",
+							"variant": "typeParam",
+							"kind": 131072,
+							"flags": {},
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "../../node_modules/@types/minimist/index.d.ts",
+									"qualifiedName": "minimist.ParsedArgs"
+								},
+								"name": "minimist.ParsedArgs",
+								"package": "@types/minimist"
+							}
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 26,
+							"name": "LocationStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						146
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "location-strategy/cli-args-minimist.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/cli-args-minimist.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 160,
+			"name": "location-strategy/docker-secrets",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 161,
+					"name": "LocationStrategyDockerSecrets",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 162,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 163,
+									"name": "new LocationStrategyDockerSecrets",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 161,
+										"name": "LocationStrategyDockerSecrets",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 164,
+							"name": "valueByName",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "location-strategy/docker-secrets.ts",
+									"line": 7,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/docker-secrets.ts#L7"
+								}
+							],
+							"signatures": [
+								{
+									"id": 165,
+									"name": "valueByName",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "location-strategy/docker-secrets.ts",
+											"line": 7,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/docker-secrets.ts#L7"
+										}
+									],
+									"parameters": [
+										{
+											"id": 166,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 28,
+										"name": "LocationStrategy.valueByName"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 27,
+								"name": "LocationStrategy.valueByName"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								162
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								164
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "location-strategy/docker-secrets.ts",
+							"line": 6,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/docker-secrets.ts#L6"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 26,
+							"name": "LocationStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						161
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "location-strategy/docker-secrets.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/docker-secrets.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 167,
+			"name": "location-strategy/environment",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 168,
+					"name": "LocationStrategyEnvironment",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 169,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 170,
+									"name": "new LocationStrategyEnvironment",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 168,
+										"name": "LocationStrategyEnvironment",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 171,
+							"name": "valueByName",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "location-strategy/environment.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/environment.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 172,
+									"name": "valueByName",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "location-strategy/environment.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/environment.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 173,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "union",
+										"types": [
+											{
+												"type": "intrinsic",
+												"name": "undefined"
+											},
+											{
+												"type": "intrinsic",
+												"name": "string"
+											}
+										]
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 28,
+										"name": "LocationStrategy.valueByName"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 27,
+								"name": "LocationStrategy.valueByName"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								169
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								171
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "location-strategy/environment.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/environment.ts#L3"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 26,
+							"name": "LocationStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						168
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "location-strategy/environment.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/location-strategy/environment.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 30,
+			"name": "msh-env",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 31,
+					"name": "MshEnv",
+					"variant": "declaration",
+					"kind": 2097152,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "msh-env.ts",
+							"line": 8,
+							"character": 12,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L8"
+						}
+					],
+					"type": {
+						"type": "reflection",
+						"declaration": {
+							"id": 32,
+							"name": "__type",
+							"variant": "declaration",
+							"kind": 65536,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "msh-env.ts",
+									"line": 8,
+									"character": 21,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L8"
+								}
+							],
+							"signatures": [
+								{
+									"id": 33,
+									"name": "__type",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"parameters": [
+										{
+											"id": 34,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {
+												"isRest": true
+											},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 84,
+										"name": "EnvFactory",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						}
+					}
+				},
+				{
+					"id": 35,
+					"name": "mshEnv",
+					"variant": "declaration",
+					"kind": 64,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "msh-env.ts",
+							"line": 10,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L10"
+						}
+					],
+					"signatures": [
+						{
+							"id": 36,
+							"name": "mshEnv",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "msh-env.ts",
+									"line": 10,
+									"character": 22,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L10"
+								}
+							],
+							"parameters": [
+								{
+									"id": 37,
+									"name": "params",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {
+										"isOptional": true
+									},
+									"type": {
+										"type": "reflection",
+										"declaration": {
+											"id": 38,
+											"name": "__type",
+											"variant": "declaration",
+											"kind": 65536,
+											"flags": {},
+											"children": [
+												{
+													"id": 39,
+													"name": "locationStrategies",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "msh-env.ts",
+															"line": 10,
+															"character": 34,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L10"
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"target": 26,
+															"name": "LocationStrategy",
+															"package": "@beecode/msh-env"
+														}
+													}
+												},
+												{
+													"id": 40,
+													"name": "namingStrategies",
+													"variant": "declaration",
+													"kind": 1024,
+													"flags": {
+														"isOptional": true
+													},
+													"sources": [
+														{
+															"fileName": "msh-env.ts",
+															"line": 10,
+															"character": 75,
+															"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L10"
+														}
+													],
+													"type": {
+														"type": "array",
+														"elementType": {
+															"type": "reference",
+															"target": 42,
+															"name": "NamingStrategy",
+															"package": "@beecode/msh-env"
+														}
+													}
+												}
+											],
+											"groups": [
+												{
+													"title": "Properties",
+													"children": [
+														39,
+														40
+													]
+												}
+											],
+											"sources": [
+												{
+													"fileName": "msh-env.ts",
+													"line": 10,
+													"character": 32,
+													"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L10"
+												}
+											]
+										}
+									}
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": 31,
+								"name": "MshEnv",
+								"package": "@beecode/msh-env"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Type Aliases",
+					"children": [
+						31
+					]
+				},
+				{
+					"title": "Functions",
+					"children": [
+						35
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "msh-env.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/msh-env.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 41,
+			"name": "naming-strategy",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 42,
+					"name": "NamingStrategy",
+					"variant": "declaration",
+					"kind": 256,
+					"flags": {},
+					"children": [
+						{
+							"id": 43,
+							"name": "names",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy.ts",
+									"line": 2,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy.ts#L2"
+								}
+							],
+							"signatures": [
+								{
+									"id": 44,
+									"name": "names",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy.ts",
+											"line": 2,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy.ts#L2"
+										}
+									],
+									"parameters": [
+										{
+											"id": 45,
+											"name": "name",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Methods",
+							"children": [
+								43
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "naming-strategy.ts",
+							"line": 1,
+							"character": 17,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy.ts#L1"
+						}
+					],
+					"implementedBy": [
+						{
+							"type": "reference",
+							"target": 175,
+							"name": "NamingStrategyPrefixName"
+						},
+						{
+							"type": "reference",
+							"target": 184,
+							"name": "NamingStrategySimpleName"
+						},
+						{
+							"type": "reference",
+							"target": 191,
+							"name": "NamingStrategySuffixName"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Interfaces",
+					"children": [
+						42
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "naming-strategy.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 174,
+			"name": "naming-strategy/prefix-name",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 175,
+					"name": "NamingStrategyPrefixName",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 176,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy/prefix-name.ts",
+									"line": 7,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L7"
+								}
+							],
+							"signatures": [
+								{
+									"id": 177,
+									"name": "new NamingStrategyPrefixName",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy/prefix-name.ts",
+											"line": 7,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L7"
+										}
+									],
+									"parameters": [
+										{
+											"id": 178,
+											"name": "prefix",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 175,
+										"name": "NamingStrategyPrefixName",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 179,
+							"name": "_prefix",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "naming-strategy/prefix-name.ts",
+									"line": 5,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L5"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 180,
+							"name": "names",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy/prefix-name.ts",
+									"line": 11,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L11"
+								}
+							],
+							"signatures": [
+								{
+									"id": 181,
+									"name": "names",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy/prefix-name.ts",
+											"line": 11,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L11"
+										}
+									],
+									"parameters": [
+										{
+											"id": 182,
+											"name": "names",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 44,
+										"name": "NamingStrategy.names"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 43,
+								"name": "NamingStrategy.names"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								176
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								179
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								180
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "naming-strategy/prefix-name.ts",
+							"line": 4,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L4"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 42,
+							"name": "NamingStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						175
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "naming-strategy/prefix-name.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/prefix-name.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 183,
+			"name": "naming-strategy/simple-name",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 184,
+					"name": "NamingStrategySimpleName",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 185,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 186,
+									"name": "new NamingStrategySimpleName",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 184,
+										"name": "NamingStrategySimpleName",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 187,
+							"name": "names",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy/simple-name.ts",
+									"line": 4,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/simple-name.ts#L4"
+								}
+							],
+							"signatures": [
+								{
+									"id": 188,
+									"name": "names",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy/simple-name.ts",
+											"line": 4,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/simple-name.ts#L4"
+										}
+									],
+									"parameters": [
+										{
+											"id": 189,
+											"name": "names",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "union",
+												"types": [
+													{
+														"type": "intrinsic",
+														"name": "string"
+													},
+													{
+														"type": "array",
+														"elementType": {
+															"type": "intrinsic",
+															"name": "string"
+														}
+													}
+												]
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 44,
+										"name": "NamingStrategy.names"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 43,
+								"name": "NamingStrategy.names"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								185
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								187
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "naming-strategy/simple-name.ts",
+							"line": 3,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/simple-name.ts#L3"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 42,
+							"name": "NamingStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						184
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "naming-strategy/simple-name.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/simple-name.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 190,
+			"name": "naming-strategy/suffix-name",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 191,
+					"name": "NamingStrategySuffixName",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 192,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy/suffix-name.ts",
+									"line": 7,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L7"
+								}
+							],
+							"signatures": [
+								{
+									"id": 193,
+									"name": "new NamingStrategySuffixName",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy/suffix-name.ts",
+											"line": 7,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L7"
+										}
+									],
+									"parameters": [
+										{
+											"id": 194,
+											"name": "suffix",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "reference",
+										"target": 191,
+										"name": "NamingStrategySuffixName",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 195,
+							"name": "_suffix",
+							"variant": "declaration",
+							"kind": 1024,
+							"flags": {
+								"isProtected": true,
+								"isReadonly": true
+							},
+							"sources": [
+								{
+									"fileName": "naming-strategy/suffix-name.ts",
+									"line": 5,
+									"character": 20,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L5"
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "string"
+							}
+						},
+						{
+							"id": 196,
+							"name": "names",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "naming-strategy/suffix-name.ts",
+									"line": 11,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L11"
+								}
+							],
+							"signatures": [
+								{
+									"id": 197,
+									"name": "names",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "naming-strategy/suffix-name.ts",
+											"line": 11,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L11"
+										}
+									],
+									"parameters": [
+										{
+											"id": 198,
+											"name": "names",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "array",
+												"elementType": {
+													"type": "intrinsic",
+													"name": "string"
+												}
+											}
+										}
+									],
+									"type": {
+										"type": "array",
+										"elementType": {
+											"type": "intrinsic",
+											"name": "string"
+										}
+									},
+									"implementationOf": {
+										"type": "reference",
+										"target": 44,
+										"name": "NamingStrategy.names"
+									}
+								}
+							],
+							"implementationOf": {
+								"type": "reference",
+								"target": 43,
+								"name": "NamingStrategy.names"
+							}
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								192
+							]
+						},
+						{
+							"title": "Properties",
+							"children": [
+								195
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								196
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "naming-strategy/suffix-name.ts",
+							"line": 4,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L4"
+						}
+					],
+					"implementedTypes": [
+						{
+							"type": "reference",
+							"target": 42,
+							"name": "NamingStrategy",
+							"package": "@beecode/msh-env"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						191
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "naming-strategy/suffix-name.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/naming-strategy/suffix-name.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 199,
+			"name": "util/logger",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 203,
+					"name": "logger",
+					"variant": "declaration",
+					"kind": 64,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "util/logger.ts",
+							"line": 12,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/logger.ts#L12"
+						}
+					],
+					"signatures": [
+						{
+							"id": 204,
+							"name": "logger",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "util/logger.ts",
+									"line": 12,
+									"character": 22,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/logger.ts#L12"
+								}
+							],
+							"type": {
+								"type": "reference",
+								"target": {
+									"sourceFileName": "../logger/src/logger-strategy.ts",
+									"qualifiedName": "LoggerStrategy"
+								},
+								"name": "LoggerStrategy",
+								"package": "@beecode/msh-logger"
+							}
+						}
+					]
+				},
+				{
+					"id": 200,
+					"name": "setEnvLogger",
+					"variant": "declaration",
+					"kind": 64,
+					"flags": {},
+					"sources": [
+						{
+							"fileName": "util/logger.ts",
+							"line": 8,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/logger.ts#L8"
+						}
+					],
+					"signatures": [
+						{
+							"id": 201,
+							"name": "setEnvLogger",
+							"variant": "signature",
+							"kind": 4096,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "util/logger.ts",
+									"line": 8,
+									"character": 28,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/logger.ts#L8"
+								}
+							],
+							"parameters": [
+								{
+									"id": 202,
+									"name": "logger",
+									"variant": "param",
+									"kind": 32768,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": {
+											"sourceFileName": "../logger/src/logger-strategy.ts",
+											"qualifiedName": "LoggerStrategy"
+										},
+										"name": "LoggerStrategy",
+										"package": "@beecode/msh-logger"
+									}
+								}
+							],
+							"type": {
+								"type": "intrinsic",
+								"name": "void"
+							}
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Functions",
+					"children": [
+						203,
+						200
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "util/logger.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/logger.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 205,
+			"name": "util/string-util",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"children": [
+				{
+					"id": 206,
+					"name": "StringUtil",
+					"variant": "declaration",
+					"kind": 128,
+					"flags": {},
+					"children": [
+						{
+							"id": 207,
+							"name": "constructor",
+							"variant": "declaration",
+							"kind": 512,
+							"flags": {},
+							"signatures": [
+								{
+									"id": 208,
+									"name": "new StringUtil",
+									"variant": "signature",
+									"kind": 16384,
+									"flags": {},
+									"type": {
+										"type": "reference",
+										"target": 206,
+										"name": "StringUtil",
+										"package": "@beecode/msh-env"
+									}
+								}
+							]
+						},
+						{
+							"id": 209,
+							"name": "toSnakeCase",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "util/string-util.ts",
+									"line": 2,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L2"
+								}
+							],
+							"signatures": [
+								{
+									"id": 210,
+									"name": "toSnakeCase",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "util/string-util.ts",
+											"line": 2,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L2"
+										}
+									],
+									"parameters": [
+										{
+											"id": 211,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						},
+						{
+							"id": 212,
+							"name": "toSnakeUpperCase",
+							"variant": "declaration",
+							"kind": 2048,
+							"flags": {},
+							"sources": [
+								{
+									"fileName": "util/string-util.ts",
+									"line": 11,
+									"character": 1,
+									"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L11"
+								}
+							],
+							"signatures": [
+								{
+									"id": 213,
+									"name": "toSnakeUpperCase",
+									"variant": "signature",
+									"kind": 4096,
+									"flags": {},
+									"sources": [
+										{
+											"fileName": "util/string-util.ts",
+											"line": 11,
+											"character": 1,
+											"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L11"
+										}
+									],
+									"parameters": [
+										{
+											"id": 214,
+											"name": "str",
+											"variant": "param",
+											"kind": 32768,
+											"flags": {},
+											"type": {
+												"type": "intrinsic",
+												"name": "string"
+											}
+										}
+									],
+									"type": {
+										"type": "intrinsic",
+										"name": "string"
+									}
+								}
+							]
+						}
+					],
+					"groups": [
+						{
+							"title": "Constructors",
+							"children": [
+								207
+							]
+						},
+						{
+							"title": "Methods",
+							"children": [
+								209,
+								212
+							]
+						}
+					],
+					"sources": [
+						{
+							"fileName": "util/string-util.ts",
+							"line": 1,
+							"character": 13,
+							"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L1"
+						}
+					]
+				}
+			],
+			"groups": [
+				{
+					"title": "Classes",
+					"children": [
+						206
+					]
+				}
+			],
+			"sources": [
+				{
+					"fileName": "util/string-util.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/string-util.ts#L1"
+				}
+			]
+		},
+		{
+			"id": 215,
+			"name": "util/type/types",
+			"variant": "declaration",
+			"kind": 2,
+			"flags": {},
+			"sources": [
+				{
+					"fileName": "util/type/types.d.ts",
+					"line": 1,
+					"character": 0,
+					"url": "https://github.com/beecode-rs/msh-env/blob/b90f535/src/util/type/types.d.ts#L1"
+				}
+			]
+		}
+	],
+	"groups": [
+		{
+			"title": "Modules",
+			"children": [
+				1,
+				46,
+				53,
+				60,
+				69,
+				76,
+				7,
+				83,
+				104,
+				24,
+				23,
+				25,
+				145,
+				160,
+				167,
+				30,
+				41,
+				174,
+				183,
+				190,
+				199,
+				205,
+				215
+			]
+		}
+	],
+	"packageName": "@beecode/msh-env",
+	"symbolIdMap": {
+		"1": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": ""
+		},
+		"2": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": "ConvertStrategy"
+		},
+		"3": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": "ConvertStrategy.convert"
+		},
+		"4": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": "ConvertStrategy.convert"
+		},
+		"5": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": "str"
+		},
+		"6": {
+			"sourceFileName": "src/convert-strategy.ts",
+			"qualifiedName": "ConvertStrategy.T"
+		},
+		"7": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": ""
+		},
+		"8": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env"
+		},
+		"9": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env.__constructor"
+		},
+		"10": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env"
+		},
+		"11": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "params"
+		},
+		"12": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "__type"
+		},
+		"13": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "__type.names"
+		},
+		"14": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "__type.locationStrategies"
+		},
+		"15": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "__type.namingStrategies"
+		},
+		"16": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env.names"
+		},
+		"17": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env._locationStrategies"
+		},
+		"18": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env._namingStrategies"
+		},
+		"19": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env._envNames"
+		},
+		"20": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env._envNames"
+		},
+		"21": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env.envValue"
+		},
+		"22": {
+			"sourceFileName": "src/env.ts",
+			"qualifiedName": "Env.envValue"
+		},
+		"23": {
+			"sourceFileName": "src/index-jest-setup.ts",
+			"qualifiedName": ""
+		},
+		"24": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": ""
+		},
+		"25": {
+			"sourceFileName": "src/location-strategy.ts",
+			"qualifiedName": ""
+		},
+		"26": {
+			"sourceFileName": "src/location-strategy.ts",
+			"qualifiedName": "LocationStrategy"
+		},
+		"27": {
+			"sourceFileName": "src/location-strategy.ts",
+			"qualifiedName": "LocationStrategy.valueByName"
+		},
+		"28": {
+			"sourceFileName": "src/location-strategy.ts",
+			"qualifiedName": "LocationStrategy.valueByName"
+		},
+		"29": {
+			"sourceFileName": "src/location-strategy.ts",
+			"qualifiedName": "name"
+		},
+		"30": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": ""
+		},
+		"31": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "MshEnv"
+		},
+		"32": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "__type"
+		},
+		"33": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "__type"
+		},
+		"34": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "name"
+		},
+		"35": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "mshEnv"
+		},
+		"36": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "mshEnv"
+		},
+		"37": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "params"
+		},
+		"38": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "__type"
+		},
+		"39": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "__type.locationStrategies"
+		},
+		"40": {
+			"sourceFileName": "src/msh-env.ts",
+			"qualifiedName": "__type.namingStrategies"
+		},
+		"41": {
+			"sourceFileName": "src/naming-strategy.ts",
+			"qualifiedName": ""
+		},
+		"42": {
+			"sourceFileName": "src/naming-strategy.ts",
+			"qualifiedName": "NamingStrategy"
+		},
+		"43": {
+			"sourceFileName": "src/naming-strategy.ts",
+			"qualifiedName": "NamingStrategy.names"
+		},
+		"44": {
+			"sourceFileName": "src/naming-strategy.ts",
+			"qualifiedName": "NamingStrategy.names"
+		},
+		"45": {
+			"sourceFileName": "src/naming-strategy.ts",
+			"qualifiedName": "name"
+		},
+		"46": {
+			"sourceFileName": "src/convert-strategy/base64-to-string.ts",
+			"qualifiedName": ""
+		},
+		"47": {
+			"sourceFileName": "src/convert-strategy/base64-to-string.ts",
+			"qualifiedName": "ConvertStrategyBase64ToString"
+		},
+		"50": {
+			"sourceFileName": "src/convert-strategy/base64-to-string.ts",
+			"qualifiedName": "ConvertStrategyBase64ToString.convert"
+		},
+		"51": {
+			"sourceFileName": "src/convert-strategy/base64-to-string.ts",
+			"qualifiedName": "ConvertStrategyBase64ToString.convert"
+		},
+		"52": {
+			"sourceFileName": "src/convert-strategy/base64-to-string.ts",
+			"qualifiedName": "str"
+		},
+		"53": {
+			"sourceFileName": "src/convert-strategy/to-boolean.ts",
+			"qualifiedName": ""
+		},
+		"54": {
+			"sourceFileName": "src/convert-strategy/to-boolean.ts",
+			"qualifiedName": "ConvertStrategyToBoolean"
+		},
+		"57": {
+			"sourceFileName": "src/convert-strategy/to-boolean.ts",
+			"qualifiedName": "ConvertStrategyToBoolean.convert"
+		},
+		"58": {
+			"sourceFileName": "src/convert-strategy/to-boolean.ts",
+			"qualifiedName": "ConvertStrategyToBoolean.convert"
+		},
+		"59": {
+			"sourceFileName": "src/convert-strategy/to-boolean.ts",
+			"qualifiedName": "str"
+		},
+		"60": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": ""
+		},
+		"61": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "ConvertStrategyToJson"
+		},
+		"64": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "ConvertStrategyToJson.T"
+		},
+		"65": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "ConvertStrategyToJson.convert"
+		},
+		"66": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "ConvertStrategyToJson.convert"
+		},
+		"67": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "str"
+		},
+		"68": {
+			"sourceFileName": "src/convert-strategy/to-json.ts",
+			"qualifiedName": "ConvertStrategyToJson.T"
+		},
+		"69": {
+			"sourceFileName": "src/convert-strategy/to-number.ts",
+			"qualifiedName": ""
+		},
+		"70": {
+			"sourceFileName": "src/convert-strategy/to-number.ts",
+			"qualifiedName": "ConvertStrategyToNumber"
+		},
+		"73": {
+			"sourceFileName": "src/convert-strategy/to-number.ts",
+			"qualifiedName": "ConvertStrategyToNumber.convert"
+		},
+		"74": {
+			"sourceFileName": "src/convert-strategy/to-number.ts",
+			"qualifiedName": "ConvertStrategyToNumber.convert"
+		},
+		"75": {
+			"sourceFileName": "src/convert-strategy/to-number.ts",
+			"qualifiedName": "str"
+		},
+		"76": {
+			"sourceFileName": "src/convert-strategy/to-string.ts",
+			"qualifiedName": ""
+		},
+		"77": {
+			"sourceFileName": "src/convert-strategy/to-string.ts",
+			"qualifiedName": "ConvertStrategyToString"
+		},
+		"80": {
+			"sourceFileName": "src/convert-strategy/to-string.ts",
+			"qualifiedName": "ConvertStrategyToString.convert"
+		},
+		"81": {
+			"sourceFileName": "src/convert-strategy/to-string.ts",
+			"qualifiedName": "ConvertStrategyToString.convert"
+		},
+		"82": {
+			"sourceFileName": "src/convert-strategy/to-string.ts",
+			"qualifiedName": "str"
+		},
+		"83": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": ""
+		},
+		"84": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory"
+		},
+		"85": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.__constructor"
+		},
+		"86": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory"
+		},
+		"87": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "params"
+		},
+		"88": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "__type"
+		},
+		"89": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "__type.names"
+		},
+		"90": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "__type.locationStrategies"
+		},
+		"91": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "__type.namingStrategies"
+		},
+		"92": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory._env"
+		},
+		"93": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.string"
+		},
+		"94": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.string"
+		},
+		"95": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.boolean"
+		},
+		"96": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.boolean"
+		},
+		"97": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.number"
+		},
+		"98": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.number"
+		},
+		"99": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.json"
+		},
+		"100": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.json"
+		},
+		"101": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "T"
+		},
+		"102": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.base64"
+		},
+		"103": {
+			"sourceFileName": "src/env/factory.ts",
+			"qualifiedName": "EnvFactory.base64"
+		},
+		"104": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": ""
+		},
+		"105": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType"
+		},
+		"106": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.__constructor"
+		},
+		"107": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType"
+		},
+		"108": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.T"
+		},
+		"109": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "params"
+		},
+		"110": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "__type"
+		},
+		"111": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "__type.convertStrategy"
+		},
+		"112": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "__type.env"
+		},
+		"113": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._defaultValue"
+		},
+		"114": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._convertStrategy"
+		},
+		"115": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._env"
+		},
+		"116": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._allowedValues"
+		},
+		"117": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.default"
+		},
+		"118": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.default"
+		},
+		"119": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "defaultValue"
+		},
+		"120": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.optional"
+		},
+		"121": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.optional"
+		},
+		"122": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.required"
+		},
+		"123": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.required"
+		},
+		"124": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.allowed"
+		},
+		"125": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.allowed"
+		},
+		"126": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "args"
+		},
+		"127": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._validateAllowedValues"
+		},
+		"128": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._validateAllowedValues"
+		},
+		"129": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "value"
+		},
+		"130": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._allowedValuesDoNotContain"
+		},
+		"131": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._allowedValuesDoNotContain"
+		},
+		"132": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "value"
+		},
+		"133": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._allowedValuesToString"
+		},
+		"134": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._allowedValuesToString"
+		},
+		"135": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._loggerDebug"
+		},
+		"136": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._loggerDebug"
+		},
+		"137": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "msg"
+		},
+		"138": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "args"
+		},
+		"139": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._createError"
+		},
+		"140": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._createError"
+		},
+		"141": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "msg"
+		},
+		"142": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._envName"
+		},
+		"143": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType._envName"
+		},
+		"144": {
+			"sourceFileName": "src/env/type.ts",
+			"qualifiedName": "EnvType.T"
+		},
+		"145": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": ""
+		},
+		"146": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist"
+		},
+		"147": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist.__constructor"
+		},
+		"148": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist"
+		},
+		"149": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist.T"
+		},
+		"150": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "params"
+		},
+		"151": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "__type"
+		},
+		"152": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "__type.options"
+		},
+		"153": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "__type.args"
+		},
+		"154": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist._miniOpts"
+		},
+		"155": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist._args"
+		},
+		"156": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist.valueByName"
+		},
+		"157": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist.valueByName"
+		},
+		"158": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "name"
+		},
+		"159": {
+			"sourceFileName": "src/location-strategy/cli-args-minimist.ts",
+			"qualifiedName": "LocationStrategyCliArgsMinimist.T"
+		},
+		"160": {
+			"sourceFileName": "src/location-strategy/docker-secrets.ts",
+			"qualifiedName": ""
+		},
+		"161": {
+			"sourceFileName": "src/location-strategy/docker-secrets.ts",
+			"qualifiedName": "LocationStrategyDockerSecrets"
+		},
+		"164": {
+			"sourceFileName": "src/location-strategy/docker-secrets.ts",
+			"qualifiedName": "LocationStrategyDockerSecrets.valueByName"
+		},
+		"165": {
+			"sourceFileName": "src/location-strategy/docker-secrets.ts",
+			"qualifiedName": "LocationStrategyDockerSecrets.valueByName"
+		},
+		"166": {
+			"sourceFileName": "src/location-strategy/docker-secrets.ts",
+			"qualifiedName": "name"
+		},
+		"167": {
+			"sourceFileName": "src/location-strategy/environment.ts",
+			"qualifiedName": ""
+		},
+		"168": {
+			"sourceFileName": "src/location-strategy/environment.ts",
+			"qualifiedName": "LocationStrategyEnvironment"
+		},
+		"171": {
+			"sourceFileName": "src/location-strategy/environment.ts",
+			"qualifiedName": "LocationStrategyEnvironment.valueByName"
+		},
+		"172": {
+			"sourceFileName": "src/location-strategy/environment.ts",
+			"qualifiedName": "LocationStrategyEnvironment.valueByName"
+		},
+		"173": {
+			"sourceFileName": "src/location-strategy/environment.ts",
+			"qualifiedName": "name"
+		},
+		"174": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": ""
+		},
+		"175": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName"
+		},
+		"176": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName.__constructor"
+		},
+		"177": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName"
+		},
+		"178": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "prefix"
+		},
+		"179": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName._prefix"
+		},
+		"180": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName.names"
+		},
+		"181": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "NamingStrategyPrefixName.names"
+		},
+		"182": {
+			"sourceFileName": "src/naming-strategy/prefix-name.ts",
+			"qualifiedName": "names"
+		},
+		"183": {
+			"sourceFileName": "src/naming-strategy/simple-name.ts",
+			"qualifiedName": ""
+		},
+		"184": {
+			"sourceFileName": "src/naming-strategy/simple-name.ts",
+			"qualifiedName": "NamingStrategySimpleName"
+		},
+		"187": {
+			"sourceFileName": "src/naming-strategy/simple-name.ts",
+			"qualifiedName": "NamingStrategySimpleName.names"
+		},
+		"188": {
+			"sourceFileName": "src/naming-strategy/simple-name.ts",
+			"qualifiedName": "NamingStrategySimpleName.names"
+		},
+		"189": {
+			"sourceFileName": "src/naming-strategy/simple-name.ts",
+			"qualifiedName": "names"
+		},
+		"190": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": ""
+		},
+		"191": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName"
+		},
+		"192": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName.__constructor"
+		},
+		"193": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName"
+		},
+		"194": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "suffix"
+		},
+		"195": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName._suffix"
+		},
+		"196": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName.names"
+		},
+		"197": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "NamingStrategySuffixName.names"
+		},
+		"198": {
+			"sourceFileName": "src/naming-strategy/suffix-name.ts",
+			"qualifiedName": "names"
+		},
+		"199": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": ""
+		},
+		"200": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": "setEnvLogger"
+		},
+		"201": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": "setEnvLogger"
+		},
+		"202": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": "logger"
+		},
+		"203": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": "logger"
+		},
+		"204": {
+			"sourceFileName": "src/util/logger.ts",
+			"qualifiedName": "logger"
+		},
+		"205": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": ""
+		},
+		"206": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "StringUtil"
+		},
+		"209": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "StringUtil.toSnakeCase"
+		},
+		"210": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "StringUtil.toSnakeCase"
+		},
+		"211": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "str"
+		},
+		"212": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "StringUtil.toSnakeUpperCase"
+		},
+		"213": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "StringUtil.toSnakeUpperCase"
+		},
+		"214": {
+			"sourceFileName": "src/util/string-util.ts",
+			"qualifiedName": "str"
+		},
+		"215": {
+			"sourceFileName": "src/util/type/types.d.ts",
+			"qualifiedName": ""
+		},
+		"216": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "MshEnv"
+		},
+		"217": {
+			"sourceFileName": "src/index.ts",
+			"qualifiedName": "mshEnv"
+		}
+	}
+}
