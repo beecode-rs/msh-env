@@ -79,7 +79,7 @@
 		"lint-eslint-fix": "npm run lint-eslint -- --fix",
 		"lint-fix": "npm run lint-prettier-fix && npm run lint-eslint-fix && npm run lint-json-fix",
 		"lint-json": "npm run lint-json-fix -- -c",
-		"lint-json-fix": "jsonsort * .*.json '!./test/node_modules' '!./resource' '!**/.env*' -t",
+		"lint-json-fix": "jsonsort * .*.json '!./dist' '!./lib' '!./test/node_modules' '!./resource' '!**/.env*' -t",
 		"lint-prettier": "prettier --check {**/*,*}.{js,jsx,ts,tsx}",
 		"lint-prettier-fix": "prettier --write {**/*,*}.{js,jsx,ts,tsx}",
 		"npm-bump-version": "npm --no-git-tag-version version",
