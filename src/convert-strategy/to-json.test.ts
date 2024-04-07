@@ -1,4 +1,6 @@
-import { ConvertStrategyToJson } from 'src/convert-strategy/to-json'
+import { describe, expect, it } from '@jest/globals'
+
+import { ConvertStrategyToJson } from '#src/convert-strategy/to-json'
 
 describe('ConvertStrategyToJson', () => {
 	const toJson = new ConvertStrategyToJson()
@@ -20,9 +22,11 @@ describe('ConvertStrategyToJson', () => {
 	it('should throw error if unable to convert to json', () => {
 		try {
 			toJson.convert('not a string')
-			expect.fail('test failed')
+			throw new Error('test failed')
 		} catch (e) {
-			expect((e as Error).message).toEqual('"not a string" is not a json. Error: Unexpected token o in JSON at position 1')
+			expect((e as Error).message).toEqual(
+				`"not a string" is not a json. Error: Unexpected token 'o', "not a string" is not valid JSON`
+			)
 		}
 	})
 })
