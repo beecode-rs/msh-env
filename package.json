@@ -58,7 +58,7 @@
 	],
 	"scripts": {
 		"babel": "npx babel --extensions .ts",
-		"build": "npm run clean && npm run tsc",
+		"build": "npm run clean && npm run tsc && npm run tsc-esm-alias",
 		"build-cjs": "npm run clean-cjs && npm run tsc-cjs && npm run tsc-types && npm run tsc-types-alias && npm run fix-hybrid-lib-cjs",
 		"clean": "rimraf ./dist",
 		"clean-cjs": "rimraf ./lib",
@@ -100,6 +100,7 @@
 		"tsc-cjs": "npm run babel -- --out-dir ./lib ./src",
 		"tsc-cleaner": "ts-cleaner --dist ./dist",
 		"tsc-cleaner-watch": "npm run tsc-cleaner -- --watch",
+		"tsc-esm-alias": "tsc-alias -p ./resource/tsconfig/esm.json",
 		"tsc-time": "npm run tsc -- --diagnostics",
 		"tsc-types": "tsc -p ./resource/tsconfig/types.json",
 		"tsc-types-alias": "tsc-alias -p ./resource/tsconfig/types.json",

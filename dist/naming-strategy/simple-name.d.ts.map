@@ -1,0 +1,1 @@
+{"version":3,"file":"simple-name.d.ts","sourceRoot":"","sources":["../../src/naming-strategy/simple-name.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,cAAc,EAAE,MAAM,sBAAsB,CAAA;AAErD,qBAAa,wBAAyB,YAAW,cAAc;IAC9D,KAAK,CAAC,KAAK,EAAE,MAAM,GAAG,MAAM,EAAE,GAAG,MAAM,EAAE;CAGzC"}
