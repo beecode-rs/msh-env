@@ -1,3 +1,11 @@
+## [1.0.2](https://github.com/beecode-rs/msh-env/compare/v1.0.1...v1.0.2) (2024-04-15)
+
+
+### Bug Fixes
+
+* bump @commitlint/prompt from 19.2.0 to 19.2.2 ([#9](https://github.com/beecode-rs/msh-env/issues/9)) ([3a562e5](https://github.com/beecode-rs/msh-env/commit/3a562e589cc87556bdc84e7ce16035cef11bea74))
+* update package.json ([258c948](https://github.com/beecode-rs/msh-env/commit/258c948fa627037aa5e8692a1a1bea17c0180f5e))
+
 ## [1.0.1](https://github.com/beecode-rs/msh-env/compare/v1.0.0...v1.0.1) (2024-04-10)
 
 
