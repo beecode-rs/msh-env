@@ -1,5 +1,5 @@
 {
-  "gitZipUrl": "https://github.com/beecode-rs/msh-base-temp/archive/refs/heads/msh-lib.zip",
+  "gitZipUrl": "https://github.com/beecode-rs/msh-base-temp/archive/refs/heads/main.zip",
   "template": {
     "gitTeam": "beecode-rs",
     "npmPackagePrefix": "@beecode/msh-env",
