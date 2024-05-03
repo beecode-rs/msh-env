@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/beecode-rs/msh-env/compare/v1.0.2...v1.0.3) (2024-05-03)
+
+
+### Bug Fixes
+
+* update package.json, esmodule remove alias, use vitest instead of jest ([#16](https://github.com/beecode-rs/msh-env/issues/16)) ([7a5e079](https://github.com/beecode-rs/msh-env/commit/7a5e07970dd5ce8e4c9f98e4f130fc298d92a7ed))
+
 ## [1.0.2](https://github.com/beecode-rs/msh-env/compare/v1.0.1...v1.0.2) (2024-04-15)
 
 
