@@ -1,9 +1,7 @@
-import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 
-jest.unstable_mockModule('#src/util/logger', async () => {
-	return import('#src/util/__mocks__/logger')
-})
+vi.mock('#src/util/logger')
 
 const { logger: loggerMock } = await import('#src/util/logger')
 const { NamingStrategySuffixName } = await import('#src/naming-strategy/suffix-name')
@@ -16,11 +14,8 @@ describe('NamingStrategySuffixName', () => {
 	// 	NamingStrategySuffixName = await import('#src/naming-strategy/suffix-name')
 	// })
 	describe('names', () => {
-		afterEach(() => {
-			jest.resetAllMocks()
-		})
 		afterAll(() => {
-			jest.restoreAllMocks()
+			vi.restoreAllMocks()
 		})
 
 		it('should suffix name with "test" with default join char "_"', () => {

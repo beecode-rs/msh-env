@@ -1,5 +1,5 @@
 import DeepEqual from 'fast-deep-equal/es6/index.js';
-import { logger } from '../util/logger.js';
+import { logger } from '#src/util/logger';
 export class EnvType {
     _defaultValue = undefined;
     _convertStrategy;

@@ -1,7 +1,7 @@
-import { jest } from '@jest/globals'
+import { vi } from 'vitest'
 
 import { LocationStrategy } from '#src/location-strategy'
 
 export class LocationStrategyMock implements LocationStrategy {
-	valueByName = jest.fn<(params: string) => string | undefined>()
+	valueByName = vi.fn()
 }

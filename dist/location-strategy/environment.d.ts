@@ -1,4 +1,4 @@
-import { LocationStrategy } from '../location-strategy.js';
+import { LocationStrategy } from '#src/location-strategy';
 export declare class LocationStrategyEnvironment implements LocationStrategy {
     valueByName(name: string): string | undefined;
 }

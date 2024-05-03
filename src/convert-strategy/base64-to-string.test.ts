@@ -1,4 +1,4 @@
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
 import { ConvertStrategyBase64ToString } from '#src/convert-strategy/base64-to-string'
 

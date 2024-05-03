@@ -1,4 +1,4 @@
-import { NamingStrategy } from '../naming-strategy.js';
+import { NamingStrategy } from '#src/naming-strategy';
 export declare class NamingStrategyPrefixName implements NamingStrategy {
     protected readonly _prefix: string;
     constructor(prefix: string);

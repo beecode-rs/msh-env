@@ -1,5 +1,5 @@
 import { readFileSync } from 'fs';
-import { format } from '../util';
+import { format } from 'util';
 export class LocationStrategyDockerSecrets {
     valueByName(name) {
         try {

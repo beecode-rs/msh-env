@@ -1,2 +1,2 @@
-export { MshEnv, mshEnv } from './msh-env.js';
+export { MshEnv, mshEnv } from '#src/msh-env';
 //# sourceMappingURL=index.d.ts.map

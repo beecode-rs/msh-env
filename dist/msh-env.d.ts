@@ -1,6 +1,6 @@
-import { EnvFactory } from './env/factory.js';
-import { LocationStrategy } from './location-strategy.js';
-import { NamingStrategy } from './naming-strategy.js';
+import { EnvFactory } from '#src/env/factory';
+import { LocationStrategy } from '#src/location-strategy';
+import { NamingStrategy } from '#src/naming-strategy';
 export type MshEnv = (...name: string[]) => EnvFactory;
 export declare const mshEnv: (params?: {
     locationStrategies?: LocationStrategy[];

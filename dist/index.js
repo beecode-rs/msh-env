@@ -1,2 +1,2 @@
-export { mshEnv } from './msh-env.js';
+export { mshEnv } from '#src/msh-env';
 //# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VSb290IjoiIiwic291cmNlcyI6WyIuLi9zcmMvaW5kZXgudHMiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsT0FBTyxFQUFVLE1BQU0sRUFBRSxNQUFNLGNBQWMsQ0FBQSIsInNvdXJjZXNDb250ZW50IjpbImV4cG9ydCB7IE1zaEVudiwgbXNoRW52IH0gZnJvbSAnI3NyYy9tc2gtZW52J1xuIl19

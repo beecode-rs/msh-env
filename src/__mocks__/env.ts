@@ -1,4 +1,4 @@
-import { jest } from '@jest/globals'
+import { vi } from 'vitest'
 
 import { LocationStrategy } from '#src/location-strategy'
 import { NamingStrategy } from '#src/naming-strategy'
@@ -15,7 +15,7 @@ export class Env {
 		this.names = [...names]
 	}
 
-	protected _envNames = jest.fn()
+	protected _envNames = vi.fn()
 
-	envValue = jest.fn()
+	envValue = vi.fn()
 }

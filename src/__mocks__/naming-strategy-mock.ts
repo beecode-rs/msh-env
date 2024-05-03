@@ -1,7 +1,7 @@
-import { jest } from '@jest/globals'
+import { vi } from 'vitest'
 
 import { NamingStrategy } from '#src/naming-strategy'
 
 export class NamingStrategyMock implements NamingStrategy {
-	names = jest.fn<(params: string[]) => string[]>().mockImplementation((params: string[]) => params)
+	names = vi.fn().mockImplementation((params: string[]) => params)
 }

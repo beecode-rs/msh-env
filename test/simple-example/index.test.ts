@@ -2,12 +2,12 @@ import { mshEnv } from '@beecode/msh-env'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
 import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
-import { beforeEach, describe, expect, it } from '@jest/globals'
 import * as assert from 'assert'
 import * as dotenv from 'dotenv'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
-// import { assert } from '@jest/globals'
+import { beforeEach, describe, expect, it } from 'vitest'
+// import { assert } from 'vitest'
 
 const __filename = fileURLToPath(import.meta.url)
 const __dirname = dirname(__filename)

@@ -1,26 +1,27 @@
-import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
+// eslint-disable-next-line import/order
+import { Mock, afterAll, describe, expect, it, vi } from 'vitest'
 
-jest.unstable_mockModule('fs', async () => {
+vi.mock('fs', async () => {
 	return {
-		readFileSync: jest.fn(),
+		readFileSync: vi.fn(),
 	}
 })
-jest.unstable_mockModule('util', async () => {
+
+vi.mock('util', async () => {
 	return {
-		format: jest.fn(),
+		format: vi.fn(),
 	}
 })
-const { readFileSync: fsReadFileSyncMock } = await import('fs')
-const { format: utilFormatMock } = await import('util')
-const { LocationStrategyDockerSecrets } = await import('#src/location-strategy/docker-secrets')
+
+import { readFileSync } from 'fs'
+import { format } from 'util'
+
+import { LocationStrategyDockerSecrets } from '#src/location-strategy/docker-secrets'
 
 describe('LocationStrategyDockerSecrets', () => {
 	describe('valueByName', () => {
-		afterEach(() => {
-			jest.resetAllMocks()
-		})
 		afterAll(() => {
-			jest.restoreAllMocks()
+			vi.restoreAllMocks()
 		})
 
 		it('should call fs and util', () => {
@@ -28,28 +29,28 @@ describe('LocationStrategyDockerSecrets', () => {
 			const utilResult = 'util-result'
 			const envName = 'test'
 
-			;(utilFormatMock as jest.Mock).mockReturnValue(utilResult)
-			;(fsReadFileSyncMock as jest.Mock).mockReturnValue(fsResult)
+			;(format as Mock).mockReturnValue(utilResult)
+			;(readFileSync as Mock).mockReturnValue(fsResult)
 
 			const dockerSecretsLocation = new LocationStrategyDockerSecrets()
 			const result = dockerSecretsLocation.valueByName(envName)
 
-			expect(utilFormatMock).toHaveBeenCalledTimes(1)
-			expect(utilFormatMock).toHaveBeenCalledWith('/run/secrets/%s', envName)
-			expect(fsReadFileSyncMock).toHaveBeenCalledTimes(1)
-			expect(fsReadFileSyncMock).toHaveBeenCalledWith(utilResult, 'utf8')
+			expect(format).toHaveBeenCalledTimes(1)
+			expect(format).toHaveBeenCalledWith('/run/secrets/%s', envName)
+			expect(readFileSync).toHaveBeenCalledTimes(1)
+			expect(readFileSync).toHaveBeenCalledWith(utilResult, 'utf8')
 			expect(result).toEqual(fsResult)
 		})
 
 		it('should return undefined if util throws an error', () => {
-			;(utilFormatMock as jest.Mock).mockImplementation(() => new Error('boom'))
+			;(format as Mock).mockImplementation(() => new Error('boom'))
 			const dockerSecretsLocation = new LocationStrategyDockerSecrets()
 			const result = dockerSecretsLocation.valueByName('test')
 			expect(result).toBeUndefined()
 		})
 
 		it('should return undefined if ts throws an error', () => {
-			;(fsReadFileSyncMock as jest.Mock).mockImplementation(() => new Error('boom'))
+			;(readFileSync as Mock).mockImplementation(() => new Error('boom'))
 			const dockerSecretsLocation = new LocationStrategyDockerSecrets()
 			const result = dockerSecretsLocation.valueByName('test')
 			expect(result).toBeUndefined()

@@ -1,5 +1,5 @@
-import { LocationStrategy } from './location-strategy.js';
-import { NamingStrategy } from './naming-strategy.js';
+import { LocationStrategy } from '#src/location-strategy';
+import { NamingStrategy } from '#src/naming-strategy';
 export declare class Env {
     readonly names: string[];
     protected readonly _locationStrategies: LocationStrategy[];
