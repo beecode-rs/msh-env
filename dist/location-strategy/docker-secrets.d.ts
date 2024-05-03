@@ -1,4 +1,4 @@
-import { LocationStrategy } from '../location-strategy.js';
+import { LocationStrategy } from '#src/location-strategy';
 export declare class LocationStrategyDockerSecrets implements LocationStrategy {
     valueByName(name: string): string | undefined;
 }

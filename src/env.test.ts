@@ -1,5 +1,5 @@
-import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
+import { Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
 import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
@@ -24,11 +24,8 @@ describe.each([
 		})
 	})
 
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.restoreAllMocks()
+		vi.restoreAllMocks()
 	})
 
 	describe('constructor', () => {
@@ -91,9 +88,9 @@ describe.each([
 	})
 
 	describe('envValue', () => {
-		let spy_envNames: jest.SpiedFunction<any>
+		let spy_envNames: Mock
 		beforeEach(() => {
-			spy_envNames = jest.spyOn(dummyEnv, '_envNames' as any)
+			spy_envNames = vi.spyOn(dummyEnv, '_envNames' as any)
 		})
 		it('should call location strategy envStringValue', () => {
 			const getValueReturn = 'envValue'
@@ -118,14 +115,14 @@ describe.each([
 		describe('check reducers', () => {
 			let dummyEnv2: Env
 
-			let spy_envNames2: jest.SpiedFunction<any>
+			let spy_envNames2: Mock
 			beforeEach(() => {
 				dummyEnv2 = new Env({
 					locationStrategies: [mockLocationStrategy, mockLocationStrategy],
 					names: dummyEnvNames,
 					namingStrategies: [mockNamingStrategy, mockNamingStrategy],
 				})
-				spy_envNames2 = jest.spyOn(dummyEnv2, '_envNames' as any)
+				spy_envNames2 = vi.spyOn(dummyEnv2, '_envNames' as any)
 			})
 
 			it('should return env value if key "DUMMY_TEST_ENV" is found', () => {

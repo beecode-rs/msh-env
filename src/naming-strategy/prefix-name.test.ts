@@ -1,18 +1,13 @@
-import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
+import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
 
-jest.unstable_mockModule('#src/util/logger', async () => {
-	return import('#src/util/__mocks__/logger')
-})
-const { logger: loggerMock } = await import('#src/util/logger')
-const { NamingStrategyPrefixName } = await import('#src/naming-strategy/prefix-name')
+vi.mock('#src/util/logger')
+import { NamingStrategyPrefixName } from '#src/naming-strategy/prefix-name'
+import { logger } from '#src/util/logger'
 
 describe('NamingStrategyPrefixName', () => {
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.restoreAllMocks()
+		vi.restoreAllMocks()
 	})
 
 	describe('names', () => {
@@ -40,8 +35,8 @@ describe('NamingStrategyPrefixName', () => {
 			const prefixName = new NamingStrategyPrefixName('test_')
 			prefixName.names(['some-name'])
 
-			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
-			expect(loggerMock().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
+			expect(logger().debug).toHaveBeenCalledTimes(1)
+			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
 		})
 	})
 })

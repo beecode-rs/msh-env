@@ -1,21 +1,15 @@
-import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
 import assert from 'assert'
+import { Mock, afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock'
 import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
 import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
 import { Env } from '#src/env'
-import { EnvType as EnvTypeOriginal } from '#src/env/type'
+import { EnvTypeSpy } from '#src/env/__mocks__/type-spy'
+import { logger } from '#src/util/logger'
 
-jest.unstable_mockModule('#src/util/logger', async () => {
-	return import('#src/util/__mocks__/logger')
-})
-jest.unstable_mockModule('#src/env', async () => {
-	return import('#src/__mocks__/env')
-})
-const { EnvType } = await import('#src/env/type')
-const { Env: EnvMock } = await import('#src/env')
-const { logger: loggerMock } = await import('#src/util/logger')
+vi.mock('#src/util/logger')
+vi.mock('#src/env')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -23,7 +17,7 @@ describe.each([
 	[['DUMMY_TEST_ENV', 'DUMMY_TEST_ENV2', 'DUMMY_TEST_ENV3']],
 ])('%#. EnvType envNames: %p', (envNames) => {
 	// eslint-disable-next-line @typescript-eslint/no-explicit-any
-	let dummyEnvType: EnvTypeOriginal<any>
+	let dummyEnvType: EnvTypeSpy<any>
 	let mockConvertStrategy: ConvertStrategyMock
 	let mockLocationStrategy: LocationStrategyMock
 	let mockNamingStrategy: NamingStrategyMock
@@ -33,19 +27,16 @@ describe.each([
 		mockConvertStrategy = new ConvertStrategyMock()
 		mockLocationStrategy = new LocationStrategyMock()
 		mockNamingStrategy = new NamingStrategyMock()
-		mockEnv = new EnvMock({
+		mockEnv = new Env({
 			locationStrategies: [mockLocationStrategy],
 			names: envNames,
 			namingStrategies: [mockNamingStrategy],
 		})
-		dummyEnvType = new EnvType({ convertStrategy: mockConvertStrategy, env: mockEnv })
+		dummyEnvType = new EnvTypeSpy({ convertStrategy: mockConvertStrategy, env: mockEnv })
 	})
 
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.restoreAllMocks()
+		vi.restoreAllMocks()
 	})
 
 	describe('constructor', () => {
@@ -58,33 +49,18 @@ describe.each([
 	})
 
 	describe('default', () => {
-		let spy_loggerDebug: jest.SpiedFunction<any>
-		beforeEach(() => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn as any)
-		})
-
 		it('should set defaultValue', () => {
 			dummyEnvType['_defaultValue'] = undefined
 			const dummyDefaultValue = 'someDefaultValue'
 			const result = dummyEnvType.default(dummyDefaultValue)
 			expect(result).toEqual(dummyEnvType)
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-			expect(spy_loggerDebug).toHaveBeenCalledWith('set default value', { defaultValue: dummyDefaultValue })
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set default value', { defaultValue: dummyDefaultValue })
 		})
 	})
 
 	describe('optional', () => {
-		let spy_validateAllowedValues: jest.SpiedFunction<any>
-		let spy_loggerDebug: jest.SpiedFunction<any>
-		beforeEach(() => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_validateAllowedValues = jest.spyOn(dummyEnvType, '_validateAllowedValues' as any).mockImplementation(jest.fn as any)
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(jest.fn as any)
-		})
-
 		it('should call env.envValue', () => {
 			dummyEnvType.optional
 			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
@@ -118,51 +94,46 @@ describe.each([
 
 		it('should call validateAllowedValues', () => {
 			dummyEnvType.optional
-			expect(spy_validateAllowedValues).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledTimes(1)
 		})
 
 		it('should log for debugging for undefined envValue', () => {
 			dummyEnvType.optional
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(3)
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(1, 'optional')
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(3, 'using default value "undefined"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, 'using default value "undefined"')
 		})
 
 		it('should log for debugging for undefined envValue using defined default value', () => {
 			const dummyDefValue = 123
 			dummyEnvType['_defaultValue'] = dummyDefValue
 			dummyEnvType.optional
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(3)
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(1, 'optional')
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(3, `using default value "${dummyDefValue}"`)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, `using default value "${dummyDefValue}"`)
 		})
 
 		it('should log for debugging for defined envValue', () => {
 			const envValue = 111
 			mockConvertStrategy.convert.mockReturnValue(envValue)
 			dummyEnvType.optional
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(2)
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(1, 'optional')
-			expect(spy_loggerDebug).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(2)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
 		})
 	})
 
 	describe('required', () => {
-		let mock_optional: jest.Mock<any>
-		let spy_loggerDebug: jest.SpiedFunction<any>
-		let mock_createError: jest.Mock<any>
+		const mock_optional = vi.fn<any>()
+		let mock_createError: Mock
 
 		beforeEach(() => {
-			mock_optional = jest.fn<any>()
 			Object.defineProperty(dummyEnvType, 'optional', {
 				get: () => mock_optional(),
 			})
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
-
-			mock_createError = jest.fn<(a: string) => Error>().mockImplementation((msg: string) => {
+			mock_createError = vi.fn<[string], Error>().mockImplementation((msg: string) => {
 				return new Error(`Env[TEST] ${msg}`)
 			})
 			dummyEnvType['_createError'] = mock_createError
@@ -177,8 +148,8 @@ describe.each([
 				expect(mock_optional).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledWith('must have value defined')
-				expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-				expect(spy_loggerDebug).toHaveBeenCalledWith('is required')
+				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('is required')
 				expect(err.message).toEqual('Env[TEST] must have value defined')
 			}
 		})
@@ -191,45 +162,38 @@ describe.each([
 			expect(result).toEqual(envValue)
 
 			expect(mock_optional).toHaveBeenCalledTimes(1)
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-			expect(spy_loggerDebug).toHaveBeenCalledWith('is required')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('is required')
 		})
 	})
 
 	describe('allowed', () => {
-		let spy_loggerDebug: jest.SpiedFunction<any>
-
-		beforeEach(() => {
-			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
-		})
-
 		it('should set allowedValues', () => {
 			const dummyAllowedValues = ['test', 'test2']
 			assert.deepEqual(dummyEnvType['_allowedValues'], [])
 			const result = dummyEnvType.allowed(...dummyAllowedValues)
 			assert.deepEqual(dummyEnvType['_allowedValues'], dummyAllowedValues)
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-			expect(spy_loggerDebug).toHaveBeenCalledWith('set allowed values', { allowedValues: dummyAllowedValues })
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set allowed values', { allowedValues: dummyAllowedValues })
 			expect(result).toBe(dummyEnvType)
 		})
 	})
 
 	describe('_validateAllowedValues', () => {
-		let spy_loggerDebug: jest.SpiedFunction<any>
-		let spy_allowedValuesDoNotContain: jest.SpiedFunction<any>
-		let spy_allowedValuesToString: jest.SpiedFunction<any>
-		let mock_createError: jest.Mock<any>
+		// let spy_loggerDebug: Mock
+		// let spy_allowedValuesDoNotContain: Mock
+		// let spy_allowedValuesToString: Mock
+		let mock_createError: Mock
 
 		beforeEach(() => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_loggerDebug = jest.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+			// spy_loggerDebug = vi.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_allowedValuesToString = jest.spyOn(dummyEnvType, '_allowedValuesToString' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+			// spy_allowedValuesToString = vi.spyOn(dummyEnvType, '_allowedValuesToString' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			spy_allowedValuesDoNotContain = jest.spyOn(dummyEnvType, '_allowedValuesDoNotContain' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
+			// spy_allowedValuesDoNotContain = vi.spyOn(dummyEnvType, '_allowedValuesDoNotContain' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
 
-			mock_createError = jest.fn<(a: string) => Error>().mockImplementation((msg: string) => {
+			mock_createError = vi.fn<[string], Error>().mockImplementation((msg: string) => {
 				return new Error(`Env[TEST] ${msg}`)
 			})
 			dummyEnvType['_createError'] = mock_createError
@@ -238,21 +202,21 @@ describe.each([
 		it('should return without calling anything if if now allowed values present', () => {
 			dummyEnvType['_allowedValues'] = []
 			dummyEnvType['_validateAllowedValues'](undefined)
-			expect(spy_loggerDebug).not.toHaveBeenCalled()
-			expect(spy_allowedValuesDoNotContain).not.toHaveBeenCalled()
-			expect(spy_allowedValuesToString).not.toHaveBeenCalled()
+			expect(dummyEnvType.loggerDebugSpy).not.toHaveBeenCalled()
+			expect(dummyEnvType.allowedValuesDoNotContainSpy).not.toHaveBeenCalled()
+			expect(dummyEnvType.allowedValuesToStringSpy).not.toHaveBeenCalled()
 			expect(mock_createError).not.toHaveBeenCalled()
 		})
 
 		it('should not throw error if value is contained in allowed values', () => {
 			const value = 'a'
 			dummyEnvType['_allowedValues'] = [value]
-			spy_allowedValuesDoNotContain.mockReturnValue(false)
+			dummyEnvType.allowedValuesDoNotContainSpy.mockReturnValue(false)
 			dummyEnvType['_validateAllowedValues'](value)
-			expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-			expect(spy_loggerDebug).toHaveBeenCalledWith('validating allowed values for:', { value })
-			expect(spy_allowedValuesDoNotContain).toHaveBeenCalledTimes(1)
-			expect(spy_allowedValuesToString).not.toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('validating allowed values for:', { value })
+			expect(dummyEnvType.allowedValuesDoNotContainSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.allowedValuesToStringSpy).not.toHaveBeenCalledTimes(1)
 			expect(mock_createError).not.toHaveBeenCalled()
 		})
 
@@ -260,17 +224,17 @@ describe.each([
 			const value = 'b'
 			const dummyAllowedValues = ['a']
 			const dummyAllowedValuesString = JSON.stringify(dummyAllowedValues)
-			spy_allowedValuesToString.mockReturnValue(dummyAllowedValuesString)
+			dummyEnvType.allowedValuesToStringSpy.mockReturnValue(dummyAllowedValuesString)
 			dummyEnvType['_allowedValues'] = dummyAllowedValues
-			spy_allowedValuesDoNotContain.mockReturnValue(true)
+			dummyEnvType.allowedValuesDoNotContainSpy.mockReturnValue(true)
 			try {
 				dummyEnvType['_validateAllowedValues'](value)
 				throw new Error('test failed')
 			} catch (err: any) {
-				expect(spy_loggerDebug).toHaveBeenCalledTimes(1)
-				expect(spy_loggerDebug).toHaveBeenCalledWith('validating allowed values for:', { value })
-				expect(spy_allowedValuesDoNotContain).toHaveBeenCalledTimes(1)
-				expect(spy_allowedValuesToString).toHaveBeenCalledTimes(1)
+				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
+				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('validating allowed values for:', { value })
+				expect(dummyEnvType.allowedValuesDoNotContainSpy).toHaveBeenCalledTimes(1)
+				expect(dummyEnvType.allowedValuesToStringSpy).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledWith(`must have one of the fallowing values: ${dummyAllowedValuesString}`)
 				expect(err.message).toEqual(`Env[TEST] must have one of the fallowing values: ${dummyAllowedValuesString}`)
@@ -316,10 +280,10 @@ describe.each([
 	})
 
 	describe('_loggerDebug', () => {
-		let mock_envName: jest.Mock<any>
+		let mock_envName: Mock
 		beforeEach(() => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			mock_envName = jest.fn<() => any>().mockReturnValue('Env[TEST]')
+			mock_envName = vi.fn().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
 				get: () => mock_envName(),
 			})
@@ -327,25 +291,25 @@ describe.each([
 
 		it('should call logger.debug without meta data', () => {
 			dummyEnvType['_loggerDebug']('test')
-			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
-			expect(loggerMock().debug).toHaveBeenCalledWith('Env[TEST] test')
+			expect(logger().debug).toHaveBeenCalledTimes(1)
+			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test')
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
 
 		it('should call logger.debug with meta data', () => {
 			const metaData = { test: true }
 			dummyEnvType['_loggerDebug']('test', { metaData })
-			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
-			expect(loggerMock().debug).toHaveBeenCalledWith('Env[TEST] test', { metaData })
+			expect(logger().debug).toHaveBeenCalledTimes(1)
+			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test', { metaData })
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
 	})
 
 	describe('_createError', () => {
-		let mock_envName: jest.Mock<any>
+		let mock_envName: Mock
 		beforeEach(() => {
 			// eslint-disable-next-line @typescript-eslint/no-explicit-any
-			mock_envName = jest.fn<() => any>().mockReturnValue('Env[TEST]')
+			mock_envName = vi.fn().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
 				get: () => mock_envName(),
 			})

@@ -1,6 +1,6 @@
 import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
 import { LoggerStrategyVoid } from '@beecode/msh-logger/logger-strategy/void'
-import { describe, expect, it } from '@jest/globals'
+import { describe, expect, it } from 'vitest'
 
 import { logger, setEnvLogger } from '#src/util/logger'
 

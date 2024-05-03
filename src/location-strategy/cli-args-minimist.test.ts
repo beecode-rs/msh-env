@@ -1,5 +1,5 @@
-import { describe, expect, it } from '@jest/globals'
 import { Options } from 'minimist-options'
+import { describe, expect, it } from 'vitest'
 
 import { LocationStrategyCliArgsMinimist } from '#src/location-strategy/cli-args-minimist'
 

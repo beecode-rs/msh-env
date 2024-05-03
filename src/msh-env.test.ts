@@ -1,55 +1,50 @@
-import { afterAll, afterEach, describe, expect, it, jest } from '@jest/globals'
+import { Mock, afterAll, describe, expect, it, vi } from 'vitest'
 
-jest.unstable_mockModule('#src/util/logger', async () => {
-	return import('#src/util/__mocks__/logger')
-})
+vi.mock('#src/util/logger')
 
-jest.unstable_mockModule('#src/location-strategy/environment', async () => {
+vi.mock('#src/location-strategy/environment', async () => {
 	return {
-		LocationStrategyEnvironment: jest.fn().mockImplementation(() => ({
-			valueByName: jest.fn(),
+		LocationStrategyEnvironment: vi.fn().mockImplementation(() => ({
+			valueByName: vi.fn(),
 		})),
 	}
 })
 
-jest.unstable_mockModule('#src/naming-strategy/simple-name', async () => {
+vi.mock('#src/naming-strategy/simple-name', async () => {
 	return {
-		NamingStrategySimpleName: jest.fn().mockImplementation(() => ({
-			names: jest.fn(),
+		NamingStrategySimpleName: vi.fn().mockImplementation(() => ({
+			names: vi.fn(),
 		})),
 	}
 })
-jest.unstable_mockModule('#src/env/factory', async () => {
+vi.mock('#src/env/factory', async () => {
 	return {
-		EnvFactory: jest.fn().mockImplementation(() => ({
-			base64: jest.fn(),
-			boolean: jest.fn(),
-			json: jest.fn(),
-			number: jest.fn(),
-			string: jest.fn(),
+		EnvFactory: vi.fn().mockImplementation(() => ({
+			base64: vi.fn(),
+			boolean: vi.fn(),
+			json: vi.fn(),
+			number: vi.fn(),
+			string: vi.fn(),
 		})),
 	}
 })
 
-const { logger: loggerMock } = await import('#src/util/logger')
-const { LocationStrategyEnvironment: LocationStrategyEnvironmentMock } = await import('#src/location-strategy/environment')
-const { NamingStrategySimpleName: NamingStrategySimpleNameMock } = await import('#src/naming-strategy/simple-name')
-const { EnvFactory: EnvFactoryMock } = await import('#src/env/factory')
-const { mshEnv } = await import('#src/msh-env')
+import { EnvFactory } from '#src/env/factory'
+import { LocationStrategyEnvironment } from '#src/location-strategy/environment'
+import { mshEnv } from '#src/msh-env'
+import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
+import { logger } from '#src/util/logger'
 
 describe('mshEnv', () => {
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.restoreAllMocks()
+		vi.restoreAllMocks()
 	})
 
 	it('should all default strategies', () => {
 		const result = mshEnv()
-		expect(LocationStrategyEnvironmentMock).toHaveBeenCalledTimes(1)
-		expect(NamingStrategySimpleNameMock).toHaveBeenCalledTimes(1)
-		expect(EnvFactoryMock).not.toHaveBeenCalled()
+		expect(LocationStrategyEnvironment).toHaveBeenCalledTimes(1)
+		expect(NamingStrategySimpleName).toHaveBeenCalledTimes(1)
+		expect(EnvFactory).not.toHaveBeenCalled()
 		expect(typeof result).toEqual('function')
 	})
 
@@ -58,25 +53,26 @@ describe('mshEnv', () => {
 		const name = 'TEST'
 
 		const envResult = env(name)
-		expect(EnvFactoryMock).toHaveBeenCalledTimes(1)
+		expect(EnvFactory).toHaveBeenCalledTimes(1)
 
-		expect(loggerMock().debug).toHaveBeenCalledTimes(1)
-		expect(loggerMock().debug).toHaveBeenCalledWith(`Initiate env: [${name}]`)
-		expect(EnvFactoryMock).toHaveBeenCalledTimes(1)
-		expect(EnvFactoryMock).nthCalledWith(1, {
-			locationStrategies: [expect.any(LocationStrategyEnvironmentMock)],
+		expect(logger().debug).toHaveBeenCalledTimes(1)
+		expect(logger().debug).toHaveBeenCalledWith(`Initiate env: [${name}]`)
+		expect(EnvFactory).toHaveBeenCalledTimes(1)
+		expect(EnvFactory).nthCalledWith(1, {
+			locationStrategies: [expect.any(LocationStrategyEnvironment)],
 			names: [name],
-			namingStrategies: [expect.any(NamingStrategySimpleNameMock)],
+			namingStrategies: [expect.any(NamingStrategySimpleName)],
 		})
-		expect(LocationStrategyEnvironmentMock).toHaveBeenCalledTimes(1)
-		expect(NamingStrategySimpleNameMock).toHaveBeenCalledTimes(1)
-		expect(envResult instanceof EnvFactoryMock).toBeTruthy()
+		expect(LocationStrategyEnvironment).toHaveBeenCalledTimes(1)
+		expect(NamingStrategySimpleName).toHaveBeenCalledTimes(1)
+		expect(envResult instanceof EnvFactory).toBeTruthy()
 	})
 	it('should not use default strategies if all are passed in constructor', () => {
-		const userLocationStrategyEnvironment = new LocationStrategyEnvironmentMock()
-		const userNamingStrategySimpleName = new NamingStrategySimpleNameMock()
+		const userLocationStrategyEnvironment = new LocationStrategyEnvironment()
+		const userNamingStrategySimpleName = new NamingStrategySimpleName()
 
-		jest.resetAllMocks()
+		;(LocationStrategyEnvironment as Mock).mockReset()
+		;(NamingStrategySimpleName as Mock).mockReset()
 
 		const env = mshEnv({
 			locationStrategies: [userLocationStrategyEnvironment],
@@ -85,11 +81,11 @@ describe('mshEnv', () => {
 		const name = 'TEST'
 		env(name)
 
-		expect(LocationStrategyEnvironmentMock).not.toHaveBeenCalled()
-		expect(NamingStrategySimpleNameMock).not.toHaveBeenCalled()
+		expect(LocationStrategyEnvironment).not.toHaveBeenCalled()
+		expect(NamingStrategySimpleName).not.toHaveBeenCalled()
 
-		expect(EnvFactoryMock).toHaveBeenCalledTimes(1)
-		expect(EnvFactoryMock).toHaveBeenCalledWith({
+		expect(EnvFactory).toHaveBeenCalledTimes(1)
+		expect(EnvFactory).toHaveBeenCalledWith({
 			locationStrategies: [userLocationStrategyEnvironment],
 			names: [name],
 			namingStrategies: [userNamingStrategySimpleName],

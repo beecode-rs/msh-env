@@ -1,13 +1,10 @@
-import { afterAll, afterEach, beforeEach, describe, expect, it, jest } from '@jest/globals'
+import { Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { StringUtil } from '#src/util/string-util'
 
 describe('util - stringUtil', () => {
-	afterEach(() => {
-		jest.resetAllMocks()
-	})
 	afterAll(() => {
-		jest.restoreAllMocks()
+		vi.restoreAllMocks()
 	})
 
 	describe('toSnakeCase', () => {
@@ -28,9 +25,9 @@ describe('util - stringUtil', () => {
 	})
 	describe('toSnakeUpperCase', () => {
 		const stringUtil = new StringUtil()
-		let spy_stringUtil_toSnakeCase: jest.SpiedFunction<(str: string) => string>
+		let spy_stringUtil_toSnakeCase: Mock
 		beforeEach(() => {
-			spy_stringUtil_toSnakeCase = jest.spyOn(stringUtil, 'toSnakeCase')
+			spy_stringUtil_toSnakeCase = vi.spyOn(stringUtil, 'toSnakeCase')
 		})
 
 		it('should return snake and make it upper case', () => {

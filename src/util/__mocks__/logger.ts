@@ -1,13 +1,13 @@
-import { LoggerStrategy, LoggerStrategyParams } from '@beecode/msh-logger/logger-strategy'
-import { jest } from '@jest/globals'
+import { LoggerStrategy } from '@beecode/msh-logger/logger-strategy'
+import { vi } from 'vitest'
 
 const _cache = {
 	logger: {
-		clone: jest.fn<(a: LoggerStrategyParams) => LoggerStrategy>(),
-		debug: jest.fn<(a: unknown[]) => void>(),
-		error: jest.fn<(a: unknown[]) => void>(),
-		info: jest.fn<(a: unknown[]) => void>(),
-		warn: jest.fn<(a: unknown[]) => void>(),
+		clone: vi.fn(),
+		debug: vi.fn(),
+		error: vi.fn(),
+		info: vi.fn(),
+		warn: vi.fn(),
 	},
 }
 
