@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/beecode-rs/msh-env/compare/v1.0.4...v1.0.5) (2024-05-04)
+
+
+### Bug Fixes
+
+* update package.json, use shared config for eslint and prettier ([eec10e7](https://github.com/beecode-rs/msh-env/commit/eec10e79d7d915866ed6ba90fc8307fbbf663265))
+
 ## [1.0.4](https://github.com/beecode-rs/msh-env/compare/v1.0.3...v1.0.4) (2024-05-03)
 
 
