@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/beecode-rs/msh-env/compare/v1.0.5...v1.1.0) (2024-05-08)
+
+
+### Features
+
+* add shared semantic release config ([d14d2c1](https://github.com/beecode-rs/msh-env/commit/d14d2c1cba7b5a314d65e03f2829b9e7219fd232))
+
 ## [1.0.5](https://github.com/beecode-rs/msh-env/compare/v1.0.4...v1.0.5) (2024-05-04)
 
 
