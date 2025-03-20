@@ -1,6 +1,6 @@
 import { Base64 } from 'js-base64'
 
-import { ConvertStrategy } from '#src/convert-strategy'
+import { type ConvertStrategy } from '#src/convert-strategy'
 
 export class ConvertStrategyBase64ToString implements ConvertStrategy<string> {
 	convert(str?: string): string | undefined {
@@ -21,8 +21,11 @@ export class ConvertStrategyBase64ToString implements ConvertStrategy<string> {
 			}
 
 			return decodedString
-		} catch (err: any) {
-			throw new Error(`"${str}" is not a base64. Error: ${err.message}`)
+		} catch (err: unknown) {
+			if (err instanceof Error) {
+				throw new Error(`"${str}" is not a base64. Error: ${err.message}`)
+			}
+			throw err
 		}
 	}
 }

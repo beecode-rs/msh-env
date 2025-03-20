@@ -83,8 +83,10 @@ describe('Simple Example', () => {
 					testEnvString: env('NOT_DEFINED_TEST_ENV_STRING').string.required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_STRING] must have value defined')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_STRING] must have value defined')
+				}
 			}
 		})
 		it('should throw error if required number is not defined', () => {
@@ -93,8 +95,10 @@ describe('Simple Example', () => {
 					testEnvNumber: env('NOT_DEFINED_TEST_ENV_NUMBER').number.required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_NUMBER] must have value defined')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_NUMBER] must have value defined')
+				}
 			}
 		})
 		it('should throw error if required boolean is not defined', () => {
@@ -103,8 +107,10 @@ describe('Simple Example', () => {
 					testEnvBoolean: env('NOT_DEFINED_TEST_ENV_BOOLEAN').boolean.required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_BOOLEAN] must have value defined')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_BOOLEAN] must have value defined')
+				}
 			}
 		})
 		it('should throw error if required json is not defined', () => {
@@ -113,8 +119,10 @@ describe('Simple Example', () => {
 					testEnvJson: env('NOT_DEFINED_TEST_ENV_JSON').json().required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_JSON] must have value defined')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_JSON] must have value defined')
+				}
 			}
 		})
 		it('should throw error if required base64 is not defined', () => {
@@ -123,8 +131,10 @@ describe('Simple Example', () => {
 					testEnvBase64: env('NOT_DEFINED_TEST_ENV_BASE64').base64.required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_BASE64] must have value defined')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[NOT_DEFINED_TEST_ENV_BASE64] must have value defined')
+				}
 			}
 		})
 	})
@@ -134,8 +144,10 @@ describe('Simple Example', () => {
 				Object.freeze({
 					testEnvNumber: env('TEST_ENV_STRING').number.optional,
 				})
-			} catch (e: any) {
-				expect(e.message).toEqual('"test-env-string" is not a number')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('"test-env-string" is not a number')
+				}
 			}
 		})
 		it('should throw error if unable to convert boolean', () => {
@@ -143,8 +155,10 @@ describe('Simple Example', () => {
 				Object.freeze({
 					testEnvBoolean: env('TEST_ENV_STRING').boolean.optional,
 				})
-			} catch (e: any) {
-				expect(e.message).toEqual('"test-env-string" is not a boolean')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('"test-env-string" is not a boolean')
+				}
 			}
 		})
 		it('should throw error if unable to convert json', () => {
@@ -152,10 +166,12 @@ describe('Simple Example', () => {
 				Object.freeze({
 					testEnvJson: env('TEST_ENV_STRING').json().optional,
 				})
-			} catch (e: any) {
-				expect(e.message).toEqual(
-					`"test-env-string" is not a json. Error: Unexpected token 'e', "test-env-string" is not valid JSON`
-				)
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual(
+						`"test-env-string" is not a json. Error: Unexpected token 'e', "test-env-string" is not valid JSON`
+					)
+				}
 			}
 		})
 		it('should throw error if unable to convert base64', () => {
@@ -163,10 +179,12 @@ describe('Simple Example', () => {
 				Object.freeze({
 					testEnvBase64: env('TEST_ENV_STRING').base64.optional,
 				})
-			} catch (e: any) {
-				expect(e.message).toEqual(
-					'"test-env-string" is not a base64. Error: Invalid character: the string to be decoded is not correctly encoded.'
-				)
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual(
+						'"test-env-string" is not a base64. Error: Invalid character: the string to be decoded is not correctly encoded.'
+					)
+				}
 			}
 		})
 	})
@@ -177,8 +195,10 @@ describe('Simple Example', () => {
 					testEnvString: env('TEST_ENV_STRING').string.allowed('test', 'test2').required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[TEST_ENV_STRING] must have one of the fallowing values: "test", "test2"')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[TEST_ENV_STRING] must have one of the fallowing values: "test", "test2"')
+				}
 			}
 		})
 		it('should throw error if json not in allowed list', () => {
@@ -187,8 +207,10 @@ describe('Simple Example', () => {
 					testEnvString: env('TEST_ENV_JSON').json().allowed({ some: 'test' }).required,
 				})
 				throw new Error('test failed')
-			} catch (e: any) {
-				expect(e.message).toEqual('Env[TEST_ENV_JSON] must have one of the fallowing values: {"some":"test"}')
+			} catch (e: unknown) {
+				if (e instanceof Error) {
+					expect(e.message).toEqual('Env[TEST_ENV_JSON] must have one of the fallowing values: {"some":"test"}')
+				}
 			}
 		})
 	})

@@ -1,0 +1,1 @@
+{"version":3,"file":"import-meta-env.d.ts","sourceRoot":"","sources":["../../src/location-strategy/import-meta-env.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,gBAAgB,EAAE,MAAM,wBAAwB,CAAA;AAE9D,qBAAa,6BAA8B,YAAW,gBAAgB;IACrE,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,MAAM,GAAG,SAAS;CAG7C"}

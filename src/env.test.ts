@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { type Mock, type MockInstance, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
 import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
@@ -88,8 +88,9 @@ describe.each([
 	})
 
 	describe('envValue', () => {
-		let spy_envNames: Mock
+		let spy_envNames: MockInstance
 		beforeEach(() => {
+			// eslint-disable-next-line @typescript-eslint/no-explicit-any
 			spy_envNames = vi.spyOn(dummyEnv, '_envNames' as any)
 		})
 		it('should call location strategy envStringValue', () => {
@@ -115,13 +116,14 @@ describe.each([
 		describe('check reducers', () => {
 			let dummyEnv2: Env
 
-			let spy_envNames2: Mock
+			let spy_envNames2: MockInstance
 			beforeEach(() => {
 				dummyEnv2 = new Env({
 					locationStrategies: [mockLocationStrategy, mockLocationStrategy],
 					names: dummyEnvNames,
 					namingStrategies: [mockNamingStrategy, mockNamingStrategy],
 				})
+				// eslint-disable-next-line @typescript-eslint/no-explicit-any
 				spy_envNames2 = vi.spyOn(dummyEnv2, '_envNames' as any)
 			})
 

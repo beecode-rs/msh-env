@@ -1,5 +1,5 @@
-import { ConvertStrategy } from '#src/convert-strategy';
-import { Env } from '#src/env';
+import { type ConvertStrategy } from '#src/convert-strategy';
+import { type Env } from '#src/env';
 export declare class EnvType<T> {
     protected _defaultValue: T | undefined;
     protected readonly _convertStrategy: ConvertStrategy<T>;
@@ -16,7 +16,7 @@ export declare class EnvType<T> {
     protected _validateAllowedValues(value?: T): void;
     protected _allowedValuesDoNotContain(value?: T): boolean;
     protected _allowedValuesToString(): string;
-    protected _loggerDebug(msg: string, ...args: Record<string, any>[]): void;
+    protected _loggerDebug(msg: string, ...args: Record<string, unknown>[]): void;
     protected _createError(msg: string): Error;
     protected get _envName(): string;
 }

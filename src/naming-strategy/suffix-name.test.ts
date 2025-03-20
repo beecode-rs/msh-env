@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
+import { afterAll, describe, expect, it, vi } from 'vitest'
 
 vi.mock('#src/util/logger')
 
@@ -41,7 +41,9 @@ describe('NamingStrategySuffixName', () => {
 		it('should log messages for debugging', () => {
 			const suffixName = new NamingStrategySuffixName('_test')
 			suffixName.names(['some-name'])
+
 			expect(loggerMock().debug).toHaveBeenCalledTimes(1)
+
 			expect(loggerMock().debug).toHaveBeenCalledWith('Original names: [some-name], suffixed names : [some-name_test]')
 		})
 	})

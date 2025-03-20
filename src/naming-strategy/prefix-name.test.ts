@@ -1,5 +1,5 @@
 import assert from 'assert'
-import { afterAll, afterEach, describe, expect, it, vi } from 'vitest'
+import { afterAll, describe, expect, it, vi } from 'vitest'
 
 vi.mock('#src/util/logger')
 import { NamingStrategyPrefixName } from '#src/naming-strategy/prefix-name'
@@ -31,11 +31,12 @@ describe('NamingStrategyPrefixName', () => {
 			assert.deepEqual(prefixName.names(['name-one', 'name-two']), ['test-name-one', 'test-name-two'])
 		})
 
-		it('should log messages for debugging', async () => {
+		it('should log messages for debugging', () => {
 			const prefixName = new NamingStrategyPrefixName('test_')
 			prefixName.names(['some-name'])
 
 			expect(logger().debug).toHaveBeenCalledTimes(1)
+
 			expect(logger().debug).toHaveBeenCalledWith('Original names: [some-name], prefixed names : [test_some-name]')
 		})
 	})

@@ -1,4 +1,4 @@
-import { ConvertStrategy } from '#src/convert-strategy';
+import { type ConvertStrategy } from '#src/convert-strategy';
 export declare class ConvertStrategyToJson<T> implements ConvertStrategy<T> {
     convert(str?: string): T | undefined;
 }

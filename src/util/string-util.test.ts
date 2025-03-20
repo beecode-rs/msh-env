@@ -1,4 +1,4 @@
-import { Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
+import { type Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { StringUtil } from '#src/util/string-util'
 

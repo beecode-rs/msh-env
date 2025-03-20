@@ -1,1 +1,1 @@
-{"version":3,"file":"environment.d.ts","sourceRoot":"","sources":["../../src/location-strategy/environment.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,gBAAgB,EAAE,MAAM,wBAAwB,CAAA;AAEzD,qBAAa,2BAA4B,YAAW,gBAAgB;IACnE,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,MAAM,GAAG,SAAS;CAG7C"}
+{"version":3,"file":"environment.d.ts","sourceRoot":"","sources":["../../src/location-strategy/environment.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,gBAAgB,EAAE,MAAM,wBAAwB,CAAA;AAE9D,qBAAa,2BAA4B,YAAW,gBAAgB;IACnE,WAAW,CAAC,IAAI,EAAE,MAAM,GAAG,MAAM,GAAG,SAAS;CAG7C"}

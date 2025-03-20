@@ -18,7 +18,9 @@ export class EnvTypeSpy<T> extends EnvType<T> {
 		return this.allowedValuesToStringSpy()
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	loggerDebugSpy = vi.fn<[string, ...Record<string, any>[]]>().mockImplementation(super._loggerDebug)
+	// eslint-disable-next-line @typescript-eslint/no-explicit-any
 	protected _loggerDebug(msg: string, ...args: Record<string, any>[]): void {
 		return this.loggerDebugSpy(msg, ...args)
 	}

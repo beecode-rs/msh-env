@@ -1,8 +1,8 @@
-import { Mock, afterAll, describe, expect, it, vi } from 'vitest'
+import { type Mock, afterAll, describe, expect, it, vi } from 'vitest'
 
 vi.mock('#src/util/logger')
 
-vi.mock('#src/location-strategy/environment', async () => {
+vi.mock('#src/location-strategy/environment', () => {
 	return {
 		LocationStrategyEnvironment: vi.fn().mockImplementation(() => ({
 			valueByName: vi.fn(),
@@ -10,14 +10,14 @@ vi.mock('#src/location-strategy/environment', async () => {
 	}
 })
 
-vi.mock('#src/naming-strategy/simple-name', async () => {
+vi.mock('#src/naming-strategy/simple-name', () => {
 	return {
 		NamingStrategySimpleName: vi.fn().mockImplementation(() => ({
 			names: vi.fn(),
 		})),
 	}
 })
-vi.mock('#src/env/factory', async () => {
+vi.mock('#src/env/factory', () => {
 	return {
 		EnvFactory: vi.fn().mockImplementation(() => ({
 			base64: vi.fn(),
@@ -56,6 +56,7 @@ describe('mshEnv', () => {
 		expect(EnvFactory).toHaveBeenCalledTimes(1)
 
 		expect(logger().debug).toHaveBeenCalledTimes(1)
+
 		expect(logger().debug).toHaveBeenCalledWith(`Initiate env: [${name}]`)
 		expect(EnvFactory).toHaveBeenCalledTimes(1)
 		expect(EnvFactory).nthCalledWith(1, {

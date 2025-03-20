@@ -1,4 +1,4 @@
-import { NamingStrategy } from '#src/naming-strategy'
+import { type NamingStrategy } from '#src/naming-strategy'
 import { logger } from '#src/util/logger'
 
 export class NamingStrategySuffixName implements NamingStrategy {

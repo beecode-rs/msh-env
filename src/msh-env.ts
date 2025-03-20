@@ -1,7 +1,7 @@
 import { EnvFactory } from '#src/env/factory'
-import { LocationStrategy } from '#src/location-strategy'
+import { type LocationStrategy } from '#src/location-strategy'
 import { LocationStrategyEnvironment } from '#src/location-strategy/environment'
-import { NamingStrategy } from '#src/naming-strategy'
+import { type NamingStrategy } from '#src/naming-strategy'
 import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
 import { logger } from '#src/util/logger'
 

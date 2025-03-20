@@ -1,4 +1,4 @@
-import { ConvertStrategy } from '../convert-strategy.js';
+import { type ConvertStrategy } from '../convert-strategy.js';
 export declare class ConvertStrategyToNumber implements ConvertStrategy<number> {
     convert(str?: string): number | undefined;
 }

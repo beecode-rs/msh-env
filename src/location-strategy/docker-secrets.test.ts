@@ -1,13 +1,13 @@
 // eslint-disable-next-line import/order
-import { Mock, afterAll, describe, expect, it, vi } from 'vitest'
+import { type Mock, afterAll, describe, expect, it, vi } from 'vitest'
 
-vi.mock('fs', async () => {
+vi.mock('fs', () => {
 	return {
 		readFileSync: vi.fn(),
 	}
 })
 
-vi.mock('util', async () => {
+vi.mock('util', () => {
 	return {
 		format: vi.fn(),
 	}
