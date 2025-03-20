@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/beecode-rs/msh-env/compare/v1.1.0...v1.1.1) (2025-03-20)
+
+
+### Bug Fixes
+
+* add TypeScript type imports and update environment handling ([f5ed266](https://github.com/beecode-rs/msh-env/commit/f5ed2660cbfc3c42d57389e1770d8549618af52b))
+
 # [1.1.0](https://github.com/beecode-rs/msh-env/compare/v1.0.5...v1.1.0) (2024-05-08)
 
 
