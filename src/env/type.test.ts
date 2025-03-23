@@ -113,6 +113,7 @@ describe.each([
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
+			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, `using default value "${dummyDefValue}"`)
 		})
 

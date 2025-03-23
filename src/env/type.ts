@@ -27,6 +27,7 @@ export class EnvType<T> {
 		this._loggerDebug(`optional`)
 		const strOrUndefined = this._env.envValue()
 
+		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
 		this._loggerDebug(`try to convert env string value "${strOrUndefined}"`)
 		const convertedValue = this._convertStrategy.convert(strOrUndefined)
 
