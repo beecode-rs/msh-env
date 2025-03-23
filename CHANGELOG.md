@@ -1,3 +1,12 @@
+## [1.1.2](https://github.com/beecode-rs/msh-env/compare/v1.1.1...v1.1.2) (2025-03-23)
+
+
+### Bug Fixes
+
+* ensure proper string conversion for environment names and improve logging ([5b1ff96](https://github.com/beecode-rs/msh-env/commit/5b1ff962b33741b56ce976602ab75b21e9afefc6))
+* refactor ESLint configuration and update dependencies ([0b35485](https://github.com/beecode-rs/msh-env/commit/0b354859699c12f89a926d984d7fd7aa190071aa))
+* update type handling in NamingStrategy and add eslint disables for template expressions ([5f34778](https://github.com/beecode-rs/msh-env/commit/5f347786bd28798c0626e7e2f8ee8b2c6cafebb1))
+
 ## [1.1.1](https://github.com/beecode-rs/msh-env/compare/v1.1.0...v1.1.1) (2025-03-20)
 
 
