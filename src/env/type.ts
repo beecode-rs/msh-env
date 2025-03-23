@@ -91,6 +91,6 @@ export class EnvType<T> {
 	}
 
 	protected get _envName(): string {
-		return `Env[${this._env.names.join(',')}]`
+		return `Env[${String(this._env.names.join(','))}]`
 	}
 }
