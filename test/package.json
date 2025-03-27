@@ -10,7 +10,7 @@
 	},
 	"dependencies": {
 		"@beecode/msh-env": "file:./..",
-		"@beecode/msh-logger": "1.0.1",
-		"dotenv": "16.4.5"
+		"@beecode/msh-logger": "^1.0.1",
+		"dotenv": "^16.4.5"
 	}
 }
