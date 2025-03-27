@@ -1,3 +1,10 @@
+## [1.1.3](https://github.com/beecode-rs/msh-env/compare/v1.1.2...v1.1.3) (2025-03-27)
+
+
+### Bug Fixes
+
+* update package dependencies to latest versions ([587342e](https://github.com/beecode-rs/msh-env/commit/587342ea4d3a3888f63ed16187cb5478bde2d557))
+
 ## [1.1.2](https://github.com/beecode-rs/msh-env/compare/v1.1.1...v1.1.2) (2025-03-23)
 
 
