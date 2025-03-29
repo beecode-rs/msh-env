@@ -1,3 +1,10 @@
+## [1.1.5](https://github.com/beecode-rs/msh-env/compare/v1.1.4...v1.1.5) (2025-03-29)
+
+
+### Bug Fixes
+
+* update package.json to use TypeScript source files and add ESM build script ([8efbdef](https://github.com/beecode-rs/msh-env/commit/8efbdef35786b249c5497985734ffdc41abd0dd2))
+
 ## [1.1.4](https://github.com/beecode-rs/msh-env/compare/v1.1.3...v1.1.4) (2025-03-27)
 
 
