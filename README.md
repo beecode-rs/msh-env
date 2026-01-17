@@ -41,7 +41,7 @@ const env = MshNodeEnv()
 
 export const config = cacheUtil.singleton(() => Object.freeze({
   someRequiredString: env('SOME_REQUIRED_STRING').string.required,
-  strWithDefaultValue: env('STR_WITH_DEFAULT_VALUE').string.default('default-value').required,
+  strWithDefaultValue: env('STR_WITH_DEFAULT_VALUE').string.default('default-value'),
   optionalString: env('OPTIONAL_STRING').string.optional,
   defKeyName: env('ANY_KEY_NAME').string.required,
   someNumberValue: env('SOME_NUMBER_VALUE').number.required,
@@ -49,6 +49,8 @@ export const config = cacheUtil.singleton(() => Object.freeze({
   someJsonValue: env('SOME_JSON_VALUE').json().required,
 }))
 ```
+
+The chain can be ended in three ways: `.required` (throws if undefined), `.optional` (returns value or undefined), or `.default(value)` (returns value or default). Note that `.default()` is a terminal operation that returns the required type directly.
 
 ## Diagram
 

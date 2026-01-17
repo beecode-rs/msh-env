@@ -47,11 +47,11 @@ Currently, the `default()` method in `EnvType` returns `this`, allowing chaining
 **Description:** As a library user, I need the README updated to show the new terminal default behavior with 1-2 clear examples.
 
 **Acceptance Criteria:**
-- [ ] Update line 44 in README to show `.default('default-value')` without `.required`
-- [ ] Add brief explanation (1-2 sentences) that `.default()` is a terminal operation returning required type
-- [ ] Ensure examples show all three ways to end the chain: `.required`, `.optional`, `.default(value)`
-- [ ] No excessive documentation added (keep it concise)
-- [ ] Typecheck passes
+- [x] Update line 44 in README to show `.default('default-value')` without `.required`
+- [x] Add brief explanation (1-2 sentences) that `.default()` is a terminal operation returning required type
+- [x] Ensure examples show all three ways to end the chain: `.required`, `.optional`, `.default(value)`
+- [x] No excessive documentation added (keep it concise)
+- [x] Typecheck passes
 
 ### US-005: Run full test suite and fix any failures
 **Description:** As a maintainer, I need to run the complete test suite after all changes to ensure nothing is broken and fix any test failures that arise.
