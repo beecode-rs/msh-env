@@ -36,12 +36,12 @@ Currently, the `default()` method in `EnvType` returns `this`, allowing chaining
 **Description:** As a maintainer, I need tests updated to reflect that `default()` is now a terminal operation.
 
 **Acceptance Criteria:**
-- [ ] Remove tests that chain `.default().required` or `.default().optional`
-- [ ] Add tests verifying `default()` returns `T` directly
-- [ ] Add tests verifying `default()` validates allowed values
-- [ ] Add tests verifying `default()` uses fallback when env var is undefined
-- [ ] All tests pass
-- [ ] Typecheck passes
+- [x] Remove tests that chain `.default().required` or `.default().optional`
+- [x] Add tests verifying `default()` returns `T` directly
+- [x] Add tests verifying `default()` validates allowed values
+- [x] Add tests verifying `default()` uses fallback when env var is undefined
+- [x] All tests pass
+- [x] Typecheck passes
 
 ### US-004: Update README.md with new usage examples
 **Description:** As a library user, I need the README updated to show the new terminal default behavior with 1-2 clear examples.

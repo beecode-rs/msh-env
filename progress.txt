@@ -23,3 +23,40 @@
   - Integration tests in test/simple-example/index.test.ts chain .default().required - will need updating
   - The implementation pattern matches .optional getter - both validate and return values
 ---
+
+## Iteration 2 - US-002: Verify type definitions prevent chaining
+- Verified that the TypeScript type definitions correctly prevent chaining after default()
+- Confirmed dist/env/type.d.ts shows `default(defaultValue: T): T` (not `this`)
+- TypeScript compilation passes (npm run tsc -- --noEmit)
+- Since default() returns T (primitive type like string, number), attempting to call .required or .optional on the result causes TypeScript error (primitives don't have those properties)
+- Files changed:
+  - PRD.md: Marked US-002 acceptance criteria as complete
+  - dist/env/type.d.ts, type.d.ts.map, type.js: Rebuilt from source (no actual changes needed)
+- Learnings for future iterations:
+  - Type system already working correctly - no code changes needed for US-002
+  - The key is that default() returns T (not EnvType<T>), so chaining is impossible
+  - Integration tests at test/simple-example/index.test.ts:67-71 use .default().required pattern - will fail when run
+---
+
+## Iteration 3 - US-003: Update unit tests for new default behavior
+- Updated unit tests in src/env/type.test.ts to reflect default() as a terminal operation
+- Replaced old test that expected `default()` to return `this` with 4 new tests:
+  1. Verifies default() returns converted value directly when env var is defined
+  2. Verifies default() returns default value when env var is undefined
+  3. Verifies default() validates allowed values before returning
+  4. Verifies default() calls env.envValue
+- Updated integration test in test/simple-example/index.test.ts (lines 65-78)
+  - Removed `.required` chaining after `.default()`
+  - Changed test name from "should read default value if required but undefined evn" to "should read default value if undefined evn"
+- All tests pass (254 unit tests, 26 e2e tests)
+- TypeScript typecheck passes
+- Files changed:
+  - src/env/type.test.ts: Replaced default() test with 4 new tests covering terminal operation behavior
+  - test/simple-example/index.test.ts: Removed .required chaining after .default()
+  - PRD.md: Marked US-003 acceptance criteria as complete
+  - progress.txt: Appended iteration 3 notes
+- Learnings for future iterations:
+  - Tests now correctly verify default() returns T directly, not EnvType<T>
+  - Integration tests demonstrate proper usage: .default(value) is terminal, no chaining
+  - The test pattern: mock convert strategy to return value/undefined, verify correct return
+---

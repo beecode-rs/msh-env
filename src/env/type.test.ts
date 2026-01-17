@@ -49,14 +49,50 @@ describe.each([
 	})
 
 	describe('default', () => {
-		it('should set defaultValue', () => {
-			dummyEnvType['_defaultValue'] = undefined
+		it('should return converted value directly when env var is defined', () => {
 			const dummyDefaultValue = 'someDefaultValue'
+			const envValue = 'actualEnvValue'
+			mockConvertStrategy.convert.mockReturnValue(envValue)
+
 			const result = dummyEnvType.default(dummyDefaultValue)
-			expect(result).toEqual(dummyEnvType)
+
+			expect(result).toEqual(envValue)
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set default value', { defaultValue: dummyDefaultValue })
+			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(2)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', { defaultValue: dummyDefaultValue })
+		})
+
+		it('should return default value when env var is undefined', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			const result = dummyEnvType.default(dummyDefaultValue)
+
+			expect(result).toEqual(dummyDefaultValue)
+			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
+			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, 'using default value "someDefaultValue"')
+		})
+
+		it('should validate allowed values before returning', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			dummyEnvType.default(dummyDefaultValue)
+
+			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledWith(dummyDefaultValue)
+		})
+
+		it('should call env.envValue', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			dummyEnvType.default(dummyDefaultValue)
+
+			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
 		})
 	})
 
