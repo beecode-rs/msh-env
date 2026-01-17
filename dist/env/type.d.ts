@@ -9,7 +9,7 @@ export declare class EnvType<T> {
         convertStrategy: ConvertStrategy<T>;
         env: Env;
     });
-    default(defaultValue: T): this;
+    default(defaultValue: T): T;
     get optional(): T | undefined;
     get required(): T;
     allowed(...args: T[]): this;

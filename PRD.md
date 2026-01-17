@@ -27,10 +27,10 @@ Currently, the `default()` method in `EnvType` returns `this`, allowing chaining
 **Description:** As a TypeScript user, I need the type system to prevent me from calling `.required` or `.optional` after `.default()` so I avoid API misuse at compile time.
 
 **Acceptance Criteria:**
-- [ ] `default(value: T)` returns type `T` (not `this`)
-- [ ] Attempting to call `.required` or `.optional` after `.default()` causes a TypeScript error
-- [ ] IntelliSense shows `default()` as a terminal operation
-- [ ] Typecheck passes
+- [x] `default(value: T)` returns type `T` (not `this`)
+- [x] Attempting to call `.required` or `.optional` after `.default()` causes a TypeScript error
+- [x] IntelliSense shows `default()` as a terminal operation
+- [x] Typecheck passes
 
 ### US-003: Update unit tests for new default behavior
 **Description:** As a maintainer, I need tests updated to reflect that `default()` is now a terminal operation.
