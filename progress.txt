@@ -3,4 +3,23 @@
 ## Learnings
 (Patterns discovered during implementation)
 
+- The @types/glob package is deprecated - glob provides its own types. If you see "Cannot find type definition file for 'glob'", install the glob package itself, not @types/glob
+- The default() method was converted from returning `this` to returning `T` by implementing the full terminal operation logic inline
+- TypeScript typecheck errors can block compilation even when src code is correct - always investigate dependency type issues
+
+---
+
+## Iteration 1 - US-001: Convert default() to terminal operation
+- Converted default(defaultValue: T) from returning `this` to returning `T`
+- Implemented terminal operation logic: converts env value using strategy, falls back to default value
+- Validates allowed values before returning
+- Fixed TypeScript compilation by installing glob package (replaces deprecated @types/glob stub)
+- Files changed:
+  - src/env/type.ts: Updated default() method signature and implementation
+  - package.json: Added glob devDependency, updated other dependencies
+  - PRD.md: Marked US-001 acceptance criteria as complete
+- Learnings for future iterations:
+  - Tests in src/env/type.test.ts expect old behavior (returning `this`) - will need updating in US-003
+  - Integration tests in test/simple-example/index.test.ts chain .default().required - will need updating
+  - The implementation pattern matches .optional getter - both validate and return values
 ---
