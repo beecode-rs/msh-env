@@ -57,11 +57,11 @@ Currently, the `default()` method in `EnvType` returns `this`, allowing chaining
 **Description:** As a maintainer, I need to run the complete test suite after all changes to ensure nothing is broken and fix any test failures that arise.
 
 **Acceptance Criteria:**
-- [ ] Run `npm run test` in the env package
-- [ ] All tests pass successfully
-- [ ] Fix any test failures related to the default() changes
-- [ ] Verify no unrelated tests were broken by the changes
-- [ ] Typecheck passes
+- [x] Run `npm run test` in the env package
+- [x] All tests pass successfully
+- [x] Fix any test failures related to the default() changes
+- [x] Verify no unrelated tests were broken by the changes
+- [x] Typecheck passes
 
 ## Non-Goals
 
