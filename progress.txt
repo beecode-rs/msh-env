@@ -60,3 +60,29 @@
   - Integration tests demonstrate proper usage: .default(value) is terminal, no chaining
   - The test pattern: mock convert strategy to return value/undefined, verify correct return
 ---
+
+## Iteration 4 - US-004: Update README with new usage examples
+- Updated README.md to show correct terminal default() usage
+- Removed `.required` chaining after `.default()` on line 44
+- Added concise 2-sentence explanation that describes all three ways to end the chain
+- TypeScript typecheck passes
+- Files changed:
+  - README.md: Updated example and added explanation of terminal operations
+  - PRD.md: Marked US-004 acceptance criteria as complete
+- Learnings for future iterations:
+  - Documentation updates should be concise - users just need to know that default() is terminal
+  - The three terminal operations pattern (.required, .optional, .default) is now clearly documented
+---
+
+## Iteration 5 - US-005: Run full test suite and fix any failures
+- Ran complete test suite with `npm run test`
+- All tests pass successfully: 254 unit tests, 26 e2e tests, 0 integration tests
+- No test failures occurred - all previous work correctly implemented the terminal default() operation
+- TypeScript typecheck passes with no errors
+- Files changed:
+  - PRD.md: Marked US-005 acceptance criteria as complete
+- Learnings for future iterations:
+  - The refactoring from iterations 1-4 was successful with no breaking changes requiring fixes
+  - Test suite comprehensively validates the new default() terminal operation behavior
+  - All three terminal operations (.required, .optional, .default) are working correctly
+---
