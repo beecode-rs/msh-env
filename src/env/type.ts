@@ -19,21 +19,7 @@ export class EnvType<T> {
 	default(defaultValue: T): T {
 		this._loggerDebug('set default value', { defaultValue })
 		this._defaultValue = defaultValue
-
-		const strOrUndefined = this._env.envValue()
-
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		this._loggerDebug(`try to convert env string value "${strOrUndefined}"`)
-		const convertedValue = this._convertStrategy.convert(strOrUndefined)
-
-		if (convertedValue === undefined) {
-			this._loggerDebug(`using default value "${String(this._defaultValue)}"`)
-		}
-		const finalValue = convertedValue ?? this._defaultValue
-
-		this._validateAllowedValues(finalValue)
-
-		return finalValue as T
+		return this.required
 	}
 
 	get optional(): T | undefined {

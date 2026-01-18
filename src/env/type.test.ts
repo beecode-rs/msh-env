@@ -59,7 +59,7 @@ describe.each([
 			expect(result).toEqual(envValue)
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
 			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(2)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(4)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', { defaultValue: dummyDefaultValue })
 		})
 
@@ -72,8 +72,8 @@ describe.each([
 			expect(result).toEqual(dummyDefaultValue)
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
 			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, 'using default value "someDefaultValue"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(5)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(5, 'using default value "someDefaultValue"')
 		})
 
 		it('should validate allowed values before returning', () => {
