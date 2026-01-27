@@ -1,4 +1,8 @@
-#!/bin/bash
-. "$(dirname "$0")/_/husky.sh"
+#!/usr/bin/env sh
+if [ -n "$GIT_DIR" ]; then
+  cd "$GIT_DIR" || exit 1
+else
+  cd "$(dirname -- "$0")/.." || exit 1
+fi
 
 npx lint-staged
