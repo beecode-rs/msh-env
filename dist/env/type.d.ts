@@ -1,5 +1,5 @@
-import { type ConvertStrategy } from '#src/convert-strategy';
-import { type Env } from '#src/env';
+import { type ConvertStrategy } from '../convert-strategy.js';
+import { type Env } from '../env.js';
 export declare class EnvType<T> {
     protected _defaultValue: T | undefined;
     protected readonly _convertStrategy: ConvertStrategy<T>;

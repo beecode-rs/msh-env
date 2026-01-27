@@ -1,7 +1,7 @@
-import { Env } from '#src/env';
-import { EnvType } from '#src/env/type';
-import { type LocationStrategy } from '#src/location-strategy';
-import { type NamingStrategy } from '#src/naming-strategy';
+import { Env } from '../env.js';
+import { EnvType } from '../env/type.js';
+import { type LocationStrategy } from '../location-strategy.js';
+import { type NamingStrategy } from '../naming-strategy.js';
 export declare class EnvFactory {
     protected readonly _env: Env;
     constructor(params: {

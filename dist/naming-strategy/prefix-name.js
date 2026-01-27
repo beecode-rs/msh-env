@@ -1,4 +1,4 @@
-import { logger } from '#src/util/logger';
+import { logger } from '../util/logger.js';
 export class NamingStrategyPrefixName {
     _prefix;
     constructor(prefix) {

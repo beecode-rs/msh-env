@@ -16,8 +16,8 @@
 	"type": "module",
 	"imports": {
 		"#packageJson": "./package.json",
-		"#src": "./src/index.ts",
-		"#src/*": "./src/*.ts"
+		"#src": "./dist/index.js",
+		"#src/*": "./dist/*.js"
 	},
 	"exports": {
 		".": {
@@ -43,7 +43,7 @@
 	],
 	"scripts": {
 		"babel": "npx babel --extensions .ts",
-		"build": "npm run clean && npm run tsc && npm run fix-hybrid-lib-esm",
+		"build": "npm run clean && npm run tsc && npm run tsc-esm-alias && npm run fix-hybrid-lib-esm",
 		"build-cjs": "npm run clean-cjs && npm run tsc-cjs && npm run tsc-types && npm run tsc-types-alias && npm run fix-hybrid-lib-cjs",
 		"clean": "rimraf ./dist",
 		"clean-cjs": "rimraf ./lib",
@@ -88,6 +88,7 @@
 		"tsc-time": "npm run tsc -- --diagnostics",
 		"tsc-types": "tsc -p tsconfig.build.json --emitDeclarationOnly --outDir ./lib",
 		"tsc-types-alias": "tsc-alias -p tsconfig.build.json --outDir ./lib --resolve-full-paths",
+		"tsc-esm-alias": "tsc-alias -p tsconfig.build.json --outDir ./dist --resolve-full-paths",
 		"tsc-watch": "npm run tsc -- -w --preserveWatchOutput",
 		"watch": "concurrently -c auto -n build,clean 'npm run tsc-watch' 'npm run tsc-cleaner-watch'"
 	},
