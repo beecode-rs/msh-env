@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { LocationStrategyImportMetaEnv } from '#src/location-strategy/import-meta-env'
+import { LocationStrategyImportMetaEnv } from '#src/location-strategy/import-meta-env.js'
 
 describe('LocationStrategyImportMetaEnv', () => {
 	describe('valueByName', () => {

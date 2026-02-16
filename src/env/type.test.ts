@@ -1,15 +1,15 @@
 import assert from 'assert'
 import { type Mock, afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock'
-import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
-import { Env } from '#src/env'
-import { EnvTypeSpy } from '#src/env/__mocks__/type-spy'
-import { logger } from '#src/util/logger'
+import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock.js'
+import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock.js'
+import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock.js'
+import { EnvTypeSpy } from '#src/env/__mocks__/type-spy.js'
+import { Env } from '#src/env.js'
+import { logger } from '#src/util/logger.js'
 
-vi.mock('#src/util/logger')
-vi.mock('#src/env')
+vi.mock('#src/util/logger.js')
+vi.mock('#src/env.js')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],
@@ -49,14 +49,50 @@ describe.each([
 	})
 
 	describe('default', () => {
-		it('should set defaultValue', () => {
-			dummyEnvType['_defaultValue'] = undefined
+		it('should return converted value directly when env var is defined', () => {
 			const dummyDefaultValue = 'someDefaultValue'
+			const envValue = 'actualEnvValue'
+			mockConvertStrategy.convert.mockReturnValue(envValue)
+
 			const result = dummyEnvType.default(dummyDefaultValue)
-			expect(result).toEqual(dummyEnvType)
+
+			expect(result).toEqual(envValue)
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set default value', { defaultValue: dummyDefaultValue })
+			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(4)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', { defaultValue: dummyDefaultValue })
+		})
+
+		it('should return default value when env var is undefined', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			const result = dummyEnvType.default(dummyDefaultValue)
+
+			expect(result).toEqual(dummyDefaultValue)
+			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
+			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(5)
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(5, 'using default value "someDefaultValue"')
+		})
+
+		it('should validate allowed values before returning', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			dummyEnvType.default(dummyDefaultValue)
+
+			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledWith(dummyDefaultValue)
+		})
+
+		it('should call env.envValue', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			dummyEnvType.default(dummyDefaultValue)
+
+			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
 		})
 	})
 

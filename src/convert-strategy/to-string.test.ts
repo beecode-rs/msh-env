@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { ConvertStrategyToString } from '#src/convert-strategy/to-string'
+import { ConvertStrategyToString } from '#src/convert-strategy/to-string.js'
 
 describe('ConvertStrategyToString', () => {
 	const toString = new ConvertStrategyToString()

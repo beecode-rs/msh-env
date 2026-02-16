@@ -1,6 +1,6 @@
 import { vi } from 'vitest'
 
-import { EnvType } from '#src/env/type'
+import { EnvType } from '#src/env/type.js'
 
 export class EnvTypeSpy<T> extends EnvType<T> {
 	validateAllowedValuesSpy = vi.fn<[T | undefined]>().mockImplementation(super._validateAllowedValues)

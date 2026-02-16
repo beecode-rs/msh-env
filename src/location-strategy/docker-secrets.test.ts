@@ -16,7 +16,7 @@ vi.mock('util', () => {
 import { readFileSync } from 'fs'
 import { format } from 'util'
 
-import { LocationStrategyDockerSecrets } from '#src/location-strategy/docker-secrets'
+import { LocationStrategyDockerSecrets } from '#src/location-strategy/docker-secrets.js'
 
 describe('LocationStrategyDockerSecrets', () => {
 	describe('valueByName', () => {

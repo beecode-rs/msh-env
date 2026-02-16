@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { LocationStrategyCustom } from '#src/location-strategy/custom'
+import { LocationStrategyCustom } from '#src/location-strategy/custom.js'
 
 describe('LocationStrategyCustom', () => {
 	describe('valueByName', () => {

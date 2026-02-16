@@ -1,7 +1,7 @@
 import { readFileSync } from 'fs'
 import { format } from 'util'
 
-import { type LocationStrategy } from '#src/location-strategy'
+import { type LocationStrategy } from '#src/location-strategy.js'
 
 export class LocationStrategyDockerSecrets implements LocationStrategy {
 	valueByName(name: string): string | undefined {

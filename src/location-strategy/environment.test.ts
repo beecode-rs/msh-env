@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { LocationStrategyEnvironment } from '#src/location-strategy/environment'
+import { LocationStrategyEnvironment } from '#src/location-strategy/environment.js'
 
 describe('LocationStrategyEnvironment', () => {
 	describe('valueByName', () => {

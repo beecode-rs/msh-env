@@ -1,8 +1,8 @@
 import DeepEqual from 'fast-deep-equal/es6/index.js'
 
-import { type ConvertStrategy } from '#src/convert-strategy'
-import { type Env } from '#src/env'
-import { logger } from '#src/util/logger'
+import { type ConvertStrategy } from '#src/convert-strategy.js'
+import { type Env } from '#src/env.js'
+import { logger } from '#src/util/logger.js'
 
 export class EnvType<T> {
 	protected _defaultValue: T | undefined = undefined
@@ -16,11 +16,11 @@ export class EnvType<T> {
 		this._env = env
 	}
 
-	default(defaultValue: T): this {
+	default(defaultValue: T): T {
 		this._loggerDebug('set default value', { defaultValue })
 		this._defaultValue = defaultValue
 
-		return this
+		return this.required
 	}
 
 	get optional(): T | undefined {
@@ -91,6 +91,6 @@ export class EnvType<T> {
 	}
 
 	protected get _envName(): string {
-		return `Env[${String(this._env.names.join(','))}]`
+		return `Env[${this._env.names.join(',')}]`
 	}
 }

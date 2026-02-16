@@ -1,9 +1,9 @@
 import assert from 'assert'
 import { type Mock, type MockInstance, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
-import { Env } from '#src/env'
+import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock.js'
+import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock.js'
+import { Env } from '#src/env.js'
 
 describe.each([
 	[['DUMMY_TEST_ENV']],

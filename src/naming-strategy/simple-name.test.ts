@@ -1,7 +1,7 @@
 import assert from 'assert'
 import { describe, it } from 'vitest'
 
-import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name'
+import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name.js'
 
 describe('NamingStrategySimpleName', () => {
 	describe('names', () => {

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { ConvertStrategyToBoolean } from '#src/convert-strategy/to-boolean'
+import { ConvertStrategyToBoolean } from '#src/convert-strategy/to-boolean.js'
 
 describe('ConvertStrategyToBoolean', () => {
 	const toBoolean = new ConvertStrategyToBoolean()

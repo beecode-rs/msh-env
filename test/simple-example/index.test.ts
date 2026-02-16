@@ -62,13 +62,13 @@ describe('Simple Example', () => {
 		expect(config.testEnvJson).toBeUndefined()
 		expect(config.testEnvBase64).toBeUndefined()
 	})
-	it('should read default value if required but undefined evn', () => {
+	it('should read default value if undefined evn', () => {
 		const config = Object.freeze({
-			testEnvBase64: env('NOT_DEFINED_TEST_ENV_BASE64').base64.default('default value').required,
-			testEnvBoolean: env('NOT_DEFINED_TEST_ENV_BOOLEAN').boolean.default(false).required,
-			testEnvJson: env('NOT_DEFINED_TEST_ENV_JSON').json().default({ 'default-key': 'default-value' }).required,
-			testEnvNumber: env('NOT_DEFINED_TEST_ENV_NUMBER').number.default(66).required,
-			testEnvString: env('NOT_DEFINED_TEST_ENV_STRING').string.default('default-value').required,
+			testEnvBase64: env('NOT_DEFINED_TEST_ENV_BASE64').base64.default('default value'),
+			testEnvBoolean: env('NOT_DEFINED_TEST_ENV_BOOLEAN').boolean.default(false),
+			testEnvJson: env('NOT_DEFINED_TEST_ENV_JSON').json().default({ 'default-key': 'default-value' }),
+			testEnvNumber: env('NOT_DEFINED_TEST_ENV_NUMBER').number.default(66),
+			testEnvString: env('NOT_DEFINED_TEST_ENV_STRING').string.default('default-value'),
 		})
 		expect(config.testEnvString).toEqual('default-value')
 		expect(config.testEnvNumber).toEqual(66)

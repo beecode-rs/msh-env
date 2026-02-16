@@ -1,4 +1,4 @@
-import { type NamingStrategy } from '#src/naming-strategy'
+import { type NamingStrategy } from '#src/naming-strategy.js'
 
 export class NamingStrategySimpleName implements NamingStrategy {
 	names(names: string | string[]): string[] {

@@ -1,6 +1,6 @@
-import { type LocationStrategy } from '#src/location-strategy'
-import { type NamingStrategy } from '#src/naming-strategy'
-import { logger } from '#src/util/logger'
+import { type LocationStrategy } from '#src/location-strategy.js'
+import { type NamingStrategy } from '#src/naming-strategy.js'
+import { logger } from '#src/util/logger.js'
 
 export class Env {
 	readonly names: string[]

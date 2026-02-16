@@ -1,6 +1,6 @@
 import { type Mock, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { StringUtil } from '#src/util/string-util'
+import { StringUtil } from '#src/util/string-util.js'
 
 describe('util - stringUtil', () => {
 	afterAll(() => {
