@@ -1,7 +1,7 @@
 import { type Options } from 'minimist-options'
 import { describe, expect, it } from 'vitest'
 
-import { LocationStrategyCliArgsMinimist } from '#src/location-strategy/cli-args-minimist'
+import { LocationStrategyCliArgsMinimist } from '#src/location-strategy/cli-args-minimist.js'
 
 /* eslint-disable @typescript-eslint/naming-convention */
 describe('LocationStrategyCliArgsMinimist', () => {

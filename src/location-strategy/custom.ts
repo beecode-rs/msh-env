@@ -1,4 +1,4 @@
-import { type LocationStrategy } from '#src/location-strategy'
+import { type LocationStrategy } from '#src/location-strategy.js'
 
 export class LocationStrategyCustom implements LocationStrategy {
 	protected readonly _env: Record<string, string>

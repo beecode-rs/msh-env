@@ -1,15 +1,15 @@
 import assert from 'assert'
 import { type Mock, afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
-import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock'
-import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock'
-import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock'
-import { Env } from '#src/env'
-import { EnvTypeSpy } from '#src/env/__mocks__/type-spy'
-import { logger } from '#src/util/logger'
+import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock.js'
+import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock.js'
+import { NamingStrategyMock } from '#src/__mocks__/naming-strategy-mock.js'
+import { EnvTypeSpy } from '#src/env/__mocks__/type-spy.js'
+import { Env } from '#src/env.js'
+import { logger } from '#src/util/logger.js'
 
-vi.mock('#src/util/logger')
-vi.mock('#src/env')
+vi.mock('#src/util/logger.js')
+vi.mock('#src/env.js')
 
 describe.each([
 	[['DUMMY_TEST_ENV']],

@@ -1,7 +1,7 @@
 import minimist from 'minimist'
 import buildOptions, { type Options } from 'minimist-options'
 
-import { type LocationStrategy } from '#src/location-strategy'
+import { type LocationStrategy } from '#src/location-strategy.js'
 
 export class LocationStrategyCliArgsMinimist<T extends minimist.ParsedArgs> implements LocationStrategy {
 	protected readonly _miniOpts: minimist.Opts

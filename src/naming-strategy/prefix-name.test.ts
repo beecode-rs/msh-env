@@ -1,9 +1,9 @@
 import assert from 'assert'
 import { afterAll, describe, expect, it, vi } from 'vitest'
 
-vi.mock('#src/util/logger')
-import { NamingStrategyPrefixName } from '#src/naming-strategy/prefix-name'
-import { logger } from '#src/util/logger'
+vi.mock('#src/util/logger.js')
+import { NamingStrategyPrefixName } from '#src/naming-strategy/prefix-name.js'
+import { logger } from '#src/util/logger.js'
 
 describe('NamingStrategyPrefixName', () => {
 	afterAll(() => {

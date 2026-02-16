@@ -1,10 +1,10 @@
 import assert from 'assert'
 import { afterAll, describe, expect, it, vi } from 'vitest'
 
-vi.mock('#src/util/logger')
+vi.mock('#src/util/logger.js')
 
-const { logger: loggerMock } = await import('#src/util/logger')
-const { NamingStrategySuffixName } = await import('#src/naming-strategy/suffix-name')
+const { logger: loggerMock } = await import('#src/util/logger.js')
+const { NamingStrategySuffixName } = await import('#src/naming-strategy/suffix-name.js')
 
 describe('NamingStrategySuffixName', () => {
 	// let logger: any

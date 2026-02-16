@@ -1,5 +1,5 @@
-import { type NamingStrategy } from '#src/naming-strategy'
-import { logger } from '#src/util/logger'
+import { type NamingStrategy } from '#src/naming-strategy.js'
+import { logger } from '#src/util/logger.js'
 
 export class NamingStrategySuffixName implements NamingStrategy {
 	protected readonly _suffix: string

@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 
-import { ConvertStrategyBase64ToString } from '#src/convert-strategy/base64-to-string'
+import { ConvertStrategyBase64ToString } from '#src/convert-strategy/base64-to-string.js'
 
 describe('ConvertStrategyBase64ToString', () => {
 	const base64ToString = new ConvertStrategyBase64ToString()

@@ -2,7 +2,7 @@ import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/conso
 import { LoggerStrategyVoid } from '@beecode/msh-logger/logger-strategy/void'
 import { describe, expect, it } from 'vitest'
 
-import { logger, setEnvLogger } from '#src/util/logger'
+import { logger, setEnvLogger } from '#src/util/logger.js'
 
 describe('logger', () => {
 	describe('NodeAppLogger', () => {

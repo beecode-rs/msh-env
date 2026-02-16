@@ -1,7 +1,7 @@
 import { vi } from 'vitest'
 
-import { type LocationStrategy } from '#src/location-strategy'
-import { type NamingStrategy } from '#src/naming-strategy'
+import { type LocationStrategy } from '#src/location-strategy.js'
+import { type NamingStrategy } from '#src/naming-strategy.js'
 
 export class Env {
 	readonly names: string[]
