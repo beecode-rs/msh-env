@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/beecode-rs/msh-env/compare/v1.1.5...v1.2.0) (2026-02-16)
+
+
+### Features
+
+* convert default() to terminal operation returning T ([0a68f87](https://github.com/beecode-rs/msh-env/commit/0a68f8788610478f1bd4dcb8c4fbbf8c29378055))
+
 ## [1.1.5](https://github.com/beecode-rs/msh-env/compare/v1.1.4...v1.1.5) (2025-03-29)
 
 
