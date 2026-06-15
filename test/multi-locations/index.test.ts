@@ -1,13 +1,14 @@
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
 import { mshEnv } from '@beecode/msh-env'
 import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/location-strategy/cli-args-minimist'
 import { LocationStrategyEnvironment } from '@beecode/msh-env/location-strategy/environment'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
+import { PresetConsoleSimpleString } from '@beecode/msh-logger/controller/preset/console-simple-string'
 import * as dotenv from 'dotenv'
 import { type Options } from 'minimist-options'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -16,7 +17,7 @@ dotenv.config({ path: `${__dirname}/.env` })
 
 describe('Multiple Locations Example', () => {
 	beforeEach(() => {
-		setEnvLogger(new LoggerStrategyConsole({ logLevel: LogLevel.DEBUG }))
+		setEnvLogger(new PresetConsoleSimpleString({ logLevel: LogLevel.DEBUG }))
 	})
 	it.each([
 		['dbNameFromArgs', ['node', 'some-app.js', '--db-name=dbNameFromArgs']],

@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import { type Mock, afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { ConvertStrategyMock } from '#src/__mocks__/convert-strategy-mock.js'
@@ -60,7 +61,9 @@ describe.each([
 			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
 			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(4)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', { defaultValue: dummyDefaultValue })
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', {
+				defaultValue: dummyDefaultValue,
+			})
 		})
 
 		it('should return default value when env var is undefined', () => {
@@ -216,7 +219,9 @@ describe.each([
 			const result = dummyEnvType.allowed(...dummyAllowedValues)
 			assert.deepEqual(dummyEnvType['_allowedValues'], dummyAllowedValues)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set allowed values', { allowedValues: dummyAllowedValues })
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set allowed values', {
+				allowedValues: dummyAllowedValues,
+			})
 			expect(result).toBe(dummyEnvType)
 		})
 	})
@@ -280,7 +285,9 @@ describe.each([
 				expect(dummyEnvType.allowedValuesDoNotContainSpy).toHaveBeenCalledTimes(1)
 				expect(dummyEnvType.allowedValuesToStringSpy).toHaveBeenCalledTimes(1)
 				expect(mock_createError).toHaveBeenCalledTimes(1)
-				expect(mock_createError).toHaveBeenCalledWith(`must have one of the fallowing values: ${dummyAllowedValuesString}`)
+				expect(mock_createError).toHaveBeenCalledWith(
+					`must have one of the fallowing values: ${dummyAllowedValuesString}`
+				)
 				expect(err.message).toEqual(`Env[TEST] must have one of the fallowing values: ${dummyAllowedValuesString}`)
 			}
 		})

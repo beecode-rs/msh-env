@@ -1,11 +1,12 @@
+import * as assert from 'assert'
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
 import { mshEnv } from '@beecode/msh-env'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
-import * as assert from 'assert'
+import { PresetConsoleSimpleString } from '@beecode/msh-logger/controller/preset/console-simple-string'
 import * as dotenv from 'dotenv'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
 import { beforeEach, describe, expect, it } from 'vitest'
 // import { assert } from 'vitest'
 
@@ -16,7 +17,7 @@ dotenv.config({ path: `${__dirname}/.env` })
 
 describe('Simple Example', () => {
 	beforeEach(() => {
-		setEnvLogger(new LoggerStrategyConsole({ logLevel: LogLevel.DEBUG }))
+		setEnvLogger(new PresetConsoleSimpleString({ logLevel: LogLevel.DEBUG }))
 	})
 
 	const env = mshEnv()

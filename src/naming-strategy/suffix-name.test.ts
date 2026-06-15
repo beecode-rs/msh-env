@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import { afterAll, describe, expect, it, vi } from 'vitest'
 
 vi.mock('#src/util/logger.js')

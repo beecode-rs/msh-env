@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import { describe, it } from 'vitest'
 
 import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name.js'

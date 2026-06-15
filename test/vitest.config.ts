@@ -1,9 +1,8 @@
 import path from 'path'
-import tsconfigPaths from 'vite-tsconfig-paths'
+
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-	plugins: [tsconfigPaths({ projects: ['../tsconfig.json'] })],
 	resolve: {
 		alias: [
 			{
@@ -15,11 +14,12 @@ export default defineConfig({
 				replacement: path.resolve(__dirname, '../src/$1.ts'),
 			},
 		],
+		tsconfigPaths: true,
 	},
 	test: {
 		mockReset: true,
 		passWithNoTests: true,
-		setupFiles: ['./index-jest-setup.ts'],
+		setupFiles: ['../src/__tests__/index-vitest-setup.ts'],
 		watch: false,
 	},
 })

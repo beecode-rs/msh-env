@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import { type Mock, type MockInstance, afterAll, afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { LocationStrategyMock } from '#src/__mocks__/location-strategy-mock.js'

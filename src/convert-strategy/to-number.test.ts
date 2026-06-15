@@ -1,4 +1,5 @@
 import assert from 'assert'
+
 import { describe, expect, it } from 'vitest'
 
 import { ConvertStrategyToNumber } from '#src/convert-strategy/to-number.js'

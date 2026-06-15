@@ -1,11 +1,12 @@
+import { dirname } from 'path'
+import { fileURLToPath } from 'url'
+
 import { mshEnv } from '@beecode/msh-env'
 import { NamingStrategyPrefixName } from '@beecode/msh-env/naming-strategy/prefix-name'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
-import { LoggerStrategyConsole } from '@beecode/msh-logger/logger-strategy/console'
+import { PresetConsoleSimpleString } from '@beecode/msh-logger/controller/preset/console-simple-string'
 import * as dotenv from 'dotenv'
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
 import { beforeEach, describe, expect, it } from 'vitest'
 
 const __filename = fileURLToPath(import.meta.url)
@@ -14,7 +15,7 @@ dotenv.config({ path: `${__dirname}/.env` })
 
 describe('Prefix Example', () => {
 	beforeEach(() => {
-		setEnvLogger(new LoggerStrategyConsole({ logLevel: LogLevel.DEBUG }))
+		setEnvLogger(new PresetConsoleSimpleString({ logLevel: LogLevel.DEBUG }))
 	})
 	it('should use prefixed env first', () => {
 		const env = mshEnv({
