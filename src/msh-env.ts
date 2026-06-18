@@ -1,10 +1,11 @@
 import { EnvFactory } from '#src/business/component/env/factory.js'
-import { type MshEnv } from '#src/business/model/msh-env.js'
 import { LocationStrategyEnvironment } from '#src/business/service/location-strategy/environment.js'
 import { type LocationStrategy } from '#src/business/service/location-strategy.js'
 import { NamingStrategySimpleName } from '#src/business/service/naming-strategy/simple-name.js'
 import { type NamingStrategy } from '#src/business/service/naming-strategy.js'
 import { logger } from '#src/util/logger.js'
+
+export type MshEnv = (...name: string[]) => EnvFactory
 
 export const mshEnv = (params?: {
 	locationStrategies?: LocationStrategy[]
