@@ -1,0 +1,14 @@
+import { readFileSync } from 'fs'
+import { format } from 'util'
+
+import { type LocationStrategy } from '#src/business/service/location-strategy.js'
+
+export class LocationStrategyDockerSecrets implements LocationStrategy {
+	valueByName(name: string): string | undefined {
+		try {
+			return readFileSync(format('/run/secrets/%s', name), 'utf8').trim()
+		} catch (e) {
+			return undefined
+		}
+	}
+}

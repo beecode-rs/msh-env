@@ -1,0 +1,31 @@
+subject: NamingStrategyPrefixName
+module: ./prefix-name.js
+subjectType: class
+constructor:
+  terms:
+    - params: ['test_']
+      result:
+        _prefix: 'test_'
+methods:
+  names:
+    terms:
+      # One — single name prefixed with "_"
+      - constructorParams: ['test_']
+        params:
+          - ['some-name']
+        result: ['test_some-name']
+      # One — single name prefixed with "-"
+      - constructorParams: ['test-']
+        params:
+          - ['some-name']
+        result: ['test-some-name']
+      # Many — multiple names prefixed with "_"
+      - constructorParams: ['test_']
+        params:
+          - ['name-one', 'name-two']
+        result: ['test_name-one', 'test_name-two']
+      # Many — multiple names prefixed with "-"
+      - constructorParams: ['test-']
+        params:
+          - ['name-one', 'name-two']
+        result: ['test-name-one', 'test-name-two']

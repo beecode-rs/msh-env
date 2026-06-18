@@ -1,0 +1,34 @@
+subject: ConvertStrategyBase64ToString
+module: ./base64-to-string.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  convert:
+    terms:
+      # Zero — no/undefined input
+      - params: []
+        result: !undefined
+      - params:
+          - !undefined
+        result: !undefined
+      - params: ['']
+        result: !undefined
+      - params: [' ']
+        result: !undefined
+      - params: ['-']
+        result: !undefined
+      # One/Many — valid base64 decodes back to the original string
+      - params: ['dGVzdA==']
+        result: 'test'
+      - params: ['c29tZSBsb25nIHRlc3Q=']
+        result: 'some long test'
+      - params: ['c29tZQpsb25nCnRlc3QKd2l0aApuZXcKcm93cw==']
+        result: "some\nlong\ntest\nwith\nnew\nrows"
+      # Oops — invalid base64 throws
+      - params: ['!']
+        error: '"!" is not a base64'
+      - params: ['dGVzdA!!']
+        error: '"dGVzdA!!" is not a base64'

@@ -1,0 +1,26 @@
+subject: LocationStrategyCustom
+module: ./custom.js
+subjectType: class
+constructor:
+  terms:
+    - params:
+        - SOME_KEY: 'some-value'
+          OTHER: 'other-value'
+      result:
+        _env:
+          SOME_KEY: 'some-value'
+          OTHER: 'other-value'
+methods:
+  valueByName:
+    terms:
+      # One — returns the value for an existing name
+      - constructorParams:
+          - SOME_KEY: 'some-value'
+            OTHER: 'other-value'
+        params: ['SOME_KEY']
+        result: 'some-value'
+      # Oops — returns undefined for a missing name
+      - constructorParams:
+          - SOME_KEY: 'some-value'
+        params: ['MISSING']
+        result: !undefined

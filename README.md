@@ -7,23 +7,31 @@
 
 Micro-service helper for Node.js environment variable validation and typing.
 
-This library provides type-safe environment variable access with validation, default values, and flexible configuration strategies.
+This library provides type-safe environment variable access with validation, default values, and
+flexible configuration strategies.
 
 ## Table of Contents
 
-- [Install](#install)
-- [Usage](#usage)
-  - [Basic Example](#basic-example)
-  - [Terminal Operations](#terminal-operations)
-- [API](#api)
-  - [Type Converters](#type-converters)
-  - [MshNodeEnv Options](#mshnodeenv-options)
-- [Strategies](#strategies)
-  - [Location Strategy](#location-strategy)
-  - [Naming Strategy](#naming-strategy)
-  - [Logger Strategy](#logger-strategy)
-- [Architecture](#architecture)
-- [License](#license)
+<!-- toc -->
+
+- [msh-env](#msh-env)
+	- [Table of Contents](#table-of-contents)
+	- [Install](#install)
+	- [Usage](#usage)
+		- [Basic Example](#basic-example)
+		- [Terminal Operations](#terminal-operations)
+		- [Allowed Values](#allowed-values)
+	- [API](#api)
+		- [Type Converters](#type-converters)
+		- [mshEnv Options](#mshenv-options)
+	- [Strategies](#strategies)
+		- [Location Strategy](#location-strategy)
+		- [Naming Strategy](#naming-strategy)
+		- [Logger](#logger)
+	- [Architecture](#architecture)
+	- [License](#license)
+
+<!-- tocstop -->
 
 ## Install
 
@@ -36,26 +44,28 @@ npm i @beecode/msh-env
 ### Basic Example
 
 ```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-import { cacheUtil } from '@beecode/msh-util/dist/lib/cache-util'
+import { mshEnv } from '@beecode/msh-env'
 
-const env = MshNodeEnv()
+const env = mshEnv()
 
-export const config = cacheUtil.singleton(() => Object.freeze({
-  // Required - throws if not defined
-  apiKey: env('API_KEY').string.required,
-  port: env('PORT').number.required,
+export const config = Object.freeze({
+	// Required - throws if not defined
+	apiKey: env('API_KEY').string.required,
+	port: env('PORT').number.required,
 
-  // Optional - returns undefined if not defined
-  debugMode: env('DEBUG_MODE').boolean.optional,
+	// Optional - returns undefined if not defined
+	debugMode: env('DEBUG_MODE').boolean.optional,
 
-  // Default - returns default value if not defined
-  logLevel: env('LOG_LEVEL').string.default('info'),
-  maxRetries: env('MAX_RETRIES').number.default(3),
+	// Default - returns default value if not defined
+	logLevel: env('LOG_LEVEL').string.default('info'),
+	maxRetries: env('MAX_RETRIES').number.default(3),
 
-  // JSON parsing
-  featureFlags: env('FEATURE_FLAGS').json<{ darkMode: boolean }>().default({ darkMode: false }),
-}))
+	// Base64 decoding
+	dbPassword: env('DB_PASSWORD').base64.default(''),
+
+	// JSON parsing
+	featureFlags: env('FEATURE_FLAGS').json<{ darkMode: boolean }>().default({ darkMode: false }),
+})
 ```
 
 ### Terminal Operations
@@ -68,12 +78,14 @@ Every environment property chain must end with a terminal operation. There are t
 | `.optional` | `T \| undefined` | Returns undefined if env var is undefined |
 | `.default(value)` | `T` | Returns the default value if env var is undefined |
 
-> `T` represents the type of the environment variable based on the converter used: `string`, `number`, `boolean`, or the generic type passed to `.json<T>()`.
+> `T` represents the type of the environment variable based on the converter used: `string`,
+> `number`, `boolean`, the decoded `string` from `.base64`, or the generic type passed to
+> `.json<T>()`.
 
 **Examples:**
 
 ```typescript
-const env = MshNodeEnv()
+const env = mshEnv()
 
 // .required - Use when the env var MUST be present
 // Application will fail fast if DATABASE_URL is not set
@@ -93,17 +105,17 @@ const verbose = env('VERBOSE').boolean.default(false)
 const config = env('APP_CONFIG').json<AppConfig>().default({ theme: 'light' })
 ```
 
-**Allowed Values:**
+### Allowed Values
 
-You can restrict values to a specific set:
+You can restrict a value to a specific set. Chain `.allowed(...)` before the terminal operation:
 
 ```typescript
-const env = MshNodeEnv()
+const env = mshEnv()
 
 // With required - throws if value is not in the allowed list
 const logLevel = env('LOG_LEVEL').string.allowed('debug', 'info', 'warn', 'error').required
 
-// With default - validates both env value and default value
+// With default - validates both the env value and the default value
 const environment = env('NODE_ENV').string.allowed('development', 'staging', 'production').default('development')
 ```
 
@@ -116,135 +128,94 @@ const environment = env('NODE_ENV').string.allowed('development', 'staging', 'pr
 | `.string` | Any string | `string` |
 | `.number` | Numeric string | `number` |
 | `.boolean` | `'true'`, `'false'`, `'1'`, `'0'` | `boolean` |
+| `.base64` | Base64-encoded string | `string` (decoded) |
 | `.json<T>()` | Valid JSON string | `T` |
 
-### MshNodeEnv Options
+### mshEnv Options
+
+```typescript
+mshEnv(params?: {
+	locationStrategies?: LocationStrategy[]
+	namingStrategies?: NamingStrategy[]
+}): MshEnv
+```
 
 | Option | Default | Description |
 |--------|---------|-------------|
-| `locationStrategy[]` | `[new EnvironmentLocation()]` | Defines where to look for env values |
-| `namingStrategy[]` | `[new SimpleName()]` | Defines how env names are transformed |
+| `locationStrategies` | `[new LocationStrategyEnvironment()]` | Defines where to look for env values (first match wins) |
+| `namingStrategies` | `[new NamingStrategySimpleName()]` | Defines how env names are transformed |
 
 ## Strategies
 
+`msh-env` is built on the [Strategy Pattern](https://en.wikipedia.org/wiki/Strategy_pattern).
+Strategies are optional arrays — supply your own to override the defaults, or combine several;
+the defaults below are used when an option is omitted. Each strategy type is documented in detail
+in its own page.
+
 ### Location Strategy
 
-Location strategies define where environment values are retrieved from. Multiple strategies can be combined - the first match wins.
+Defines **where** values are read from. Strategies are tried in order; the first non-`undefined`
+result wins.
 
-#### EnvironmentLocation
+| Strategy | Import path |
+|----------|-------------|
+| `LocationStrategyEnvironment` *(default)* | `@beecode/msh-env/location-strategy/environment` |
+| `LocationStrategyCliArgsMinimist` | `@beecode/msh-env/location-strategy/cli-args-minimist` |
+| `LocationStrategyDockerSecrets` | `@beecode/msh-env/location-strategy/docker-secrets` |
+| `LocationStrategyImportMetaEnv` | `@beecode/msh-env/location-strategy/import-meta-env` |
+| `LocationStrategyCustom` | `@beecode/msh-env/location-strategy/custom` |
 
-Reads from `process.env` (default):
-
-```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-
-const env = MshNodeEnv()
-// env('DB_HOST') => process.env.DB_HOST
-```
-
-#### DockerSecretsLocation
-
-Reads from Docker Swarm secrets:
-
-```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-import { DockerSecretsLocation } from '@beecode/msh-env/location/docker-secrets-location'
-
-const env = MshNodeEnv({ locationStrategy: [new DockerSecretsLocation()] })
-```
-
-#### CliArgsMinimistLocation
-
-Parses command line arguments, useful for overriding environment variables:
-
-```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-import { CliArgsMinimistLocation } from '@beecode/msh-env/location/cli-args-minimist-location'
-import { EnvironmentLocation } from '@beecode/msh-env/location/environment-location'
-import { Options } from 'minimist-options'
-
-const options: Options = {
-  DB_NAME: { alias: ['d', 'db-name', 'dbName'], type: 'string' }
-}
-
-const env = MshNodeEnv({
-  locationStrategies: [
-    new CliArgsMinimistLocation({ options, args: process.argv.slice(2) }),
-    new EnvironmentLocation()
-  ],
-})
-
-// CLI args take precedence over environment variables
-const config = Object.freeze({
-  dbName: env('DB_NAME').string.required,
-  dbPassword: env('DB_PASS').string.required,
-})
-```
+➡️ See [Location Strategy](resource/doc/strategies/location-strategy.md) for usage examples and how
+to write your own.
 
 ### Naming Strategy
 
-Naming strategies transform environment variable names, enabling isolation and namespacing.
+Defines **how** the names you pass to `env(...)` are transformed before lookup, enabling prefixes,
+suffixes, and namespacing.
 
-#### SimpleName
+| Strategy | Import path |
+|----------|-------------|
+| `NamingStrategySimpleName` *(default)* | `@beecode/msh-env/naming-strategy/simple-name` |
+| `NamingStrategyPrefixName` | `@beecode/msh-env/naming-strategy/prefix-name` |
+| `NamingStrategySuffixName` | `@beecode/msh-env/naming-strategy/suffix-name` |
 
-Default strategy - uses names as-is:
+➡️ See [Naming Strategy](resource/doc/strategies/naming-strategy.md) for usage examples, stacking
+order, and how to write your own.
 
-```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
+### Logger
 
-const env = MshNodeEnv()
-// env('TEST') looks for: TEST
-```
-
-#### PrefixName
-
-Adds a prefix to variable names:
-
-```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-import { PrefixName } from '@beecode/msh-env/naming/prefix-name'
-
-const env = MshNodeEnv({ namingStrategy: [new PrefixName('MYAPP_')] })
-// env('DB_HOST') looks for: MYAPP_DB_HOST, then DB_HOST
-```
-
-Multiple prefixes stack:
+`msh-env` emits `debug`-level logs while resolving values. Logging is silent by default — call
+`setEnvLogger()` from `@beecode/msh-env/util/logger` with any
+[@beecode/msh-logger](https://github.com/beecode-rs/msh-logger) logger to turn it on. Do this once
+at startup, **before** reading any values.
 
 ```typescript
-const env = MshNodeEnv({ namingStrategy: [new PrefixName('FOO_'), new PrefixName('BAR_')] })
-// env('TEST') looks for: BAR_FOO_TEST, FOO_TEST, TEST
+import { mshEnv } from '@beecode/msh-env'
+import { setEnvLogger } from '@beecode/msh-env/util/logger'
+import { LogLevel } from '@beecode/msh-logger'
+import { PresetConsoleSimpleString } from '@beecode/msh-logger/controller/preset/console-simple-string'
+
+// Human-readable console output for local dev
+setEnvLogger(new PresetConsoleSimpleString({ logLevel: LogLevel.DEBUG }))
+
+const env = mshEnv()
 ```
 
-#### SuffixName
-
-Adds a suffix to variable names:
+Other ready-made loggers from `@beecode/msh-logger`:
 
 ```typescript
-import { MshNodeEnv } from '@beecode/msh-env'
-import { SuffixName } from '@beecode/msh-env/naming/suffix-name'
-
-const env = MshNodeEnv({ namingStrategy: [new SuffixName('_FOO'), new SuffixName('_BAR')] })
-// env('TEST') looks for: TEST_FOO_BAR, TEST_FOO, TEST
+import { PresetConsoleJson } from '@beecode/msh-logger/controller/preset/console-json' // structured JSON
+import { PresetPino } from '@beecode/msh-logger/controller/preset/pino'                 // pino
+import { PresetVoid } from '@beecode/msh-logger/controller/preset/void'                 // silent (default)
 ```
 
-### Logger Strategy
-
-Configure logging using [@beecode/msh-logger](https://github.com/beecode-rs/msh-logger):
-
-```typescript
-import { MshNodeEnv, NodeEnvLogger } from '@beecode/msh-env'
-import { LogLevelType } from '@beecode/msh-logger'
-import { ConsoleLogger } from '@beecode/msh-logger/console-logger'
-
-NodeEnvLogger(new ConsoleLogger(LogLevelType.DEBUG))
-
-const env = MshNodeEnv()
-```
+➡️ See [Logging](resource/doc/strategies/logger.md) for every preset, log levels, and how to build
+a fully custom logger. Learn more about the logger itself in the
+[msh-logger project](https://github.com/beecode-rs/msh-logger).
 
 ## Architecture
 
-![architecture-diagram](resource/doc/vision/vision.svg)
-
+(wip)
 ## License
 
 [MIT](LICENSE)

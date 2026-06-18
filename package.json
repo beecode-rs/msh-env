@@ -1,6 +1,6 @@
 {
 	"name": "@beecode/msh-env",
-	"version": "1.2.0",
+	"version": "2.0.0",
 	"description": "",
 	"keywords": [],
 	"homepage": "https://github.com/beecode-rs/msh-env#readme",
@@ -25,9 +25,21 @@
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js"
 		},
-		"./*": {
-			"types": "./dist/*.d.ts",
-			"import": "./dist/*.js"
+		"./convert-strategy/*": {
+			"types": "./dist/business/service/convert-strategy/*.d.ts",
+			"import": "./dist/business/service/convert-strategy/*.js"
+		},
+		"./location-strategy/*": {
+			"types": "./dist/business/service/location-strategy/*.d.ts",
+			"import": "./dist/business/service/location-strategy/*.js"
+		},
+		"./naming-strategy/*": {
+			"types": "./dist/business/service/naming-strategy/*.d.ts",
+			"import": "./dist/business/service/naming-strategy/*.js"
+		},
+		"./util/*": {
+			"types": "./dist/util/*.d.ts",
+			"import": "./dist/util/*.js"
 		}
 	},
 	"main": "./dist/index.js",
@@ -67,6 +79,7 @@
 		"test": "concurrently --group -c auto 'npm:test:*'",
 		"test-coverage-unit": "npm run test:unit -- --coverage",
 		"test-coverage-unit-publish": "codecov",
+		"test:contract": "vitest --config=./vitest.config.contract.ts",
 		"test:e2e": "cd test && npm run test",
 		"test:int": "vitest --config=./vitest.config.int.ts",
 		"test:unit": "vitest --config=./vitest.config.unit.ts",
@@ -96,6 +109,7 @@
 		"minimist-options": "^4.1.0"
 	},
 	"devDependencies": {
+		"@beecode/msh-test-contractor": "^0.4.2",
 		"@commitlint/cli": "^21.0.2",
 		"@commitlint/config-conventional": "^21.0.2",
 		"@commitlint/prompt": "^21.0.2",
