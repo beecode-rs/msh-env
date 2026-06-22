@@ -1,6 +1,6 @@
 {
 	"name": "@beecode/msh-env",
-	"version": "2.0.0",
+	"version": "1.2.0",
 	"description": "",
 	"keywords": [],
 	"homepage": "https://github.com/beecode-rs/msh-env#readme",
@@ -17,13 +17,13 @@
 	"imports": {
 		"#packageJson": "./package.json",
 		"#src": "./dist/index.js",
-		"#src/*.js": "./dist/*.js",
-		"#src/*": "./dist/*.js"
+		"#src/*": "./dist/*.js",
+		"#src/*.js": "./dist/*.js"
 	},
 	"exports": {
 		".": {
-			"types": "./dist/index.d.ts",
-			"import": "./dist/index.js"
+			"import": "./dist/index.js",
+			"types": "./dist/index.d.ts"
 		}
 	},
 	"main": "./dist/index.js",
@@ -50,7 +50,7 @@
 		"lint-eslint-fix": "npm run lint-eslint -- --fix",
 		"lint-fix": "npm run lint-prettier-fix && npm run lint-eslint-fix && npm run lint-json-fix",
 		"lint-json": "npm run lint-json-fix -- -c",
-		"lint-json-fix": "jsonsort -p * .*.json '!./dist' '!./test/node_modules' '!./resource' '!**/.env*'  '!**/.gitignore' -t",
+		"lint-json-fix": "jsonsort -p * .*.json '!./dist' '!**/node_modules/**' '!./resource' '!**/.env*'  '!**/.gitignore' -t",
 		"lint-prettier": "prettier --check {**/*,*}.{js,jsx,ts,tsx}",
 		"lint-prettier-fix": "prettier --write {**/*,*}.{js,jsx,ts,tsx}",
 		"npm-bump-version": "npm --no-git-tag-version version",
