@@ -27,7 +27,7 @@ setEnvLogger(new PresetConsoleSimpleString({ logLevel: LogLevel.DEBUG }))
 
 // 2) then use msh-env
 const env = mshEnv()
-const apiKey = env('API_KEY').string.required
+const apiKey = env('API_KEY').string.value
 ```
 
 > The examples below use msh-logger's ready-made **presets**, each pairing a formatting strategy

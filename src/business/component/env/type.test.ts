@@ -3,6 +3,7 @@ import assert from 'assert'
 import { type Mock, afterAll, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import { EnvTypeSpy } from '#src/business/component/env/__mocks__/type-spy.js'
+import { EnvMode } from '#src/business/component/env/type.js'
 import { Env } from '#src/business/component/env.js'
 import { ConvertStrategyMock } from '#src/business/service/convert-strategy/__mocks__/convert-strategy-mock.js'
 import { LocationStrategyMock } from '#src/business/service/location-strategy/__mocks__/location-strategy-mock.js'
@@ -41,174 +42,65 @@ describe.each([
 	})
 
 	describe('constructor', () => {
-		it('should pass properties', () => {
+		it('should pass properties and default mode is required', () => {
 			expect(dummyEnvType['_convertStrategy']).toEqual(mockConvertStrategy)
 			expect(dummyEnvType['_env']).toEqual(mockEnv)
 			expect(dummyEnvType['_defaultValue']).toBeUndefined()
 			expect(dummyEnvType['_allowedValues']).toEqual([])
-		})
-	})
-
-	describe('default', () => {
-		it('should return converted value directly when env var is defined', () => {
-			const dummyDefaultValue = 'someDefaultValue'
-			const envValue = 'actualEnvValue'
-			mockConvertStrategy.convert.mockReturnValue(envValue)
-
-			const result = dummyEnvType.default(dummyDefaultValue)
-
-			expect(result).toEqual(envValue)
-			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
-			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(4)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'set default value', {
-				defaultValue: dummyDefaultValue,
-			})
-		})
-
-		it('should return default value when env var is undefined', () => {
-			const dummyDefaultValue = 'someDefaultValue'
-			mockConvertStrategy.convert.mockReturnValue(undefined)
-
-			const result = dummyEnvType.default(dummyDefaultValue)
-
-			expect(result).toEqual(dummyDefaultValue)
-			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
-			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(5)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(5, 'using default value "someDefaultValue"')
-		})
-
-		it('should validate allowed values before returning', () => {
-			const dummyDefaultValue = 'someDefaultValue'
-			mockConvertStrategy.convert.mockReturnValue(undefined)
-
-			dummyEnvType.default(dummyDefaultValue)
-
-			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledWith(dummyDefaultValue)
-		})
-
-		it('should call env.envValue', () => {
-			const dummyDefaultValue = 'someDefaultValue'
-			mockConvertStrategy.convert.mockReturnValue(undefined)
-
-			dummyEnvType.default(dummyDefaultValue)
-
-			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
+			expect(dummyEnvType['_mode']).toEqual(EnvMode.REQUIRED)
 		})
 	})
 
 	describe('optional', () => {
-		it('should call env.envValue', () => {
-			console.log(dummyEnvType.optional) // eslint-disable-line no-console
-
-			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
-		})
-
-		it.each([['someValue'], [undefined], [123]])(
-			"%#. should call convert strategy convert and return it's value (%s)",
-			(value) => {
-				mockConvertStrategy.convert.mockReturnValue(value)
-				const result = dummyEnvType.optional
-				expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
-				expect(result).toBe(value)
-			}
-		)
-
-		it('should use default value if envValue is undefined', () => {
-			mockConvertStrategy.convert.mockReturnValue(undefined)
-			const dummyDefValue = 123
-			dummyEnvType['_defaultValue'] = dummyDefValue
+		it('should set mode to optional and return the same builder reference', () => {
 			const result = dummyEnvType.optional
-			expect(result).toBe(dummyDefValue)
+
+			expect(dummyEnvType['_mode']).toEqual(EnvMode.OPTIONAL)
+			expect(result).toBe(dummyEnvType)
 		})
 
-		it('should not use default value if envValue is not undefined', () => {
-			const envValue = 111
-			mockConvertStrategy.convert.mockReturnValue(envValue)
-			dummyEnvType['_defaultValue'] = 123
-			const result = dummyEnvType.optional
-			expect(result).toBe(envValue)
+		it('should not read env or convert when only optional is accessed', () => {
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+			dummyEnvType.optional
+
+			expect(mockEnv.envValue).not.toHaveBeenCalled()
+			expect(mockConvertStrategy.convert).not.toHaveBeenCalled()
 		})
 
-		it('should call validateAllowedValues', () => {
-			console.log(dummyEnvType.optional) // eslint-disable-line no-console
-			expect(dummyEnvType.validateAllowedValuesSpy).toHaveBeenCalledTimes(1)
-		})
+		it('should log optional', () => {
+			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+			dummyEnvType.optional
 
-		it('should log for debugging for undefined envValue', () => {
-			console.log(dummyEnvType.optional) // eslint-disable-line no-console
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, 'using default value "undefined"')
-		})
-
-		it('should log for debugging for undefined envValue using defined default value', () => {
-			const dummyDefValue = 123
-			dummyEnvType['_defaultValue'] = dummyDefValue
-			console.log(dummyEnvType.optional) // eslint-disable-line no-console
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(3)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
-			// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(3, `using default value "${dummyDefValue}"`)
-		})
-
-		it('should log for debugging for defined envValue', () => {
-			const envValue = 111
-			mockConvertStrategy.convert.mockReturnValue(envValue)
-			console.log(dummyEnvType.optional) // eslint-disable-line no-console
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(2)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(1, 'optional')
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenNthCalledWith(2, 'try to convert env string value "undefined"')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('optional')
 		})
 	})
 
-	describe('required', () => {
-		// eslint-disable-next-line @typescript-eslint/no-explicit-any
-		const mock_optional = vi.fn<any>()
-		let mock_createError: Mock
+	describe('default', () => {
+		it('should set default value and mode and return the same builder', () => {
+			const dummyDefaultValue = 'someDefaultValue'
 
-		beforeEach(() => {
-			Object.defineProperty(dummyEnvType, 'optional', {
-				get: () => mock_optional(),
-			})
-			mock_createError = vi.fn<[string], Error>().mockImplementation((msg: string) => {
-				return new Error(`Env[TEST] ${msg}`)
-			})
-			dummyEnvType['_createError'] = mock_createError
+			const result = dummyEnvType.default(dummyDefaultValue)
+
+			expect(dummyEnvType['_defaultValue']).toEqual(dummyDefaultValue)
+			expect(dummyEnvType['_mode']).toEqual(EnvMode.DEFAULT)
+			expect(result).toBe(dummyEnvType)
 		})
 
-		it('should throw error ifl optional value is undefined', () => {
-			mock_optional.mockReturnValue(undefined)
-			try {
-				console.log(dummyEnvType.required) // eslint-disable-line no-console
-				throw new Error('test failed')
-			} catch (err: unknown) {
-				if (!(err instanceof Error)) {
-					throw err
-				}
-				expect(mock_optional).toHaveBeenCalledTimes(1)
-				expect(mock_createError).toHaveBeenCalledTimes(1)
-				expect(mock_createError).toHaveBeenCalledWith('must have value defined')
-				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
-				expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('is required')
-				expect(err.message).toEqual('Env[TEST] must have value defined')
-			}
+		it('should not read env or convert', () => {
+			dummyEnvType.default('someDefaultValue')
+
+			expect(mockEnv.envValue).not.toHaveBeenCalled()
+			expect(mockConvertStrategy.convert).not.toHaveBeenCalled()
 		})
 
-		it('should return env optional value if defined', () => {
-			const envValue = 123
-			mock_optional.mockReturnValue(envValue)
+		it('should log set default value with default value', () => {
+			const dummyDefaultValue = 'someDefaultValue'
 
-			const result = dummyEnvType.required
-			expect(result).toEqual(envValue)
+			dummyEnvType.default(dummyDefaultValue)
 
-			expect(mock_optional).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
-			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('is required')
+			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set default value', {
+				defaultValue: dummyDefaultValue,
+			})
 		})
 	})
 
@@ -216,7 +108,9 @@ describe.each([
 		it('should set allowedValues', () => {
 			const dummyAllowedValues = ['test', 'test2']
 			assert.deepEqual(dummyEnvType['_allowedValues'], [])
+
 			const result = dummyEnvType.allowed(...dummyAllowedValues)
+
 			assert.deepEqual(dummyEnvType['_allowedValues'], dummyAllowedValues)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('set allowed values', {
@@ -226,28 +120,156 @@ describe.each([
 		})
 	})
 
+	describe('value', () => {
+		it('should return converted value in required mode when value is defined', () => {
+			const envValue = 'actualEnvValue'
+			mockConvertStrategy.convert.mockReturnValue(envValue)
+
+			const result = dummyEnvType.value
+
+			expect(result).toEqual(envValue)
+			expect(mockEnv.envValue).toHaveBeenCalledTimes(1)
+			expect(mockConvertStrategy.convert).toHaveBeenCalledTimes(1)
+		})
+
+		it('should throw in required mode when converted value is undefined', () => {
+			const mock_createError: Mock = vi.fn().mockImplementation((msg: string) => {
+				return new Error(`Env[TEST] ${msg}`)
+			})
+			dummyEnvType['createErrorSpy'] = mock_createError
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			try {
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				dummyEnvType.value
+				throw new Error('test failed')
+			} catch (err: unknown) {
+				if (!(err instanceof Error)) {
+					throw err
+				}
+				expect(mock_createError).toHaveBeenCalledTimes(1)
+				expect(mock_createError).toHaveBeenCalledWith('must have value defined')
+				expect(err.message).toEqual('Env[TEST] must have value defined')
+			}
+		})
+
+		it('should return undefined in optional mode when converted value is undefined', () => {
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			const result = dummyEnvType.optional.value
+
+			expect(result).toBeUndefined()
+		})
+
+		it('should return default value in default mode when converted value is undefined', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			const result = dummyEnvType.default(dummyDefaultValue).value
+
+			expect(result).toEqual(dummyDefaultValue)
+		})
+
+		it('should rethrow error thrown by convert strategy', () => {
+			mockConvertStrategy.convert.mockImplementation(() => {
+				throw new Error('boom')
+			})
+
+			try {
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				dummyEnvType.value
+				throw new Error('test failed')
+			} catch (err: unknown) {
+				if (!(err instanceof Error)) {
+					throw err
+				}
+				expect(err.message).toEqual('boom')
+			}
+		})
+
+		it('should throw when value is not in allowed values', () => {
+			const mock_createError: Mock = vi.fn().mockImplementation((msg: string) => {
+				return new Error(`Env[TEST] ${msg}`)
+			})
+			dummyEnvType['createErrorSpy'] = mock_createError
+			const dummyAllowedValues = ['a']
+			const dummyAllowedValuesString = JSON.stringify(dummyAllowedValues)
+			dummyEnvType.allowedValuesToStringSpy.mockReturnValue(dummyAllowedValuesString)
+			dummyEnvType.allowedValuesDoNotContainSpy.mockReturnValue(true)
+			dummyEnvType['_allowedValues'] = dummyAllowedValues
+			mockConvertStrategy.convert.mockReturnValue('b')
+
+			try {
+				// eslint-disable-next-line @typescript-eslint/no-unused-expressions
+				dummyEnvType.value
+				throw new Error('test failed')
+			} catch (err: unknown) {
+				if (!(err instanceof Error)) {
+					throw err
+				}
+				expect(mock_createError).toHaveBeenCalledWith(
+					`must have one of the fallowing values: ${dummyAllowedValuesString}`
+				)
+				expect(err.message).toEqual(`Env[TEST] must have one of the fallowing values: ${dummyAllowedValuesString}`)
+			}
+		})
+	})
+
+	describe('_tryResolve', () => {
+		it('should return ok true with value when resolution succeeds', () => {
+			const envValue = 'actualEnvValue'
+			mockConvertStrategy.convert.mockReturnValue(envValue)
+
+			const result = dummyEnvType._tryResolve()
+
+			expect(result).toEqual({ ok: true, value: envValue })
+		})
+
+		it('should return ok false with error when resolution fails and not throw', () => {
+			mockConvertStrategy.convert.mockReturnValue(undefined)
+
+			const result = dummyEnvType._tryResolve()
+
+			expect(result.ok).toEqual(false)
+			if (!result.ok) {
+				expect(result.error).toBeInstanceOf(Error)
+			}
+		})
+	})
+
+	describe('_resolveValue', () => {
+		it('should return converted value when defined', () => {
+			const converted = 'someValue'
+
+			const result = dummyEnvType['_resolveValue'](converted)
+
+			expect(result).toEqual(converted)
+		})
+
+		it('should return default value when converted is undefined', () => {
+			const dummyDefaultValue = 'someDefaultValue'
+			dummyEnvType['_defaultValue'] = dummyDefaultValue
+
+			const result = dummyEnvType['_resolveValue'](undefined)
+
+			expect(result).toEqual(dummyDefaultValue)
+		})
+	})
+
 	describe('_validateAllowedValues', () => {
-		// let spy_loggerDebug: Mock
-		// let spy_allowedValuesDoNotContain: Mock
-		// let spy_allowedValuesToString: Mock
 		let mock_createError: Mock
 
 		beforeEach(() => {
-			// spy_loggerDebug = vi.spyOn(dummyEnvType, '_loggerDebug' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
-
-			// spy_allowedValuesToString = vi.spyOn(dummyEnvType, '_allowedValuesToString' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
-
-			// spy_allowedValuesDoNotContain = vi.spyOn(dummyEnvType, '_allowedValuesDoNotContain' as any).mockImplementation(() => {}) // eslint-disable-line @typescript-eslint/no-empty-function
-
-			mock_createError = vi.fn<[string], Error>().mockImplementation((msg: string) => {
+			mock_createError = vi.fn().mockImplementation((msg: string) => {
 				return new Error(`Env[TEST] ${msg}`)
 			})
-			dummyEnvType['_createError'] = mock_createError
+			dummyEnvType['createErrorSpy'] = mock_createError
 		})
 
-		it('should return without calling anything if if now allowed values present', () => {
+		it('should return without calling anything if no allowed values present', () => {
 			dummyEnvType['_allowedValues'] = []
 			dummyEnvType['_validateAllowedValues'](undefined)
+
 			expect(dummyEnvType.loggerDebugSpy).not.toHaveBeenCalled()
 			expect(dummyEnvType.allowedValuesDoNotContainSpy).not.toHaveBeenCalled()
 			expect(dummyEnvType.allowedValuesToStringSpy).not.toHaveBeenCalled()
@@ -258,7 +280,9 @@ describe.each([
 			const value = 'a'
 			dummyEnvType['_allowedValues'] = [value]
 			dummyEnvType.allowedValuesDoNotContainSpy.mockReturnValue(false)
+
 			dummyEnvType['_validateAllowedValues'](value)
+
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledTimes(1)
 			expect(dummyEnvType.loggerDebugSpy).toHaveBeenCalledWith('validating allowed values for:', { value })
 			expect(dummyEnvType.allowedValuesDoNotContainSpy).toHaveBeenCalledTimes(1)
@@ -273,6 +297,7 @@ describe.each([
 			dummyEnvType.allowedValuesToStringSpy.mockReturnValue(dummyAllowedValuesString)
 			dummyEnvType['_allowedValues'] = dummyAllowedValues
 			dummyEnvType.allowedValuesDoNotContainSpy.mockReturnValue(true)
+
 			try {
 				dummyEnvType['_validateAllowedValues'](value)
 				throw new Error('test failed')
@@ -335,7 +360,9 @@ describe.each([
 		beforeEach(() => {
 			mock_envName = vi.fn().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
-				get: () => mock_envName(),
+				get: () => {
+					return mock_envName()
+				},
 			})
 		})
 
@@ -343,7 +370,6 @@ describe.each([
 			dummyEnvType['_loggerDebug']('test')
 
 			expect(logger().debug).toHaveBeenCalledTimes(1)
-
 			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test')
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
@@ -353,7 +379,6 @@ describe.each([
 			dummyEnvType['_loggerDebug']('test', { metaData })
 
 			expect(logger().debug).toHaveBeenCalledTimes(1)
-
 			expect(logger().debug).toHaveBeenCalledWith('Env[TEST] test', { metaData })
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 		})
@@ -364,12 +389,15 @@ describe.each([
 		beforeEach(() => {
 			mock_envName = vi.fn().mockReturnValue('Env[TEST]')
 			Object.defineProperty(dummyEnvType, '_envName', {
-				get: () => mock_envName(),
+				get: () => {
+					return mock_envName()
+				},
 			})
 		})
 
 		it('should return new Error', () => {
 			const result = dummyEnvType['_createError']('test')
+
 			expect(mock_envName).toHaveBeenCalledTimes(1)
 			expect(result instanceof Error).toBeTruthy()
 			expect(result.message).toEqual('Env[TEST] test')
@@ -379,6 +407,7 @@ describe.each([
 	describe('_envName', () => {
 		it('should return pretty env name', () => {
 			const result = dummyEnvType['_envName']
+
 			expect(result).toEqual(`Env[${envNames.join()}]`)
 		})
 	})

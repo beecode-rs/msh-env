@@ -24,22 +24,6 @@
 		".": {
 			"types": "./dist/index.d.ts",
 			"import": "./dist/index.js"
-		},
-		"./convert-strategy/*": {
-			"types": "./dist/business/service/convert-strategy/*.d.ts",
-			"import": "./dist/business/service/convert-strategy/*.js"
-		},
-		"./location-strategy/*": {
-			"types": "./dist/business/service/location-strategy/*.d.ts",
-			"import": "./dist/business/service/location-strategy/*.js"
-		},
-		"./naming-strategy/*": {
-			"types": "./dist/business/service/naming-strategy/*.d.ts",
-			"import": "./dist/business/service/naming-strategy/*.js"
-		},
-		"./util/*": {
-			"types": "./dist/util/*.d.ts",
-			"import": "./dist/util/*.js"
 		}
 	},
 	"main": "./dist/index.js",

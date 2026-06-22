@@ -1,7 +1,7 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import { mshEnv } from '@beecode/msh-env'
+import { mshEnv, mshEnvResolver } from '@beecode/msh-env'
 import { NamingStrategyPrefixName } from '@beecode/msh-env/naming-strategy/prefix-name'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
 import { LogLevel } from '@beecode/msh-logger'
@@ -21,9 +21,9 @@ describe('Prefix Example', () => {
 		const env = mshEnv({
 			namingStrategies: [new NamingStrategyPrefixName('APP_NAME_')],
 		})
-		const config = Object.freeze({
-			dbName: env('DB_NAME').string.required,
-			dbPassword: env('DB_PASS').string.required,
+		const config = mshEnvResolver({
+			dbName: env('DB_NAME').string,
+			dbPassword: env('DB_PASS').string,
 		})
 		expect(config.dbName).toEqual('appSpecificDatabaseName')
 		expect(config.dbPassword).toEqual('password')
@@ -32,9 +32,9 @@ describe('Prefix Example', () => {
 		const env = mshEnv({
 			namingStrategies: [new NamingStrategyPrefixName('APP_NAME_'), new NamingStrategyPrefixName('ADDITIONAL_PREFIX_')],
 		})
-		const config = Object.freeze({
-			dbName: env('DB_NAME').string.required,
-			dbPassword: env('DB_PASS').string.required,
+		const config = mshEnvResolver({
+			dbName: env('DB_NAME').string,
+			dbPassword: env('DB_PASS').string,
 		})
 		expect(config.dbName).toEqual('appSpecificDatabaseName')
 		expect(config.dbPassword).toEqual('additionalPrefixAppNameDbPass')

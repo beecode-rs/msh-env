@@ -1,7 +1,7 @@
 import { describe, expect, it } from 'vitest'
 
 import { EnvFactory } from '#src/business/component/env/factory.js'
-import { EnvType } from '#src/business/component/env/type.js'
+import { EnvMode, EnvType } from '#src/business/component/env/type.js'
 import { Env } from '#src/business/component/env.js'
 import { ConvertStrategyBase64ToString } from '#src/business/service/convert-strategy/base64-to-string.js'
 import { ConvertStrategyToBoolean } from '#src/business/service/convert-strategy/to-boolean.js'
@@ -25,6 +25,7 @@ describe.each([[['TEST']], [['TEST', 'TEST1']], [['TEST', 'TEST1', 'TEST2']]])(
 				const result = envFactory.string
 				expect(result instanceof EnvType).toBeTruthy()
 				expect(result['_convertStrategy'] instanceof ConvertStrategyToString).toBeTruthy()
+				expect(result['_mode']).toEqual(EnvMode.REQUIRED)
 			})
 			it('should return EnvType with ToBoolean convert strategy', () => {
 				const result = envFactory.boolean

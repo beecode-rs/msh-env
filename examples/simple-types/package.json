@@ -1,0 +1,14 @@
+{
+	"name": "msh-env-example-simple-types",
+	"version": "1.0.0",
+	"private": true,
+	"type": "module",
+	"description": "Runnable example: load .env and read every value type (string/number/boolean/json/base64) with optional/required/default/allowed options",
+	"scripts": {
+		"start": "node index.ts"
+	},
+	"dependencies": {
+		"@beecode/msh-env": "file:../../",
+		"dotenv": "^16.4.5"
+	}
+}

@@ -19,8 +19,10 @@ flexible configuration strategies.
 	- [Install](#install)
 	- [Usage](#usage)
 		- [Basic Example](#basic-example)
-		- [Terminal Operations](#terminal-operations)
+		- [Resolution \& errors](#resolution--errors)
+		- [Immutability](#immutability)
 		- [Allowed Values](#allowed-values)
+		- [Standalone reads](#standalone-reads)
 	- [API](#api)
 		- [Type Converters](#type-converters)
 		- [mshEnv Options](#mshenv-options)
@@ -44,80 +46,130 @@ npm i @beecode/msh-env
 ### Basic Example
 
 ```typescript
-import { mshEnv } from '@beecode/msh-env'
+import { mshEnvResolver, mshEnv } from '@beecode/msh-env'
 
 const env = mshEnv()
 
-export const config = Object.freeze({
-	// Required - throws if not defined
-	apiKey: env('API_KEY').string.required,
-	port: env('PORT').number.required,
+export const config = mshEnvResolver({
+	apiKey: env('API_KEY').string,                       // required (default)
+	port: env('PORT').number,
 
-	// Optional - returns undefined if not defined
-	debugMode: env('DEBUG_MODE').boolean.optional,
+	debugMode: env('DEBUG_MODE').boolean.optional,       // boolean | undefined
 
-	// Default - returns default value if not defined
 	logLevel: env('LOG_LEVEL').string.default('info'),
 	maxRetries: env('MAX_RETRIES').number.default(3),
 
-	// Base64 decoding
 	dbPassword: env('DB_PASSWORD').base64.default(''),
 
-	// JSON parsing
 	featureFlags: env('FEATURE_FLAGS').json<{ darkMode: boolean }>().default({ darkMode: false }),
 })
 ```
 
-### Terminal Operations
+### Resolution & errors
 
-Every environment property chain must end with a terminal operation. There are three options:
+Building a value is **lazy** — chaining a converter like `.string` or `.number` only describes how to
+read the variable; nothing is resolved yet. Resolution happens in one of two ways:
 
-| Terminal | Returns | Behavior |
-|----------|---------|----------|
-| `.required` | `T` | Throws error if env var is undefined |
-| `.optional` | `T \| undefined` | Returns undefined if env var is undefined |
-| `.default(value)` | `T` | Returns the default value if env var is undefined |
+- **`mshEnvResolver({ ... })`** — the headline form. Pass a config object whose leaves are builders
+  (and/or nested objects / arrays of builders). It walks the whole tree, resolves every leaf in one
+  pass, and returns a fully-typed, deeply-frozen, `readonly` object. If any leaf fails, it collects
+  **all** errors and throws a single `MshEnvResolverError` whose message lists every failing var with
+  its dotted path.
+- **`.value`** — the single terminator for a standalone one-off read
+  (`env('API_KEY').string.value`). It returns a plain, non-frozen value (see [Standalone reads](#standalone-reads)).
 
-> `T` represents the type of the environment variable based on the converter used: `string`,
-> `number`, `boolean`, the decoded `string` from `.base64`, or the generic type passed to
-> `.json<T>()`.
+Within a builder:
 
-**Examples:**
+- **Required is the default.** A bare builder like `env('API_KEY').string` is required.
+- **`.optional`** is a *getter* (no parens) that marks the var optional; the resolved type becomes
+  `T | undefined`.
+- **`.default(v)`** is a *method* that sets a fallback and **returns the builder** (it does not
+  return the value), so you keep chaining.
+
+> `T` is the type produced by the converter: `string`, `number`, `boolean`, the decoded `string`
+> from `.base64`, or the generic type passed to `.json<T>()`.
+
+**Handling the aggregated error:**
 
 ```typescript
+import { mshEnvResolver, MshEnvResolverError, mshEnv } from '@beecode/msh-env'
+
 const env = mshEnv()
 
-// .required - Use when the env var MUST be present
-// Application will fail fast if DATABASE_URL is not set
-const dbUrl = env('DATABASE_URL').string.required
-
-// .optional - Use when the env var is truly optional
-// Returns undefined if ANALYTICS_ID is not set
-const analyticsId = env('ANALYTICS_ID').string.optional
-
-// .default() - Use when you have a sensible fallback value
-// Returns 'development' if NODE_ENV is not set
-const nodeEnv = env('NODE_ENV').string.default('development')
-
-// .default() works with all types
-const timeout = env('TIMEOUT_MS').number.default(5000)
-const verbose = env('VERBOSE').boolean.default(false)
-const config = env('APP_CONFIG').json<AppConfig>().default({ theme: 'light' })
+try {
+	const config = mshEnvResolver({
+		apiKey: env('API_KEY').string,
+		port: env('PORT').number,
+		db: {
+			host: env('DB_HOST').string,
+		},
+	})
+} catch (e) {
+	if (e instanceof MshEnvResolverError) {
+		console.error(e.message)
+	}
+}
 ```
+
+The message lists every failure, each on its own line with the dotted path, separated by ` -> `:
+
+```
+msh-env: 3 environment variable(s) failed to resolve:
+  • apiKey -> Env[API_KEY] must have value defined
+  • port -> Env[PORT] must have value defined
+  • db.host -> Env[DB_HOST] "not-a-number" is not a number
+```
+
+### Immutability
+
+`mshEnvResolver(...)` returns a **deeply-frozen**, `readonly` object, so the manual
+`Object.freeze({ ... })` wrapper is no longer needed (and would be redundant). `.value`, used as a
+standalone terminator for a one-off read, returns a plain, non-frozen value.
 
 ### Allowed Values
 
-You can restrict a value to a specific set. Chain `.allowed(...)` before the terminal operation:
+You can restrict a value to a specific set. Chain `.allowed(...)` before resolution — it validates
+both the env value and any `.default(...)` fallback:
 
 ```typescript
+import { mshEnvResolver, mshEnv } from '@beecode/msh-env'
+
 const env = mshEnv()
 
-// With required - throws if value is not in the allowed list
-const logLevel = env('LOG_LEVEL').string.allowed('debug', 'info', 'warn', 'error').required
+// Inside the resolver (required is the default)
+const config = mshEnvResolver({
+	logLevel: env('LOG_LEVEL').string.allowed('debug', 'info', 'warn', 'error'),
+	environment: env('NODE_ENV')
+		.string.allowed('development', 'staging', 'production')
+		.default('development'),
+})
 
-// With default - validates both the env value and the default value
-const environment = env('NODE_ENV').string.allowed('development', 'staging', 'production').default('development')
+// Standalone one-off read
+const logLevel = env('LOG_LEVEL').string.allowed('debug', 'info', 'warn', 'error').value
 ```
+
+### Standalone reads
+
+If you don't want the whole-tree resolver, terminate a single builder with `.value`. The optional and
+default mode setters still apply:
+
+```typescript
+import { mshEnv } from '@beecode/msh-env'
+
+const env = mshEnv()
+
+// Required (default)
+const dbUrl = env('DATABASE_URL').string.value
+
+// Optional
+const analyticsId = env('ANALYTICS_ID').string.optional.value
+
+// Default fallback
+const nodeEnv = env('NODE_ENV').string.default('development').value
+```
+
+Note that `.value` returns a plain, non-frozen value; only `mshEnvResolver(...)` produces the
+deeply-frozen, `readonly` object (see [Immutability](#immutability)).
 
 ## API
 
@@ -215,7 +267,11 @@ a fully custom logger. Learn more about the logger itself in the
 
 ## Architecture
 
-(wip)
+Configuration is built as a tree of lazy `EnvType` builders: chaining a converter (`.string`,
+`.number`, `.json<T>()`, …) only describes how a variable should be read, without resolving it.
+`mshEnvResolver(...)` then walks the whole tree, resolving every leaf in one pass, aggregating all
+failures into a single `MshEnvResolverError` (so you see every missing or invalid variable at once,
+not just the first), and returns a deeply-frozen, fully-typed, immutable object.
 ## License
 
 [MIT](LICENSE)

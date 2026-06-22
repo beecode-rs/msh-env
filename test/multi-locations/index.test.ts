@@ -1,7 +1,7 @@
 import { dirname } from 'path'
 import { fileURLToPath } from 'url'
 
-import { mshEnv } from '@beecode/msh-env'
+import { mshEnv, mshEnvResolver } from '@beecode/msh-env'
 import { LocationStrategyCliArgsMinimist } from '@beecode/msh-env/location-strategy/cli-args-minimist'
 import { LocationStrategyEnvironment } from '@beecode/msh-env/location-strategy/environment'
 import { setEnvLogger } from '@beecode/msh-env/util/logger'
@@ -35,9 +35,9 @@ describe('Multiple Locations Example', () => {
 				new LocationStrategyEnvironment(),
 			],
 		})
-		const config = Object.freeze({
-			dbName: env('DB_NAME').string.required,
-			dbPassword: env('DB_PASS').string.required,
+		const config = mshEnvResolver({
+			dbName: env('DB_NAME').string,
+			dbPassword: env('DB_PASS').string,
 		})
 		expect(config.dbName).toEqual(dbName)
 		expect(config.dbPassword).toEqual('password')

@@ -75,7 +75,7 @@ const env = mshEnv({
 	],
 })
 
-const dbName = env('DB_NAME').string.required
+const dbName = env('DB_NAME').string.value
 ```
 
 Both `options` and `args` are optional — `args` defaults to `process.argv.slice(2)`.

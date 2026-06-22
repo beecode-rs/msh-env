@@ -4,7 +4,14 @@ import { type Env } from '#src/business/component/env.js'
 import { type ConvertStrategy } from '#src/business/service/convert-strategy.js'
 import { logger } from '#src/util/logger.js'
 
+export enum EnvMode {
+	REQUIRED = 'REQUIRED',
+	OPTIONAL = 'OPTIONAL',
+	DEFAULT = 'DEFAULT',
+}
+
 export class EnvType<T> {
+	protected _mode: EnvMode = EnvMode.REQUIRED
 	protected _defaultValue: T | undefined = undefined
 	protected readonly _convertStrategy: ConvertStrategy<T>
 	protected readonly _env: Env
@@ -16,47 +23,65 @@ export class EnvType<T> {
 		this._env = env
 	}
 
-	default(defaultValue: T): T {
+	// eslint-disable-next-line @typescript-eslint/prefer-return-this-type -- .optional intentionally widens the resolved type to T | undefined
+	get optional(): EnvType<T | undefined> {
+		this._loggerDebug('optional')
+		this._mode = EnvMode.OPTIONAL
+
+		return this
+	}
+
+	default(defaultValue: T): this {
 		this._loggerDebug('set default value', { defaultValue })
 		this._defaultValue = defaultValue
+		this._mode = EnvMode.DEFAULT
 
-		return this.required
-	}
-
-	get optional(): T | undefined {
-		this._loggerDebug(`optional`)
-		const strOrUndefined = this._env.envValue()
-
-		// eslint-disable-next-line @typescript-eslint/restrict-template-expressions
-		this._loggerDebug(`try to convert env string value "${strOrUndefined}"`)
-		const convertedValue = this._convertStrategy.convert(strOrUndefined)
-
-		if (convertedValue === undefined) {
-			this._loggerDebug(`using default value "${String(this._defaultValue)}"`)
-		}
-		const optionalValue = convertedValue ?? this._defaultValue
-
-		this._validateAllowedValues(optionalValue)
-
-		return optionalValue
-	}
-
-	get required(): T {
-		this._loggerDebug(`is required`)
-
-		const envValue = this.optional
-		if (envValue === undefined) {
-			throw this._createError('must have value defined')
-		}
-
-		return envValue
+		return this
 	}
 
 	allowed(...args: T[]): this {
-		this._loggerDebug(`set allowed values`, { allowedValues: args })
+		this._loggerDebug('set allowed values', { allowedValues: args })
 		this._allowedValues = [...args]
 
 		return this
+	}
+
+	get value(): T {
+		return this._resolve()
+	}
+
+	_tryResolve(): { ok: true; value: T } | { ok: false; error: Error } {
+		try {
+			return { ok: true, value: this._resolve() }
+		} catch (e: unknown) {
+			if (e instanceof Error) {
+				return { error: e, ok: false }
+			}
+
+			return { error: new Error(String(e)), ok: false }
+		}
+	}
+
+	protected _resolve(): T {
+		const raw = this._env.envValue()
+		this._loggerDebug(`try to convert env string value "${String(raw)}"`)
+		const converted = this._convertStrategy.convert(raw)
+		const value = this._resolveValue(converted)
+		if (value === undefined && this._mode !== EnvMode.OPTIONAL) {
+			throw this._createError('must have value defined')
+		}
+		this._validateAllowedValues(value)
+
+		return value as T
+	}
+
+	protected _resolveValue(converted: T | undefined): T | undefined {
+		if (converted !== undefined) {
+			return converted
+		}
+		this._loggerDebug(`using default value "${String(this._defaultValue)}"`)
+
+		return this._defaultValue
 	}
 
 	protected _validateAllowedValues(value?: T): void {
