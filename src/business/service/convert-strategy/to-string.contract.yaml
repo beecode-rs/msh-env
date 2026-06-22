@@ -1,0 +1,27 @@
+subject: ConvertStrategyToString
+module: ./to-string.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  convert:
+    terms:
+      # Zero — no/undefined/blank input
+      - params: []
+        result: !undefined
+      - params:
+          - !undefined
+        result: !undefined
+      - params: ['']
+        result: !undefined
+      - params: [' ']
+        result: !undefined
+      - params: ['   ']
+        result: !undefined
+      # One/Many — non-empty strings pass through unchanged
+      - params: ['string-a']
+        result: 'string-a'
+      - params: ['string-b']
+        result: 'string-b'

@@ -1,0 +1,17 @@
+import { type ConvertStrategy } from '#src/business/service/convert-strategy.js'
+
+export class ConvertStrategyToBoolean implements ConvertStrategy<boolean> {
+	convert(str?: string): boolean | undefined {
+		if (str === undefined) {
+			return undefined
+		}
+		const strLower = str.toLowerCase()
+		if (strLower === 'true') {
+			return true
+		} else if (strLower === 'false') {
+			return false
+		}
+
+		return undefined
+	}
+}

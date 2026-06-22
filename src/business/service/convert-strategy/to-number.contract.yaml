@@ -1,0 +1,40 @@
+subject: ConvertStrategyToNumber
+module: ./to-number.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  convert:
+    terms:
+      # Zero — no/undefined/blank input
+      - params: []
+        result: !undefined
+      - params:
+          - !undefined
+        result: !undefined
+      - params: ['']
+        result: !undefined
+      - params: [' ']
+        result: !undefined
+      # One/Many — numeric strings convert to numbers
+      - params: ['123']
+        result: 123
+      - params: ['-123']
+        result: -123
+      - params: ['10.01']
+        result: 10.01
+      - params: ['-10.999']
+        result: -10.999
+      - params: ['0']
+        result: 0
+      # Oops — non-numeric strings throw
+      - params: ['bb123']
+        error: '"bb123" is not a number'
+      - params: ['1.2.3.4']
+        error: '"1.2.3.4" is not a number'
+      - params: ['11,22']
+        error: '"11,22" is not a number'
+      - params: ['someWord']
+        error: '"someWord" is not a number'

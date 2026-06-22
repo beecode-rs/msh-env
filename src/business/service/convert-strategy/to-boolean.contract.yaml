@@ -1,0 +1,34 @@
+subject: ConvertStrategyToBoolean
+module: ./to-boolean.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  convert:
+    terms:
+      # Zero — no/undefined input
+      - params: []
+        result: !undefined
+      - params:
+          - !undefined
+        result: !undefined
+      - params: ['']
+        result: !undefined
+      # One/Many — case-insensitive truthy values
+      - params: ['true']
+        result: true
+      - params: ['TRUE']
+        result: true
+      - params: ['tRuE']
+        result: true
+      - params: ['false']
+        result: false
+      - params: ['FALSE']
+        result: false
+      - params: ['fAlSe']
+        result: false
+      # Oops — anything else is not a boolean
+      - params: ['not boolean']
+        result: !undefined

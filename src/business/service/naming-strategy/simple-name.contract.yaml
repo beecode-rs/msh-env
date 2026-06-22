@@ -1,0 +1,18 @@
+subject: NamingStrategySimpleName
+module: ./simple-name.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  names:
+    terms:
+      # One — single name
+      - params:
+          - ['some-name']
+        result: ['some-name']
+      # Many — multiple names
+      - params:
+          - ['some-name', 'some-name2']
+        result: ['some-name', 'some-name2']

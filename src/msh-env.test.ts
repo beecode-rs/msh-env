@@ -2,7 +2,7 @@ import { type Mock, afterAll, describe, expect, it, vi } from 'vitest'
 
 vi.mock('#src/util/logger.js')
 
-vi.mock('#src/location-strategy/environment.js', () => {
+vi.mock('#src/business/service/location-strategy/environment.js', () => {
 	return {
 		LocationStrategyEnvironment: vi.fn().mockImplementation(() => ({
 			valueByName: vi.fn(),
@@ -10,14 +10,14 @@ vi.mock('#src/location-strategy/environment.js', () => {
 	}
 })
 
-vi.mock('#src/naming-strategy/simple-name.js', () => {
+vi.mock('#src/business/service/naming-strategy/simple-name.js', () => {
 	return {
 		NamingStrategySimpleName: vi.fn().mockImplementation(() => ({
 			names: vi.fn(),
 		})),
 	}
 })
-vi.mock('#src/env/factory.js', () => {
+vi.mock('#src/business/component/env/factory.js', () => {
 	return {
 		EnvFactory: vi.fn().mockImplementation(() => ({
 			base64: vi.fn(),
@@ -29,10 +29,10 @@ vi.mock('#src/env/factory.js', () => {
 	}
 })
 
-import { EnvFactory } from '#src/env/factory.js'
-import { LocationStrategyEnvironment } from '#src/location-strategy/environment.js'
+import { EnvFactory } from '#src/business/component/env/factory.js'
+import { LocationStrategyEnvironment } from '#src/business/service/location-strategy/environment.js'
+import { NamingStrategySimpleName } from '#src/business/service/naming-strategy/simple-name.js'
 import { mshEnv } from '#src/msh-env.js'
-import { NamingStrategySimpleName } from '#src/naming-strategy/simple-name.js'
 import { logger } from '#src/util/logger.js'
 
 describe('mshEnv', () => {

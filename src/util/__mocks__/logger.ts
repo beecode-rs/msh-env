@@ -1,4 +1,4 @@
-import { type LoggerStrategy } from '@beecode/msh-logger/logger-strategy'
+import { type LoggerStrategy } from '@beecode/msh-logger'
 import { vi } from 'vitest'
 
 const _cache = {
@@ -6,7 +6,9 @@ const _cache = {
 		clone: vi.fn(),
 		debug: vi.fn(),
 		error: vi.fn(),
+		fatal: vi.fn(),
 		info: vi.fn(),
+		trace: vi.fn(),
 		warn: vi.fn(),
 	},
 }

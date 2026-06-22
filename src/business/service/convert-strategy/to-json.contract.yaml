@@ -1,0 +1,27 @@
+subject: ConvertStrategyToJson
+module: ./to-json.js
+subjectType: class
+constructor:
+  terms:
+    - params: []
+      result: {}
+methods:
+  convert:
+    terms:
+      # Zero — no/undefined/blank input
+      - params: []
+        result: !undefined
+      - params:
+          - !undefined
+        result: !undefined
+      - params: ['']
+        result: !undefined
+      - params: [' ']
+        result: !undefined
+      # Many — valid json string parses to object
+      - params: ['{"test":"some test value"}']
+        result:
+          test: 'some test value'
+      # Oops — invalid json throws
+      - params: ['not a string']
+        error: '"not a string" is not a json'

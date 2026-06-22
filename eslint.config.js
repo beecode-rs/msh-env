@@ -8,7 +8,6 @@ export default [
 			'.semaphore',
 			'coverage',
 			'dist',
-			'lib',
 			'node_modules',
 			'resource',
 			'packages',
@@ -19,10 +18,18 @@ export default [
 			'typedoc.json',
 			'jest.config*.ts',
 			'eslint.config.js',
-			'babel.config.cjs',
 			'release.config.cjs',
 			'.history',
 		],
 	},
 	...eslintNode,
+	{
+		// Examples are runnable demos: they print to stdout and use a deliberately
+		// grouped config object for readability, so relax the rules that fight that.
+		files: ['examples/**/*.ts'],
+		rules: {
+			'no-console': 'off',
+			'sort-keys': 'off',
+		},
+	},
 ]
