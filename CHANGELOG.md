@@ -1,3 +1,57 @@
+# [2.0.0](https://github.com/beecode-rs/msh-env/compare/v1.2.0...v2.0.0) (2026-06-23)
+
+
+* feat!: release v2.0.0 with lazy resolution and strategy architecture ([#71](https://github.com/beecode-rs/msh-env/issues/71)) ([85c3dac](https://github.com/beecode-rs/msh-env/commit/85c3daca790daa078c3c62a3945a19c2c1368efd)), closes [#src](https://github.com/beecode-rs/msh-env/issues/src)
+
+
+### BREAKING CHANGES
+
+* * chore: remove babel build pipeline
+
+- drop babel.config.cjs and all @babel deps
+- remove lib/ output dir from ignores
+- update node to v22.22.1
+- upgrade ci os images to ubuntu2404
+- update dependencies and relax engine constraints
+
+* refactor: restructure for v2.0.0
+
+- rename classes and export paths
+- add base64 converter and strategies
+- replace unit tests with contracts
+- add strategy documentation pages
+- update package subpath exports
+
+* refactor: move mshenv type to msh-env
+
+Remove separate model file and co-locate type
+with its implementation.
+
+* feat: add mshEnvResolver with lazy resolution
+
+- refactor EnvType to lazy builder pattern
+- add aggregated error reporting
+- return deeply-frozen readonly objects
+- remove subpath exports from package.json
+- add simple-types example
+
+* chore: update tooling and formatting
+
+- relax eslint rules for examples
+- add tsconfig to simple-types example
+- revert version from 2.0.0 to 1.2.0
+- fix jsonsort node_modules exclusion
+- regenerate api docs with new structure
+
+* chore: add msh-test-contractor
+
+- update typescript-eslint to 8.62.0
+- update vitest to 4.1.9
+- update multiple dev dependencies
+- remove unused @package-json/types
+
+* refactor: simplify vitest alias resolution
+
 # [1.2.0](https://github.com/beecode-rs/msh-env/compare/v1.1.5...v1.2.0) (2026-02-16)
 
 
