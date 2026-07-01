@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/beecode-rs/msh-env/compare/v2.0.0...v2.0.1) (2026-07-01)
+
+
+### Bug Fixes
+
+* add subpath exports ([29d0b8e](https://github.com/beecode-rs/msh-env/commit/29d0b8e9cfd928b86cc866c669c9a560c267ee6e))
+
 # [2.0.0](https://github.com/beecode-rs/msh-env/compare/v1.2.0...v2.0.0) (2026-06-23)
 
 
